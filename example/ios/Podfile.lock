@@ -1,0 +1,34 @@
+PODS:
+  - cdnbye (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+  - screen (0.0.1):
+    - Flutter
+  - video_player (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - cdnbye (from `.symlinks/plugins/cdnbye/ios`)
+  - Flutter (from `.symlinks/flutter/ios`)
+  - screen (from `.symlinks/plugins/screen/ios`)
+  - video_player (from `.symlinks/plugins/video_player/ios`)
+
+EXTERNAL SOURCES:
+  cdnbye:
+    :path: ".symlinks/plugins/cdnbye/ios"
+  Flutter:
+    :path: ".symlinks/flutter/ios"
+  screen:
+    :path: ".symlinks/plugins/screen/ios"
+  video_player:
+    :path: ".symlinks/plugins/video_player/ios"
+
+SPEC CHECKSUMS:
+  cdnbye: 68b18068fd4913858bc235d5305643aa0f363da4
+  Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
+  screen: 22ab9c4a784112d4b21ad7d80e81729e0afdaa65
+  video_player: 906796a841943c8d370ac7c13b18039aa9b56498
+
+PODFILE CHECKSUM: e9e6b2d1b4659eb7ca9c31439eb8716d7d418981
+
+COCOAPODS: 1.5.3

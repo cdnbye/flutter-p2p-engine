@@ -1,3 +1,4 @@
+import 'package:cdnbye_example/pages/customVideoPage.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -23,7 +24,10 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return VideoPlayerWidget();
+    return MaterialApp(
+      title: 'Video Demo',
+      home: CustomVideoPlayerPage(),
+    );
   }
 }
 
@@ -81,6 +85,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                 ),
               ),
             ),
+            Container(),
             Container(
               height: 200,
               child: Center(

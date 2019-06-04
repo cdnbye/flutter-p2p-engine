@@ -1,17 +1,42 @@
 PODS:
   - cdnbye (0.0.1):
+    - CDNByeSDK
     - Flutter
+  - CDNByeSDK (0.3.0):
+    - CocoaLumberjack (~> 3.5)
+    - GCDWebServer (~> 3.5)
+    - GoogleWebRTC (~> 1.1)
+    - SocketRocket (~> 0.5)
+    - YYCache (~> 1.0)
+  - CocoaLumberjack (3.5.3):
+    - CocoaLumberjack/Core (= 3.5.3)
+  - CocoaLumberjack/Core (3.5.3)
   - Flutter (1.0.0)
+  - GCDWebServer (3.5.2):
+    - GCDWebServer/Core (= 3.5.2)
+  - GCDWebServer/Core (3.5.2)
+  - GoogleWebRTC (1.1.28117)
   - screen (0.0.1):
     - Flutter
+  - SocketRocket (0.5.1)
   - video_player (0.0.1):
     - Flutter
+  - YYCache (1.0.4)
 
 DEPENDENCIES:
   - cdnbye (from `.symlinks/plugins/cdnbye/ios`)
   - Flutter (from `.symlinks/flutter/ios`)
   - screen (from `.symlinks/plugins/screen/ios`)
   - video_player (from `.symlinks/plugins/video_player/ios`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CDNByeSDK
+    - CocoaLumberjack
+    - GCDWebServer
+    - GoogleWebRTC
+    - SocketRocket
+    - YYCache
 
 EXTERNAL SOURCES:
   cdnbye:
@@ -24,11 +49,17 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/video_player/ios"
 
 SPEC CHECKSUMS:
-  cdnbye: 68b18068fd4913858bc235d5305643aa0f363da4
-  Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
-  screen: 22ab9c4a784112d4b21ad7d80e81729e0afdaa65
-  video_player: 906796a841943c8d370ac7c13b18039aa9b56498
+  cdnbye: 6a90aa030892ca30c52a7fed4c34e05e67e2707f
+  CDNByeSDK: 7565ef0f3a8c8600ed5ea1b6ea775c23c280f4b4
+  CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
+  Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+  GCDWebServer: ead88cd14596dd4eae4f5830b8877c87c8728990
+  GoogleWebRTC: 44cdafc5140ba1e63e6944ed22cadbe269f28f88
+  screen: abd91ca7bf3426e1cc3646d27e9b2358d6bf07b0
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
+  video_player: 3964090a33353060ed7f58aa6427c7b4b208ec21
+  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
 PODFILE CHECKSUM: e9e6b2d1b4659eb7ca9c31439eb8716d7d418981
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.1

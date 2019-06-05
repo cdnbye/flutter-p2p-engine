@@ -83,6 +83,9 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
                   }
                 },
                 onTapPlay: () async {
+                  if (!vpController.value.initialized) {
+                    return;
+                  }
                   if (isplay) {
                     vpController.pause();
                   } else {

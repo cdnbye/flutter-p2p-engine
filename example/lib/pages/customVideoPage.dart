@@ -74,6 +74,9 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
                 isPlaying: isplay,
                 showToolLayer: showUi,
                 onTap: () async {
+                  if (!vpController.value.initialized) {
+                    return;
+                  }
                   showUi = !showUi;
                   setState(() {});
                   if (showUi && isplay) {

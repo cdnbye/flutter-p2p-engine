@@ -19,8 +19,8 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
   }
 
   loadVideo() async {
-    var url = 'http://opentracker.cdnbye.com:2100/20190513/Hm8R9WIB/index.m3u8';
-    // var url = 'http://222.186.50.155/hls/test2.m3u8';
+    // var url = 'http://opentracker.cdnbye.com:2100/20190513/Hm8R9WIB/index.m3u8';
+    var url = 'http://222.186.50.155/hls/test2.m3u8';
 
     await Cdnbye.init('free', infoListener: (Map info) {
       print('收到运行信息:$info');
@@ -30,16 +30,24 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
     print('转换前的Url$url');
     url = await Cdnbye.parseStreamURL(url);
     print('转换后的Url$url');
+    vpController?.pause();
+    position = 0;
+    videoDuration = 0;
+    isplay = false;
     vpController = null;
-    vpController = VideoPlayerController.network(url);
-    await vpController.initialize();
-
-    vpController.addListener(() {
-      position = vpController.value.position.inMilliseconds;
-      setState(() {});
-    });
-    videoDuration = vpController.value.duration?.inMilliseconds;
     setState(() {});
+    vpController = VideoPlayerController.network(url);
+    try {
+      await vpController.initialize();
+      vpController.addListener(() {
+        position = vpController.value.position.inMilliseconds;
+        setState(() {});
+      });
+      videoDuration = vpController.value.duration?.inMilliseconds;
+      setState(() {});
+    } catch (e) {
+      print('$e');
+    }
   }
 
   String _info = '';
@@ -50,11 +58,17 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
   bool isplay = false;
   @override
   Widget build(BuildContext context) {
-    Widget video = vpController == null
-        ? Container(
-            color: Color(0xfff5f5f4),
-          )
-        : VideoPlayer(vpController);
+    bool hasVideo = vpController?.value?.isPlaying ?? false;
+    Widget video;
+    double aspectRatio = 16 / 9.0;
+    if (hasVideo) {
+      video = VideoPlayer(vpController);
+      aspectRatio = vpController?.value?.aspectRatio ?? 16 / 9.0;
+    } else {
+      video = Container(
+        color: Color(0xff000000),
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -68,7 +82,7 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
               aspectRatio: 16 / 9.0,
               child: VideoPlayerWidget(
                 video: video,
-                aspectRatio: vpController?.value?.aspectRatio ?? 16 / 9.0,
+                aspectRatio: aspectRatio,
                 videoDuration: videoDuration,
                 videoPositon: position,
                 isPlaying: isplay,

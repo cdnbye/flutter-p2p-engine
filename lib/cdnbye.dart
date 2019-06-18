@@ -61,15 +61,15 @@ class P2pConfig {
 
   P2pConfig({
     this.logLevel: P2pLogLevel.none,
-    this.webRTCConfig: const {},
+    this.webRTCConfig: const {}, // TODO: 默认值缺少
     this.wsSignalerAddr: '@"wss://signal.cdnbye.com/wss"',
-    this.announce: 'https://tracker.cdnbye.com:8090', // TODO: 默认值缺少
+    this.announce: 'https://api.cdnbye.com',
     this.maxBufferSize: 1024 * 1024 * 1024,
     this.p2pEnabled: true,
     this.packetSize: 64 * 1024,
-    this.downloadTimeout: const Duration(milliseconds: 10),
-    this.dcDownloadTimeout: const Duration(milliseconds: 4),
-    this.dcUploadTimeout: const Duration(milliseconds: 6),
+    this.downloadTimeout: const Duration(seconds: 10),
+    this.dcDownloadTimeout: const Duration(seconds: 4),
+    this.dcUploadTimeout: const Duration(seconds: 6),
     this.tag: "unknown",
     this.agent: '', // TODO: 默认值缺少
   });
@@ -84,9 +84,9 @@ class P2pConfig {
         'maxBufferSize': maxBufferSize,
         'p2pEnabled': p2pEnabled,
         'packetSize': packetSize,
-        'downloadTimeout': downloadTimeout.inMilliseconds,
-        'dcDownloadTimeout': dcDownloadTimeout.inMilliseconds,
-        'dcUploadTimeout': dcUploadTimeout.inMilliseconds,
+        'downloadTimeout': downloadTimeout.inSeconds,
+        'dcDownloadTimeout': dcDownloadTimeout.inSeconds,
+        'dcUploadTimeout': dcUploadTimeout.inSeconds,
         'tag': tag,
         'agent': agent,
       };

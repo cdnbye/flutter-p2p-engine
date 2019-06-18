@@ -2,7 +2,7 @@ PODS:
   - cdnbye (0.0.1):
     - CDNByeSDK
     - Flutter
-  - CDNByeSDK (0.3.1):
+  - CDNByeSDK (0.4.1):
     - CocoaLumberjack (~> 3.5)
     - GCDWebServer (~> 3.5)
     - GoogleWebRTC (~> 1.1)
@@ -50,7 +50,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   cdnbye: 6a90aa030892ca30c52a7fed4c34e05e67e2707f
-  CDNByeSDK: d17ba4cb412a593cde3a42a76702bf4314df773e
+  CDNByeSDK: c150e653ca58c0a1a2a2b7774aa7f7a1794b28c6
   CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
   Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
   GCDWebServer: ead88cd14596dd4eae4f5830b8877c87c8728990

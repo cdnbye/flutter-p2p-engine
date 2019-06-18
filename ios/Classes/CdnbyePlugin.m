@@ -45,13 +45,13 @@
           config.packetSize = ((NSNumber *)configMap[@"packetSize"]).integerValue;
       }
       if([configMap[@"downloadTimeout"] class]!=[NSNull class]){
-          config.packetSize = ((NSNumber *)configMap[@"packetSize"]).integerValue;
+          config.downloadTimeout = ((NSNumber *)configMap[@"downloadTimeout"]).integerValue;
       }
       if([configMap[@"dcDownloadTimeout"] class]!=[NSNull class]){
-          config.packetSize = ((NSNumber *)configMap[@"packetSize"]).integerValue;
+          config.dcDownloadTimeout = ((NSNumber *)configMap[@"dcDownloadTimeout"]).integerValue;
       }
       if([configMap[@"dcUploadTimeout"] class]!=[NSNull class]){
-          config.packetSize = ((NSNumber *)configMap[@"packetSize"]).integerValue;
+          config.dcUploadTimeout = ((NSNumber *)configMap[@"dcUploadTimeout"]).integerValue;
       }
       if([configMap[@"tag"] class]!=[NSNull class]){
           config.tag = (NSString *)configMap[@"tag"];

@@ -22,9 +22,43 @@
       NSDictionary *args = call.arguments;
       // TODO: 实现初始化
       NSLog(@"读取初始化配置:\n%@",args);
+      
+      NSDictionary *configMap =args[@"config"];
       CBP2pConfig *config = [[CBP2pConfig alloc]init];
-      config.announce = @"https://tracker.cdnbye.com:8090";
-      config.logLevel =  CBLogLevelDebug;
+      
+      if([configMap[@"logLevel"] class]!=[NSNull class]){
+          config.logLevel = ((NSNumber *)configMap[@"logLevel"]).integerValue;
+      }
+      if([configMap[@"webRTCConfig"] class]!=[NSNull class]){
+//          config.webRTCConfig = (NSDictionary *)configMap[@"webRTCConfig"];
+      }
+      if([configMap[@"wsSignalerAddr"] class]!=[NSNull class]){
+          config.wsSignalerAddr = (NSString *)configMap[@"wsSignalerAddr"];
+      }
+      if([configMap[@"announce"] class]!=[NSNull class]){
+          config.announce = (NSString *)configMap[@"announce"];
+      }
+      if([configMap[@"p2pEnabled"] class]!=[NSNull class]){
+          config.p2pEnabled = ((NSNumber *)configMap[@"p2pEnabled"]).integerValue;
+      }
+      if([configMap[@"packetSize"] class]!=[NSNull class]){
+          config.packetSize = ((NSNumber *)configMap[@"packetSize"]).integerValue;
+      }
+      if([configMap[@"downloadTimeout"] class]!=[NSNull class]){
+          config.packetSize = ((NSNumber *)configMap[@"packetSize"]).integerValue;
+      }
+      if([configMap[@"dcDownloadTimeout"] class]!=[NSNull class]){
+          config.packetSize = ((NSNumber *)configMap[@"packetSize"]).integerValue;
+      }
+      if([configMap[@"dcUploadTimeout"] class]!=[NSNull class]){
+          config.packetSize = ((NSNumber *)configMap[@"packetSize"]).integerValue;
+      }
+      if([configMap[@"tag"] class]!=[NSNull class]){
+          config.tag = (NSString *)configMap[@"tag"];
+      }
+      if([configMap[@"agent"] class]!=[NSNull class]){
+          config.agent = (NSString *)configMap[@"agent"];
+      }
       engine = [[CBP2pEngine alloc]initWithToken:@"free" andP2pConfig:config];
       result(@1);
   } else if([@"parseStreamURL" isEqualToString:call.method]){
@@ -37,7 +71,6 @@
       [[NSNotificationCenter defaultCenter]addObserverForName:kP2pEngineDidReceiveStatistics object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
           [self->channel invokeMethod:@"info" arguments:note.object];
       }];
-      
       result(@1);
   }
   else {

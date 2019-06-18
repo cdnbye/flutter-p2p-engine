@@ -22,11 +22,15 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
     // var url = 'http://opentracker.cdnbye.com:2100/20190513/Hm8R9WIB/index.m3u8';
     var url = 'http://222.186.50.155/hls/test2.m3u8';
 
-    await Cdnbye.init('free', infoListener: (Map info) {
-      print('收到运行信息:$info');
-      _info = '${info.toString()}\n' + _info;
-      setState(() {});
-    });
+    await Cdnbye.init(
+      'free',
+      config: P2pConfig.byDefault(),
+      infoListener: (Map info) {
+        print('收到运行信息:$info');
+        _info = '${info.toString()}\n' + _info;
+        setState(() {});
+      },
+    );
     print('转换前的Url$url');
     url = await Cdnbye.parseStreamURL(url);
     print('转换后的Url$url');

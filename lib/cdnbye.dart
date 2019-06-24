@@ -60,17 +60,17 @@ class P2pConfig {
   final String agent;
 
   P2pConfig({
-    this.logLevel: P2pLogLevel.none,
+    this.logLevel: P2pLogLevel.warn,
     this.webRTCConfig: const {}, // TODO: 默认值缺少
     this.wsSignalerAddr: '@"wss://signal.cdnbye.com/wss"',
-    this.announce: 'https://api.cdnbye.com',
+    this.announce: 'https://api.cdnbye.com/v1',
     this.maxBufferSize: 1024 * 1024 * 1024,
     this.p2pEnabled: true,
     this.packetSize: 64 * 1024,
     this.downloadTimeout: const Duration(seconds: 10),
     this.dcDownloadTimeout: const Duration(seconds: 4),
     this.dcUploadTimeout: const Duration(seconds: 6),
-    this.tag: "unknown",
+    this.tag: "flutter",
     this.agent: '', // TODO: 默认值缺少
   });
 

@@ -25,13 +25,16 @@
       NSLog(@"读取初始化配置:\n%@",args);
       NSDictionary *configMap =args[@"config"];
       CBP2pConfig *config = [CBP2pConfig configFromDictionary:configMap];
-      engine = [[CBP2pEngine alloc]initWithToken:@"free" andP2pConfig:config];
+      NSString *token = args[@"token"];
+      NSLog(@"token:\n%@",token);
+      engine = [[CBP2pEngine alloc]initWithToken:token andP2pConfig:config];
       result(@1);
   } else if([@"parseStreamURL" isEqualToString:call.method]){
       NSDictionary *args = call.arguments;
 
       NSLog(@"转换URL:\n%@",args);
-      result([engine parseStreamURL :args[@"url"]].absoluteString);
+      NSURL *originalUrl = [NSURL URLWithString:args[@"url"]];
+      result([engine parseStreamURL :originalUrl].absoluteString);
   }else if([@"startListen" isEqualToString:call.method]){
       NSLog(@"开始监听");
       [[NSNotificationCenter defaultCenter]addObserverForName:kP2pEngineDidReceiveStatistics object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {

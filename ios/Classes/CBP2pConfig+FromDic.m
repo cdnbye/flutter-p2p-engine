@@ -19,7 +19,7 @@
     config.packetSize = ((NSNumber *)configMap[@"packetSize"]).integerValue;
     config.downloadTimeout = ((NSNumber *)configMap[@"downloadTimeout"]).integerValue;
     config.dcDownloadTimeout = ((NSNumber *)configMap[@"dcDownloadTimeout"]).integerValue;
-    config.dcUploadTimeout = ((NSNumber *)configMap[@"dcUploadTimeout"]).integerValue;
+//    config.dcUploadTimeout = ((NSNumber *)configMap[@"dcUploadTimeout"]).integerValue;
     config.tag = (NSString *)configMap[@"tag"];
     config.agent = (NSString *)configMap[@"agent"];
     return config;

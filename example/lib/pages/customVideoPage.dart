@@ -14,14 +14,12 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
 
   @override
   void initState() {
+    initEngine();
     loadVideo();
     super.initState();
   }
 
-  loadVideo() async {
-    // var url = 'http://opentracker.cdnbye.com:2100/20190513/Hm8R9WIB/index.m3u8';
-    var url = 'http://222.186.50.155/hls/test2.m3u8';
-
+  initEngine() async {
     await Cdnbye.init(
       'free',
       config: P2pConfig.byDefault(),
@@ -31,13 +29,18 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
         setState(() {});
       },
     );
+  }
+
+  loadVideo() async {
+    // var url = 'http://opentracker.cdnbye.com:2100/20190513/Hm8R9WIB/index.m3u8';
+    var url = 'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8';
     print('转换前的Url$url');
     url = await Cdnbye.parseStreamURL(url);
     print('转换后的Url$url');
     vpController?.pause();
     position = 0;
     videoDuration = 0;
-    isplay = false;
+    isplay = true;
     vpController = null;
     setState(() {});
     vpController = VideoPlayerController.network(url);
@@ -47,6 +50,7 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
         position = vpController.value.position.inMilliseconds;
         setState(() {});
       });
+      vpController.play();
       videoDuration = vpController.value.duration?.inMilliseconds;
       setState(() {});
     } catch (e) {

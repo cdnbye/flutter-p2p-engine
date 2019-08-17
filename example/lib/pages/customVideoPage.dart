@@ -41,7 +41,7 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
     position = 0;
     videoDuration = 0;
     isplay = true;
-    vpController = null;
+    vpController?.dispose();
     setState(() {});
     vpController = VideoPlayerController.network(url);
     try {

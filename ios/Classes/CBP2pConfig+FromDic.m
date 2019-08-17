@@ -17,11 +17,14 @@
     config.announce = (NSString *)configMap[@"announce"];
     config.p2pEnabled = ((NSNumber *)configMap[@"p2pEnabled"]).integerValue;
     config.packetSize = ((NSNumber *)configMap[@"packetSize"]).integerValue;
+    config.diskCacheLimit = ((NSNumber *)configMap[@"diskCacheLimit"]).integerValue;
+    config.memoryCacheLimit = ((NSNumber *)configMap[@"memoryCacheLimit"]).integerValue;
     config.downloadTimeout = ((NSNumber *)configMap[@"downloadTimeout"]).integerValue;
     config.dcDownloadTimeout = ((NSNumber *)configMap[@"dcDownloadTimeout"]).integerValue;
-//    config.dcUploadTimeout = ((NSNumber *)configMap[@"dcUploadTimeout"]).integerValue;
+    config.localPort = ((NSNumber *)configMap[@"localPort"]).integerValue;
+    config.maxPeerConnections = ((NSNumber *)configMap[@"maxPeerConnections"]).integerValue;
     config.tag = (NSString *)configMap[@"tag"];
-    config.agent = (NSString *)configMap[@"agent"];
+   // config.agent = (NSString *)configMap[@"agent"];
     return config;
 }
 

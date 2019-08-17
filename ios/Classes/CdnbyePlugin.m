@@ -21,7 +21,6 @@
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
   if ([@"init" isEqualToString:call.method]) {
       NSDictionary *args = call.arguments;
-      // TODO: 实现初始化
       NSLog(@"读取初始化配置:\n%@",args);
       NSDictionary *configMap =args[@"config"];
       CBP2pConfig *config = [CBP2pConfig configFromDictionary:configMap];

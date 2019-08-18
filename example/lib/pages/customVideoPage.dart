@@ -14,29 +14,29 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
 
   @override
   void initState() {
-    initEngine();
-    loadVideo();
+    _initEngine();              // Init p2p engine
+    _loadVideo();
     super.initState();
   }
 
-  initEngine() async {
+  _initEngine() async {
     await Cdnbye.init(
       'free',
       config: P2pConfig.byDefault(),
       infoListener: (Map info) {
-        print('收到运行信息:$info');
+        print('Received SDK info: $info');
         _info = '${info.toString()}\n' + _info;
         setState(() {});
       },
     );
   }
 
-  loadVideo() async {
+  _loadVideo() async {
      var url = 'https://iqiyi.com-t-iqiyi.com/20190722/5120_0f9eec31/index.m3u8';
 //    var url = 'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8';
-    print('转换前的Url$url');
+    print('Original URL: $url');
     url = await Cdnbye.parseStreamURL(url);
-    print('转换后的Url$url');
+    print('Parsed URL: $url');
     vpController?.pause();
     position = 0;
     videoDuration = 0;
@@ -80,7 +80,7 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('video'),
+        title: Text('CDNBye Demo'),
       ),
       body: ListView(
         children: <Widget>[
@@ -138,7 +138,7 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
                 RaisedButton(
                   child: Text('reload'),
                   onPressed: () {
-                    loadVideo();
+                    _loadVideo();
                     // setState(() {});
                   },
                 ),
@@ -259,21 +259,6 @@ class VideoPlayerWidget extends StatelessWidget {
         ),
       ),
     );
-    Widget titleBar = Container(
-      height: double.infinity,
-      width: double.infinity,
-      alignment: Alignment.topCenter,
-      child: Container(
-        height: 44,
-        color: Colors.black.withOpacity(0.3),
-        padding: EdgeInsets.only(left: 12, right: 12),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-          ],
-        ),
-      ),
-    );
     Widget eventGesture = Container(
       width: double.infinity,
       height: double.infinity,
@@ -285,7 +270,6 @@ class VideoPlayerWidget extends StatelessWidget {
     Widget toolLayer = Stack(
       children: <Widget>[
         bottom,
-        titleBar,
       ],
     );
     toolLayer = AnimatedOpacity(

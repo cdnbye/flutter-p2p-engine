@@ -1,8 +1,8 @@
 name: cdnbye
 description: A new flutter plugin project.
-version: 0.0.1
-author:
-homepage:
+version: 0.1.0
+author: cdnbye <service@cdnbye.com>
+homepage: https://github.com/cdnbye/flutter-p2p-engine
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

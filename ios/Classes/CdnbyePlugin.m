@@ -21,28 +21,28 @@
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
   if ([@"init" isEqualToString:call.method]) {
       NSDictionary *args = call.arguments;
-      NSLog(@"读取初始化配置:\n%@",args);
+      // NSLog(@"读取初始化配置:\n%@",args);
       NSDictionary *configMap =args[@"config"];
       CBP2pConfig *config = [CBP2pConfig configFromDictionary:configMap];
       NSString *token = args[@"token"];
-      NSLog(@"token:\n%@",token);
+      // NSLog(@"token:\n%@",token);
       engine = [[CBP2pEngine alloc]initWithToken:token andP2pConfig:config];
       result(@1);
   } else if([@"parseStreamURL" isEqualToString:call.method]){
       NSDictionary *args = call.arguments;
 
-      NSLog(@"转换URL:\n%@",args);
+      // NSLog(@"转换URL:\n%@",args);
       NSURL *originalUrl = [NSURL URLWithString:args[@"url"]];
       result([engine parseStreamURL :originalUrl].absoluteString);
   }else if([@"startListen" isEqualToString:call.method]){
-      NSLog(@"开始监听");
+      // NSLog(@"开始监听");
       [[NSNotificationCenter defaultCenter]addObserverForName:kP2pEngineDidReceiveStatistics object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
           [self->channel invokeMethod:@"info" arguments:note.object];
       }];
       result(@1);
   }
   else {
-      NSLog(@"没找到方法:%@",call.method);
+      // NSLog(@"没找到方法:%@",call.method);
       result(FlutterMethodNotImplemented);
   }
 }

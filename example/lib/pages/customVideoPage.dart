@@ -32,8 +32,8 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
   }
 
   loadVideo() async {
-    // var url = 'http://opentracker.cdnbye.com:2100/20190513/Hm8R9WIB/index.m3u8';
-    var url = 'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8';
+     var url = 'https://iqiyi.com-t-iqiyi.com/20190722/5120_0f9eec31/index.m3u8';
+//    var url = 'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8';
     print('转换前的Url$url');
     url = await Cdnbye.parseStreamURL(url);
     print('转换后的Url$url');
@@ -270,42 +270,6 @@ class VideoPlayerWidget extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            // Tapped(
-            //   child: Icon(
-            //     Icons.arrow_back_ios,
-            //     color: Colors.white,
-            //   ),
-            // ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 8),
-                child: Text(
-                  'P2P Engine Demo',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-            Tapped(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 6),
-                child: Icon(Icons.star, color: Colors.white),
-              ),
-            ),
-            Tapped(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 6),
-                child: Icon(Icons.star, color: Colors.white),
-              ),
-            ),
-            Tapped(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 6),
-                child: Icon(Icons.star, color: Colors.white),
-              ),
-            ),
           ],
         ),
       ),

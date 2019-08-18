@@ -32,3 +32,8 @@ android {
         disable 'InvalidPackage'
     }
 }
+
+dependencies {
+    implementation 'com.cdnbye:sdk:0.6.0'
+}
+

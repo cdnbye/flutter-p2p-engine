@@ -89,6 +89,9 @@ _loadVideo() async {
 }
 ```
 
+## Obtain Token
+See [here](https://docs.cdnbye.com/#/en/bindings?id=app-id-and-token)
+
 ## Issue & Feature Request
 - If you found a bug, open an issue.
 - If you have a feature request, open an issue.

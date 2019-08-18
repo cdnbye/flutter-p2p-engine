@@ -39,22 +39,6 @@ public class CdnbyePlugin implements MethodCallHandler {
     } else if (call.method.equals("init")) {
       Map arguments = (Map)call.arguments;
       String token = (String) arguments.get("token");
-
-      /*
-      'logLevel': logLevel.index,
-        'webRTCConfig': webRTCConfig,
-        'wsSignalerAddr': wsSignalerAddr,
-        'announce': announce,
-        'diskCacheLimit': diskCacheLimit,
-        'memoryCacheLimit': memoryCacheLimit,
-        'p2pEnabled': p2pEnabled,
-        'packetSize': packetSize,
-        'downloadTimeout': downloadTimeout.inSeconds,
-        'dcDownloadTimeout': dcDownloadTimeout.inSeconds,
-        'tag': tag,
-        'localPort': localPort,
-        'maxPeerConnections': maxPeerConnections,
-       */
       Map configMap = (Map)arguments.get("config");
       LogLevel level;
       switch ((int)configMap.get("logLevel")) {

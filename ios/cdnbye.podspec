@@ -5,7 +5,7 @@
 Pod::Spec.new do |s|
   s.name             = 'cdnbye'
   s.version          = '0.0.1'
-  s.summary          = 'A new flutter plugin project.'
+  s.summary          = 'Live/VOD P2P Engine for Flutter.'
   s.description      = <<-DESC
 A new flutter plugin project.
                        DESC
@@ -19,6 +19,6 @@ A new flutter plugin project.
   
   s.dependency 'CDNByeSDK'
   
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 end
 

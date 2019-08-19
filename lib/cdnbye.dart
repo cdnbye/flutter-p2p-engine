@@ -20,7 +20,7 @@ class Cdnbye {
     });
     if (infoListener != null) {
       await _channel.invokeMethod('startListen');
-      _channel.setMethodCallHandler((call) {
+      _channel.setMethodCallHandler((call) async {
         if (call.method == 'info') {
           infoListener(call.arguments);
         }

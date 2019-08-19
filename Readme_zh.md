@@ -54,15 +54,6 @@ CDNBye通过本地代理服务器拦截数据请求的方式来进行P2P缓存�
   ...
     />
 ```
-在`app/build.gradle`中加入以下配置以开启Java8支持：
-```
-android {
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-}
-```
 
 ## 示例
 ```dart
@@ -98,9 +89,9 @@ _loadVideo() async {
 当你遇到任何问题时，可以通过在 GitHub 的 repo 提交 issues 来反馈问题，请尽可能的描述清楚遇到的问题，如果有错误信息也一同附带，并且在 Labels 中指明类型为 bug 或者其他。
 
 ## 相关项目
-- [hlsjs-p2p-engine](https://github.com/cdnbye/hlsjs-p2p-engine) - 目前最好的Web端P2P流媒体方案。
-- [ios-p2p-engine](https://github.com/cdnbye/ios-p2p-engine) - iOS端P2P流媒体加速引擎。
-- [android-p2p-engine](https://github.com/cdnbye/android-p2p-engine) - 安卓端P2P流媒体加速引擎。
+- [hlsjs-p2p-engine](https://gitee.com/cdnbye/hlsjs-p2p-engine) - 目前最好的Web端P2P流媒体方案。
+- [android-p2p-engine](https://gitee.com/cdnbye/android-p2p-engine) - 安卓端P2P流媒体加速引擎。
+- [ios-p2p-engine](https://gitee.com/cdnbye/ios-p2p-engine) - iOS端P2P流媒体加速引擎。
 
 ## FAQ
 我们收集了一些[常见问题](https://docs.cdnbye.com/#/FAQ)。在报告issue之前请先查看一下。

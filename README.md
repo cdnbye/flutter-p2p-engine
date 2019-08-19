@@ -53,15 +53,6 @@ Starting with Android 9 (API level 28), cleartext support is disabled by default
   ...
     />
 ```
-Also you will need to set your build settings to Java 8, just add this to your app level build.gradle:
-```
-android {
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-}
-```
 
 ## Example
 ```dart

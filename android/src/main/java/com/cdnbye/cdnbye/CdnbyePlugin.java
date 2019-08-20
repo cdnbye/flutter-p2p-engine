@@ -35,7 +35,8 @@ public class CdnbyePlugin implements MethodCallHandler {
   @Override
   public void onMethodCall(final MethodCall call, Result result) {
     if (call.method.equals("getPlatformVersion")) {
-      result.success("Android " + android.os.Build.VERSION.RELEASE);
+//      result.success("Android " + android.os.Build.VERSION.RELEASE);
+      result.success(P2pEngine.Version);
     } else if (call.method.equals("init")) {
       Map arguments = (Map)call.arguments;
       String token = (String) arguments.get("token");
@@ -129,7 +130,19 @@ public class CdnbyePlugin implements MethodCallHandler {
         }
       });
       result.success(1);
-    } else {
+    } else if (call.method.equals("isConnected")) {
+      result.success(P2pEngine.getInstance().isConnected());
+    } else if (call.method.equals("restartP2p")) {
+      P2pEngine.getInstance().restartP2p();
+      result.success(1);
+    } else if (call.method.equals("stopP2p")) {
+      P2pEngine.getInstance().stopP2p();
+      result.success(1);
+    } else if (call.method.equals("getPeerId")) {
+      result.success(P2pEngine.getInstance().getPeerId());
+    }
+
+    else {
       System.out.println("notImplemented");
       result.notImplemented();
     }

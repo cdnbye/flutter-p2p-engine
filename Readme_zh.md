@@ -7,7 +7,7 @@
 </p>
 
 该插件的优势如下：
-- 支持iOS和安卓平台，可与[Web端插件]((https://github.com/cdnbye/hlsjs-p2p-engine))P2P互通
+- 支持iOS和安卓平台，可与[Web端插件](https://gitee.com/cdnbye/hlsjs-p2p-engine)P2P互通
 - 支持基于HLS流媒体协议(m3u8)的直播和点播场景
 - 支持加密HLS传输
 - 支持ts文件缓存从而避免重复下载

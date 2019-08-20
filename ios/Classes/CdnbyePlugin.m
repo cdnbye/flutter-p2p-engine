@@ -28,19 +28,50 @@
       // NSLog(@"token:\n%@",token);
       engine = [[CBP2pEngine alloc]initWithToken:token andP2pConfig:config];
       result(@1);
-  } else if([@"parseStreamURL" isEqualToString:call.method]){
+  }
+  
+  else if([@"parseStreamURL" isEqualToString:call.method]){
       NSDictionary *args = call.arguments;
 
       // NSLog(@"转换URL:\n%@",args);
       NSURL *originalUrl = [NSURL URLWithString:args[@"url"]];
       result([engine parseStreamURL :originalUrl].absoluteString);
-  }else if([@"startListen" isEqualToString:call.method]){
+  }
+  
+  else if([@"startListen" isEqualToString:call.method]){
       // NSLog(@"开始监听");
       [[NSNotificationCenter defaultCenter]addObserverForName:kP2pEngineDidReceiveStatistics object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
           [self->channel invokeMethod:@"info" arguments:note.object];
       }];
       result(@1);
   }
+  
+  else if([@"getPlatformVersion" isEqualToString:call.method]) {
+      result(CBP2pEngine.engineVersion);
+  }
+  
+  else if([@"isConnected" isEqualToString:call.method]) {
+      if (engine.connected) {
+          result(@1);
+      } else {
+          result(@0);
+      }
+  }
+  
+  else if([@"restartP2p" isEqualToString:call.method]) {
+      [engine restartP2p];
+      result(@1);
+  }
+  
+  else if([@"stopP2p" isEqualToString:call.method]) {
+      [engine stopP2p];
+      result(@1);
+  }
+  
+  else if([@"getPeerId" isEqualToString:call.method]) {
+      result(engine.peerId);
+  }
+    
   else {
       // NSLog(@"没找到方法:%@",call.method);
       result(FlutterMethodNotImplemented);

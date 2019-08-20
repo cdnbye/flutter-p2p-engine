@@ -22,7 +22,8 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
   _initEngine() async {
     await Cdnbye.init(
       'free',
-      config: P2pConfig.byDefault(),
+//      config: P2pConfig.byDefault(),
+      config: P2pConfig(logLevel: P2pLogLevel.info),
       infoListener: (Map info) {
         print('Received SDK info: $info');
         _info = '${info.toString()}\n' + _info;

@@ -63,8 +63,8 @@ class P2pConfig {
   P2pConfig({
     this.logLevel: P2pLogLevel.warn,
     this.webRTCConfig: const {}, // TODO: 默认值缺少
-    this.wsSignalerAddr: 'wss://signal.cdnbye.com/wss',
-    this.announce: 'https://api.cdnbye.com/v1',
+    this.wsSignalerAddr: 'wss://signal.cdnbye.com',
+    this.announce: 'https://tracker.cdnbye.com/v1',
     this.diskCacheLimit: 1024 * 1024 * 1024,
     this.memoryCacheLimit: 60 * 1024 * 1024,
     this.p2pEnabled: true,

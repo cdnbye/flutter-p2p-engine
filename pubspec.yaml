@@ -1,5 +1,5 @@
 name: cdnbye
-description: Live/VOD P2P Engine for Flutter.
+description: CDNBye flutter P2P Engine scales live/vod video streaming by peer-to-peer network using bittorrent-like protocol. Powered by WebRTC Datachannel, this SDK can interconnect with the Web side plug-in of CDNBye, which greatly increases the number of nodes in the P2P network, breaking the gap between the browser and mobile application. Merely a few lines of codes are required to quickly integrate into existing flutter projects. As expected, it supports any flutter player!
 version: 0.1.0
 author: cdnbye <service@cdnbye.com>
 homepage: https://github.com/cdnbye/flutter-p2p-engine

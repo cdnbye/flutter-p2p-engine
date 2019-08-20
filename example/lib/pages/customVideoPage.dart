@@ -12,12 +12,12 @@ class CustomVideoPlayerPage extends StatefulWidget {
 class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
   VideoPlayerController vpController;
 
-
   @override
   void dispose() {
     vpController?.dispose();
     super.dispose();
   }
+
   @override
   void initState() {
     _initEngine(); // Init p2p engine
@@ -25,14 +25,13 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
     super.initState();
   }
 
-  
-
   Map<String, int> map = {};
   _initEngine() async {
     await Cdnbye.init(
       'free',
+//      config: P2pConfig.byDefault(),
       config: P2pConfig(
-        logLevel: P2pLogLevel.debug,
+        logLevel: P2pLogLevel.info,
       ),
       infoListener: (Map info) {
         print('Received SDK info: $info');

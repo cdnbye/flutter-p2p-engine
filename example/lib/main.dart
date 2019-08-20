@@ -20,8 +20,34 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Video Demo',
-      home: CustomVideoPlayerPage(),
+      home: HomePage(),
     );
   }
 }
 
+class HomePage extends StatelessWidget {
+  const HomePage({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: MaterialButton(
+          color: Colors.blue,
+          child: Text(
+            'open',
+            style: TextStyle(color: Colors.white),
+          ),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              return CustomVideoPlayerPage();
+            }));
+          },
+        ),
+      ),
+    );
+  }
+}

@@ -12,27 +12,47 @@ class CustomVideoPlayerPage extends StatefulWidget {
 class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
   VideoPlayerController vpController;
 
+
+  @override
+  void dispose() {
+    vpController?.dispose();
+    super.dispose();
+  }
   @override
   void initState() {
-    _initEngine();              // Init p2p engine
+    _initEngine(); // Init p2p engine
     _loadVideo();
     super.initState();
   }
 
+  
+
+  Map<String, int> map = {};
   _initEngine() async {
     await Cdnbye.init(
       'free',
-      config: P2pConfig.byDefault(),
+      config: P2pConfig(
+        logLevel: P2pLogLevel.debug,
+      ),
       infoListener: (Map info) {
         print('Received SDK info: $info');
-        _info = '${info.toString()}\n' + _info;
+        String key = info.keys.toList().first;
+        dynamic value = info.values.toList().first;
+        if (value is int) {
+          if (map.containsKey(key)) {
+            map[key] += value;
+          } else {
+            map[key] = value;
+          }
+        }
+        _info = '${map.toString()}\n';
         setState(() {});
       },
     );
   }
 
   _loadVideo() async {
-     var url = 'https://iqiyi.com-t-iqiyi.com/20190722/5120_0f9eec31/index.m3u8';
+    var url = 'https://iqiyi.com-t-iqiyi.com/20190722/5120_0f9eec31/index.m3u8';
 //    var url = 'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8';
     print('Original URL: $url');
     url = await Cdnbye.parseStreamURL(url);
@@ -119,8 +139,8 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
                   isplay = !isplay;
                   setState(() {});
                 },
-                onSlideChange: (value) {
-                  vpController.seekTo(
+                onSlideChange: (value) async {
+                  await vpController.seekTo(
                     Duration(milliseconds: (value * videoDuration).toInt()),
                   );
                   this.setState(() {});

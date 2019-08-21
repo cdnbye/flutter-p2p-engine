@@ -85,6 +85,9 @@ _loadVideo() async {
 ## 获取Token
 参考[如何获取token](https://docs.cdnbye.com/#/bindings?id=%e7%bb%91%e5%ae%9a-app-id-%e5%b9%b6%e8%8e%b7%e5%8f%96token)
 
+## 控制台
+登录 https://oms.cdnbye.com 并绑定 APPId, 即可查看P2P效果、在线人数等信息。
+
 ## 反馈及意见
 当你遇到任何问题时，可以通过在 GitHub 的 repo 提交 issues 来反馈问题，请尽可能的描述清楚遇到的问题，如果有错误信息也一同附带，并且在 Labels 中指明类型为 bug 或者其他。
 

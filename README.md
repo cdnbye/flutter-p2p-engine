@@ -84,6 +84,9 @@ _loadVideo() async {
 ## Obtain Token
 See [here](https://docs.cdnbye.com/#/en/bindings?id=app-id-and-token)
 
+## Consloe
+Register your AppId at https://oms.cdnbye.com, where you can view p2p-related information.
+
 ## Issue & Feature Request
 - If you found a bug, open an issue.
 - If you have a feature request, open an issue.

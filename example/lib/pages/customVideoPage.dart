@@ -38,16 +38,22 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
         String key = info.keys.toList().first;
         dynamic value = info.values.toList().first;
         if (value is int) {
-          if (map.containsKey(key)) {
-            map[key] += value;
-          } else {
-            map[key] = value;
-          }
+          _addValue(key, value);
+        } else if (value is List) {
+          _addValue(key, value.length);
         }
         _info = '${map.toString()}\n';
         setState(() {});
       },
     );
+  }
+
+  _addValue(key, value) {
+    if (map.containsKey(key)) {
+      map[key] += value;
+    } else {
+      map[key] = value;
+    }
   }
 
   _loadVideo() async {
@@ -148,21 +154,65 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
             ),
           ),
           Container(
-            // color: Colors.red,
+            color: Colors.white,
             width: double.infinity,
-            padding: EdgeInsets.symmetric(horizontal: 40),
-            child: Wrap(
-              spacing: 40,
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+            child: Row(
               children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(right: 12),
+                  child: Text(
+                    'Actions:',
+                    style: TextStyle(
+                      color: Color(0xff9b9b9b),
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
                 RaisedButton(
-                  child: Text('reload'),
+                  color: Colors.red,
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.restore,
+                        color: Colors.white,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 4),
+                        child: Text(
+                          'Reload',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   onPressed: () {
                     _loadVideo();
                     // setState(() {});
                   },
                 ),
+                Container(width: 24),
                 RaisedButton(
-                  child: Text('replay'),
+                  color: Colors.orange,
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.replay,
+                        color: Colors.white,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 4),
+                        child: Text(
+                          'Replay',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   onPressed: () async {
                     position = 0;
                     await vpController.seekTo(Duration(seconds: 0));
@@ -172,11 +222,102 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
               ],
             ),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Text('info:\n$_info'),
-          )
+          // Container(
+          //   padding: EdgeInsets.symmetric(horizontal: 20),
+          //   child: Text('info:\n$_info'),
+          // ),
+          Container(height: 12),
+          InfoRow(
+            k1: 'Http Download',
+            v1: map['httpDownloaded'],
+            k2: 'Peers',
+            v2: map['peers'],
+          ),
+          InfoRow(
+            k1: 'P2P Download',
+            v1: map['p2pDownloaded'],
+            k2: 'P2P Upload',
+            v2: map['p2pUploaded'],
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class InfoRow extends StatelessWidget {
+  final String k1;
+  final dynamic v1;
+  final String k2;
+  final dynamic v2;
+
+  String get v1Str => v1?.toString() ?? '0';
+  String get v2Str => v2?.toString() ?? '0';
+
+  const InfoRow({
+    Key key,
+    this.k1,
+    this.v1,
+    this.k2,
+    this.v2,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 8),
+      child: Row(
+        children: <Widget>[
+          OneInfo(
+            tag: k1,
+            value: v1Str,
+          ),
+          OneInfo(
+            tag: k2,
+            value: v2Str,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class OneInfo extends StatelessWidget {
+  const OneInfo({
+    Key key,
+    this.tag,
+    this.value,
+  }) : super(key: key);
+
+  final String tag;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.fromLTRB(8, 12, 8, 12),
+        margin: EdgeInsets.all(6),
+        height: 40,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: Text(
+                '$tag : ',
+                style: TextStyle(
+                  color: Color(0xff9b9b9b),
+                  fontSize: 12,
+                ),
+              ),
+            ),
+            Text(value),
+          ],
+        ),
       ),
     );
   }

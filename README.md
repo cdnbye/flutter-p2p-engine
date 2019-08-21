@@ -20,39 +20,8 @@
 ## Installation
 Add `cdnbye` as a [dependency in your pubspec.yaml file](https://flutter.io/using-packages/).
 
-## iOS
-Requirement: This library requires iOS 9.0+. NOTICE: This framework doesn’t support bitcode currently.
-<br>
-In order to allow the loading of distributed content via the local proxy, enable loading data from HTTP in your app by opening your info.plist file as source code and adding the following values below the </dict> tag:
-```xml
-<key>NSAppTransportSecurity</key>
-<dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
-</dict>
-```
-
-## Android
-Requirement: Kitkat 4.4(API level >= 19)
-<br>
-Add relevant uses permissions in `app/src/main/AndroidManifest.xml`:
-```xml
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-```
-Starting with Android 9 (API level 28), cleartext support is disabled by default. There are 2 solutions:
-<br>
-（1） set `targetSdkVersion` under 27
-<br>
-（2） Add the attribute below in `app/src/main/AndroidManifest.xml` to indicate that the app intends to use cleartext HTTP:
-```xml
-<application
-  ...
-  android:usesCleartextTraffic="true"
-  ...
-    />
-```
+## Environment Configuration
+See [documentation](https://docs.cdnbye.com/#/flutter)
 
 ## Example
 ```dart

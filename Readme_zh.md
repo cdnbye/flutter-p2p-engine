@@ -21,39 +21,8 @@
 ## 引入插件
 在项目的[pubspec.yaml](https://flutterchina.club/using-packages/)中添加 `cdnbye` 作为依赖。
 
-## iOS
-系统要求：支持iOS 9.0以上系统。注意：本SDK暂时不支持bitcode，在发布前请在xcode关闭bitcode。
-<br>
-CDNBye通过本地代理服务器拦截数据请求的方式来进行P2P缓存和传输，所以需要在项目的info.plist中允许HTTP请求：
-```xml
-<key>NSAppTransportSecurity</key>
-<dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
-</dict>
-```
-
-## Android
-系统要求：安卓4.4以上版本(API level >= 19)
-<br>
-在`app/src/main`目录中的`AndroidManifest.xml`中增加如下权限声明:
-```xml
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-```
-从Android P系统开始，如果应用使用的是非加密的明文流量的http网络请求，则会导致该应用无法进行网络请求，https则不会受影响。由于本地代理服务需要使用http协议访问，针对这个问题，有以下两种解决方法：
-<br>
-（1） `targetSdkVersion` 降到27以下
-<br>
-（2） 更改网络安全配置，在`app/src/main`目录中的`AndroidManifest.xml`的<application>标签中直接插入：
-```xml
-<application
-  ...
-  android:usesCleartextTraffic="true"
-  ...
-    />
-```
+## 环境配置
+参考 [文档](https://docs.cdnbye.com/#/flutter)
 
 ## 示例
 ```dart

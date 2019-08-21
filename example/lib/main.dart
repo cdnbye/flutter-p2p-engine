@@ -20,6 +20,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Video Demo',
+      theme: ThemeData(
+        scaffoldBackgroundColor: Color(0xFFf5f5f4),
+      ),
       home: HomePage(),
     );
   }

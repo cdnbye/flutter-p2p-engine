@@ -65,6 +65,7 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
     vpController?.pause();
     position = 0;
     videoDuration = 0;
+    map = {};
     isplay = true;
     vpController?.dispose();
     setState(() {});
@@ -157,7 +158,8 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
             color: Colors.white,
             width: double.infinity,
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-            child: Row(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.only(right: 12),
@@ -169,55 +171,44 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
                     ),
                   ),
                 ),
-                RaisedButton(
-                  color: Colors.red,
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.restore,
-                        color: Colors.white,
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 4),
-                        child: Text(
-                          'Reload',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  onPressed: () {
-                    _loadVideo();
-                    // setState(() {});
-                  },
-                ),
-                Container(width: 24),
-                RaisedButton(
-                  color: Colors.orange,
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.replay,
-                        color: Colors.white,
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 4),
-                        child: Text(
-                          'Replay',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  onPressed: () async {
-                    position = 0;
-                    await vpController.seekTo(Duration(seconds: 0));
-                    vpController.play();
-                  },
+                Container(height: 4),
+                Row(
+                  children: <Widget>[
+                    ActionButton(
+                      color: Colors.blueAccent,
+                      icon: Icons.pan_tool,
+                      title: 'Stop P2P',
+                      onTap: () async {
+                        await Cdnbye.restartP2p();
+                      },
+                    ),
+                    ActionButton(
+                      color: Colors.blueAccent,
+                      icon: Icons.cast_connected,
+                      title: 'Restart P2P',
+                      onTap: () async {
+                        await Cdnbye.restartP2p();
+                      },
+                    ),
+                    ActionButton(
+                      color: Colors.orangeAccent,
+                      icon: Icons.replay,
+                      title: 'Replay',
+                      onTap: () async {
+                        position = 0;
+                        await vpController.seekTo(Duration(seconds: 0));
+                        vpController.play();
+                      },
+                    ),
+                    ActionButton(
+                      color: Colors.redAccent,
+                      icon: Icons.settings_power,
+                      title: 'Reload',
+                      onTap: () async {
+                        _loadVideo();
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -277,6 +268,61 @@ class InfoRow extends StatelessWidget {
             value: v2Str,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ActionButton extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final Function onTap;
+  final Color color;
+
+  const ActionButton({
+    Key key,
+    this.icon,
+    this.title,
+    this.onTap,
+    @required this.color,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Color highlight = color;
+    Color textColor = Colors.white;
+    return Expanded(
+      child: Tapped(
+        child: Container(
+          decoration: BoxDecoration(
+            color: highlight,
+            borderRadius: BorderRadius.circular(6),
+            border: Border.all(color: Colors.white.withOpacity(0.1)),
+          ),
+          width: 80,
+          margin: EdgeInsets.all(4),
+          padding: EdgeInsets.all(6),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Icon(
+                icon,
+                color: textColor,
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 4),
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: textColor,
+                    fontSize: 8,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        onTap: onTap,
       ),
     );
   }

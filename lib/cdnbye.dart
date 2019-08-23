@@ -39,7 +39,7 @@ class Cdnbye {
   static Future<bool> isConnected() => _channel.invokeMethod('isConnected');
   static Future restartP2p() => _channel.invokeMethod('restartP2p');
   static Future stopP2p() => _channel.invokeMethod('stopP2p');
-  static Future<int> getPeerId() => _channel.invokeMethod('getPeerId');
+  static Future<String> getPeerId() => _channel.invokeMethod('getPeerId');
 
 }
 

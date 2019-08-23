@@ -40,12 +40,21 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
         if (value is int) {
           _addValue(key, value);
         } else if (value is List) {
-          _addValue(key, value.length);
+          map[key] = value.length;
         }
         _info = '${map.toString()}\n';
+
+        _updateData();
+
         setState(() {});
       },
     );
+    _version = await Cdnbye.platformVersion;              // sdk version
+  }
+
+  _updateData() async {
+    _connected = await Cdnbye.isConnected() ? 'YES' : 'NO';
+    _peerId = await Cdnbye.getPeerId();
   }
 
   _addValue(key, value) {
@@ -57,8 +66,8 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
   }
 
   _loadVideo() async {
-    var url = 'https://iqiyi.com-t-iqiyi.com/20190722/5120_0f9eec31/index.m3u8';
-//    var url = 'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8';
+//    var url = 'https://iqiyi.com-t-iqiyi.com/20190722/5120_0f9eec31/index.m3u8';
+    var url = 'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8';
     print('Original URL: $url');
     url = await Cdnbye.parseStreamURL(url);
     print('Parsed URL: $url');
@@ -82,9 +91,13 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
     } catch (e) {
       print('$e');
     }
+
   }
 
   String _info = '';
+  String _version = '';
+  String _peerId = '';
+  String _connected = '';
   int position = 0;
   int videoDuration = 0;
 
@@ -230,6 +243,13 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
             k2: 'P2P Upload',
             v2: map['p2pUploaded'],
           ),
+          InfoRow(
+            k1: 'SDK Version',
+            v1: _version,
+            k2: 'P2P Connected',
+            v2: _connected,
+          ),
+          Text("Peer ID " + _peerId),
         ],
       ),
     );

@@ -17,9 +17,6 @@
 - Highly configurable
 - Use IP database to group up peers by ISP and regions
 
-## Installation
-Add `cdnbye` as a [dependency in your pubspec.yaml file](https://flutter.io/using-packages/).
-
 ## Environment Configuration
 See [documentation](https://docs.cdnbye.com/#/flutter)
 

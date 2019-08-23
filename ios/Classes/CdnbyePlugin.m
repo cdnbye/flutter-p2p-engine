@@ -77,25 +77,4 @@
       result(FlutterMethodNotImplemented);
   }
 }
-
-
-//-(FlutterEventChannel *)flutterEventChannel{
-//    if (!_flutterEventChannel) {
-//        _flutterEventChannel= [FlutterEventChannel eventChannelWithName:@"cdnbye" binaryMessenger:[registrar messenger]];
-//    }
-//    return _flutterEventChannel;
-//}
-//
-//- (void)sendOnChannel:(nonnull NSString *)channel message:(NSData * _Nullable)message {
-//    <#code#>
-//}
-//
-//- (void)sendOnChannel:(nonnull NSString *)channel message:(NSData * _Nullable)message binaryReply:(FlutterBinaryReply _Nullable)callback {
-//    <#code#>
-//}
-//
-//- (void)setMessageHandlerOnChannel:(nonnull NSString *)channel binaryMessageHandler:(FlutterBinaryMessageHandler _Nullable)handler {
-//    <#code#>
-//}
-
 @end

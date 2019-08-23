@@ -52,9 +52,9 @@
   
   else if([@"isConnected" isEqualToString:call.method]) {
       if (engine.connected) {
-          result(@1);
+          result([NSNumber numberWithBool:YES]);
       } else {
-          result(@0);
+          result([NSNumber numberWithBool:NO]);
       }
   }
   

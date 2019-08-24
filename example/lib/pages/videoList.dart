@@ -72,10 +72,10 @@ class VideoResourceRow extends StatelessWidget {
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 12),
+          margin: EdgeInsets.only(top: 10),
           child: Text(
             resource.description,
-            maxLines: 3,
+            maxLines: 4,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontSize: 12,
@@ -98,7 +98,7 @@ class VideoResourceRow extends StatelessWidget {
                 minWidth: 66,
                 minHeight: 88,
               ),
-              margin: EdgeInsets.fromLTRB(12, 16, 12, 16),
+              margin: EdgeInsets.fromLTRB(12, 10, 12, 10),
               child: Image.network(resource.image),
             ),
             Expanded(

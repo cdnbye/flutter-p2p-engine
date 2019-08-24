@@ -1,4 +1,5 @@
 import 'package:cdnbye_example/global/cdnByeListener.dart';
+import 'package:cdnbye_example/model/videoResource.dart';
 import 'package:cdnbye_example/views/tapped.dart';
 import 'package:cdnbye_example/views/videoPlayer.dart';
 import 'package:flutter/material.dart';
@@ -7,11 +8,11 @@ import 'package:video_player/video_player.dart';
 import 'package:cdnbye/cdnbye.dart';
 
 class VideoPage extends StatefulWidget {
-  final String url;
+  final VideoResource resource;
 
   const VideoPage({
     Key key,
-    this.url,
+    this.resource,
   }) : super(key: key);
 
   @override
@@ -68,7 +69,7 @@ class _VideoPageState extends State<VideoPage> {
   }
 
   _loadVideo() async {
-    var url = widget.url ??
+    var url = widget.resource?.url ??
         'https://iqiyi.com-t-iqiyi.com/20190722/5120_0f9eec31/index.m3u8';
     // var url =
     //     'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8';

@@ -1,3 +1,4 @@
+import 'package:cdnbye_example/pages/videoPage.dart';
 import 'package:cdnbye_example/views/tapped.dart';
 import 'package:flutter/material.dart';
 
@@ -61,6 +62,13 @@ class VideoResourceRow extends StatelessWidget {
           Text(resource.title),
         ],
       ),
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          return VideoPage(
+            url: resource.url,
+          );
+        }));
+      },
     );
   }
 }

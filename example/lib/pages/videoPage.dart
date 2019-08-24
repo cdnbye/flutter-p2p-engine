@@ -1,3 +1,4 @@
+import 'package:cdnbye_example/global/cdnByeListener.dart';
 import 'package:cdnbye_example/views/tapped.dart';
 import 'package:cdnbye_example/views/videoPlayer.dart';
 import 'package:flutter/material.dart';
@@ -5,12 +6,19 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:cdnbye/cdnbye.dart';
 
-class CustomVideoPlayerPage extends StatefulWidget {
+class VideoPage extends StatefulWidget {
+  final String url;
+
+  const VideoPage({
+    Key key,
+    this.url,
+  }) : super(key: key);
+
   @override
-  _CustomVideoPlayerPageState createState() => _CustomVideoPlayerPageState();
+  _VideoPageState createState() => _VideoPageState();
 }
 
-class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
+class _VideoPageState extends State<VideoPage> {
   VideoPlayerController vpController;
 
   @override
@@ -26,38 +34,31 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
     super.initState();
   }
 
+  _updateVideoInfo(Map info) async {
+    print('Received SDK info: $info');
+    String key = info.keys.toList().first;
+    dynamic value = info.values.toList().first;
+    if (value is int) {
+      _addValue(key, value);
+    } else if (value is List) {
+      map[key] = value.length;
+    }
+    _connected = await Cdnbye.isConnected() ? 'YES' : 'NO';
+    _peerId = await Cdnbye.getPeerId();
+
+    setState(() {});
+  }
+
   Map<String, int> map = {};
+
   _initEngine() async {
-    await Cdnbye.init(
-      'free',
-//      config: P2pConfig.byDefault(),
-      config: P2pConfig(
-        logLevel: P2pLogLevel.info,
-      ),
-      infoListener: (Map info) {
-        print('Received SDK info: $info');
-        String key = info.keys.toList().first;
-        dynamic value = info.values.toList().first;
-        if (value is int) {
-          _addValue(key, value);
-        } else if (value is List) {
-          map[key] = value.length;
-        }
-        _info = '${map.toString()}\n';
-
-        _updateData();
-
-        setState(() {});
-      },
-    );
+    CdnByeListener().videoInfo.addListener(() {
+      _updateVideoInfo(CdnByeListener().videoInfo.value);
+    });
     _version = await Cdnbye.platformVersion; // sdk version
   }
 
-  _updateData() async {
-    _connected = await Cdnbye.isConnected() ? 'YES' : 'NO';
-    _peerId = await Cdnbye.getPeerId();
-  }
-
+  // 累加value到map中，如果没有就新建
   _addValue(key, value) {
     if (map.containsKey(key)) {
       map[key] += value;
@@ -67,9 +68,10 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
   }
 
   _loadVideo() async {
-//    var url = 'https://iqiyi.com-t-iqiyi.com/20190722/5120_0f9eec31/index.m3u8';
-    var url =
-        'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8';
+    var url = widget.url ??
+        'https://iqiyi.com-t-iqiyi.com/20190722/5120_0f9eec31/index.m3u8';
+    // var url =
+    //     'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8';
     print('Original URL: $url');
     url = await Cdnbye.parseStreamURL(url);
     print('Parsed URL: $url');
@@ -95,7 +97,6 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
     }
   }
 
-  String _info = '';
   String _version = '';
   String _peerId = '';
   String _connected = '';
@@ -117,7 +118,7 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
         color: Color(0xff000000),
       );
     }
-
+    // 顶部播放器
     Widget topVideo = Container(
       color: Colors.black,
       child: AspectRatio(
@@ -210,18 +211,18 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          actions,
+          Container(height: 4),
           Container(
-            padding: EdgeInsets.only(right: 12),
+            padding: EdgeInsets.only(left: 6),
             child: Text(
-              'Actions:',
+              'Peers ID: $_peerId',
               style: TextStyle(
                 color: Color(0xff9b9b9b),
                 fontSize: 12,
               ),
             ),
           ),
-          Container(height: 4),
-          actions,
         ],
       ),
     );
@@ -234,7 +235,7 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
         children: <Widget>[
           topVideo,
           actions,
-          Container(height: 12),
+          Container(height: 8),
           InfoRow(
             k1: 'Http Download',
             v1: map['httpDownloaded'],
@@ -253,7 +254,7 @@ class _CustomVideoPlayerPageState extends State<CustomVideoPlayerPage> {
             k2: 'P2P Connected',
             v2: _connected,
           ),
-          Text("Peer ID:" + _peerId),
+          // Text("Peer ID:" + _peerId),
         ],
       ),
     );

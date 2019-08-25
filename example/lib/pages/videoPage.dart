@@ -86,16 +86,49 @@ class _VideoPageState extends State<VideoPage> {
     vpController = VideoPlayerController.network(url);
     try {
       await vpController.initialize();
-      vpController.addListener(() {
-        position = vpController.value.position.inMilliseconds;
-        setState(() {});
-      });
+      vpController.addListener(_onplay);
       vpController.play();
       videoDuration = vpController.value.duration?.inMilliseconds;
       setState(() {});
     } catch (e) {
-      print('$e');
+      print('catch:$e');
     }
+  }
+
+  bool _isLoading = true;
+
+  // 监听：播放进度
+  _onplay() {
+    // if (isplay) {
+      _isLoading = false;
+      position = vpController.value.position.inMilliseconds;
+      setState(() {});
+    // }
+  }
+
+  // 拖动进度条
+  _seekVideoTo(double value) async {
+    await vpController.seekTo(
+      Duration(milliseconds: (value * videoDuration).toInt()),
+    );
+    position = (value * videoDuration).toInt();
+  }
+
+  _seekVideoEnd(double value) async {
+    // await vpController.seekTo(
+    //   Duration(milliseconds: (value * videoDuration).toInt()),
+    // );
+    // await vpController.play();
+    // // _isLoading = false;
+    // isplay = true;
+    // setState(() {});
+  }
+
+  _seekVideoStart(double value) async {
+    // isplay = false;
+    // _isLoading = true;
+    // vpController.pause();
+    // setState(() {});
   }
 
   String _version = '';
@@ -126,12 +159,14 @@ class _VideoPageState extends State<VideoPage> {
         aspectRatio: 16 / 9.0,
         child: VideoPlayerWidget(
           video: video,
+          loading: _isLoading,
           aspectRatio: aspectRatio,
           videoDuration: videoDuration,
           videoPositon: position,
           isPlaying: isplay,
           showToolLayer: showUi,
           onTap: () async {
+            // 隐藏或显示UI
             if (!vpController.value.initialized) {
               return;
             }
@@ -144,6 +179,7 @@ class _VideoPageState extends State<VideoPage> {
             }
           },
           onTapPlay: () async {
+            // 点击播放
             if (!vpController.value.initialized) {
               return;
             }
@@ -155,12 +191,9 @@ class _VideoPageState extends State<VideoPage> {
             isplay = !isplay;
             setState(() {});
           },
-          onSlideChange: (value) async {
-            await vpController.seekTo(
-              Duration(milliseconds: (value * videoDuration).toInt()),
-            );
-            this.setState(() {});
-          },
+          onSlideStart: _seekVideoStart,
+          onSlideChange: _seekVideoTo,
+          onSlideEnd: _seekVideoEnd,
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:cdnbye_example/views/tapped.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class VideoPlayerWidget extends StatelessWidget {
   final Widget video;
@@ -8,11 +9,14 @@ class VideoPlayerWidget extends StatelessWidget {
   final int videoPositon;
   final bool showToolLayer;
   final bool isPlaying;
+  final bool loading;
   // 事件
   final Function onTap;
   final Function onTapPlay;
   final Function onTapFullScreen;
+  final Function(double) onSlideStart;
   final Function(double) onSlideChange;
+  final Function(double) onSlideEnd;
 
   String get positionStr {
     var sec = (videoDuration ~/ 1000) % 60;
@@ -42,6 +46,9 @@ class VideoPlayerWidget extends StatelessWidget {
     this.onTapPlay,
     this.onTapFullScreen,
     this.onSlideChange,
+    this.loading,
+    this.onSlideEnd,
+    this.onSlideStart,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -58,7 +65,46 @@ class VideoPlayerWidget extends StatelessWidget {
     }
 
     // 底部播放条
-    Widget bottom = Container(
+    Widget bottom = Row(
+      children: <Widget>[
+        Tapped(
+          child: Icon(
+            isPlaying ? Icons.pause : Icons.play_arrow,
+            color: Colors.white,
+          ),
+          onTap: onTapPlay,
+        ),
+        Expanded(
+          child: Container(
+            child: Slider(
+              inactiveColor: Colors.white.withOpacity(0.3),
+              activeColor: Colors.white,
+              value: sliderValue,
+              onChangeStart: onSlideStart,
+              onChanged: onSlideChange,
+              onChangeEnd: onSlideEnd,
+            ),
+          ),
+        ),
+        Container(
+          child: Text(
+            positionStr,
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 8),
+          child: Tapped(
+            child: Icon(
+              Icons.fullscreen,
+              color: Colors.white,
+            ),
+          ),
+          // TODO: 实现全屏功能
+        ),
+      ],
+    );
+    bottom = Container(
       width: double.infinity,
       height: double.infinity,
       alignment: Alignment.bottomCenter,
@@ -67,43 +113,7 @@ class VideoPlayerWidget extends StatelessWidget {
         height: 36,
         color: Colors.black.withOpacity(0.5),
         padding: EdgeInsets.symmetric(horizontal: 12),
-        child: Row(
-          children: <Widget>[
-            Tapped(
-              child: Icon(
-                isPlaying ? Icons.pause : Icons.play_arrow,
-                color: Colors.white,
-              ),
-              onTap: onTapPlay,
-            ),
-            Expanded(
-              child: Container(
-                child: Slider(
-                  inactiveColor: Colors.white.withOpacity(0.3),
-                  activeColor: Colors.white,
-                  value: sliderValue,
-                  onChanged: onSlideChange,
-                ),
-              ),
-            ),
-            Container(
-              child: Text(
-                positionStr,
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 8),
-              child: Tapped(
-                child: Icon(
-                  Icons.fullscreen,
-                  color: Colors.white,
-                ),
-              ),
-              // TODO: 完成全屏功能
-            ),
-          ],
-        ),
+        child: bottom,
       ),
     );
     Widget eventGesture = Container(
@@ -126,6 +136,14 @@ class VideoPlayerWidget extends StatelessWidget {
       child: toolLayer,
     );
 
+    Widget loadingWidget = Container(
+      color: Colors.black.withOpacity(0.1),
+      alignment: Alignment.center,
+      child: SpinKitFadingCircle(
+        color: Colors.white,
+      ),
+    );
+
     return Stack(
       children: <Widget>[
         Container(
@@ -137,9 +155,9 @@ class VideoPlayerWidget extends StatelessWidget {
             ),
           ),
         ),
+        loading ? loadingWidget : Container(),
         eventGesture,
         Container(
-          // color: Colors.yellow,
           height: double.infinity,
           width: double.infinity,
           child: toolLayer,

@@ -50,7 +50,6 @@ class Cdnbye {
 
   // Get the peer ID of p2p engine. 获取P2P Engine的peer ID
   static Future<String> getPeerId() => _channel.invokeMethod('getPeerId');
-
 }
 
 // Print log level.

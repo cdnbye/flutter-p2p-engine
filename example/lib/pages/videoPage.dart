@@ -25,6 +25,7 @@ class _VideoPageState extends State<VideoPage> {
   @override
   void dispose() {
     vpController?.dispose();
+    CdnByeListener().videoInfo.removeListener(_updateVideoInfo);
     super.dispose();
   }
 
@@ -35,7 +36,8 @@ class _VideoPageState extends State<VideoPage> {
     super.initState();
   }
 
-  _updateVideoInfo(Map info) async {
+  _updateVideoInfo() async {
+    Map info = CdnByeListener().videoInfo.value;
     print('Received SDK info: $info');
     String key = info.keys.toList().first;
     dynamic value = info.values.toList().first;
@@ -53,9 +55,7 @@ class _VideoPageState extends State<VideoPage> {
   Map<String, int> map = {};
 
   _initEngine() async {
-    CdnByeListener().videoInfo.addListener(() {
-      _updateVideoInfo(CdnByeListener().videoInfo.value);
-    });
+    CdnByeListener().videoInfo.addListener(_updateVideoInfo);
     _version = await Cdnbye.platformVersion; // sdk version
   }
 
@@ -230,7 +230,7 @@ class _VideoPageState extends State<VideoPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('CDNBye Demo'),
+        title: Text(widget.resource?.title ?? 'CDNBye Demo'),
       ),
       body: ListView(
         children: <Widget>[

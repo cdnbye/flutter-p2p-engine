@@ -19,7 +19,15 @@ class VideoPlayerWidget extends StatelessWidget {
     var min = (videoDuration ~/ 1000) ~/ 60;
     var nowSec = (videoPositon ~/ 1000) % 60;
     var nowMin = (videoPositon ~/ 1000) ~/ 60;
-    return '$nowMin:$nowSec/$min:$sec';
+    return '${f2(nowMin)}:${f2(nowSec)}/${f2(min)}:${f2(sec)}';
+  }
+
+  static String f2(int a) {
+    if (a < 10) {
+      return '0$a';
+    } else {
+      return '$a';
+    }
   }
 
   const VideoPlayerWidget({

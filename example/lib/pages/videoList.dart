@@ -34,6 +34,14 @@ class _VideoListState extends State<VideoList> {
       url:
           'http://cn5.download05.com/hls/20190812/359ffef3ec383b63ec806d20d1ed09a5/1565605515/index.m3u8',
     ),
+    VideoResource(
+      title: '鹤峰综合',
+      image: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3005597700,3138816002&fm=26&gp=0.jpg',
+      description:
+          '新闻直播',
+      url:
+          'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8',
+    ),
   ];
 
   @override

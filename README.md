@@ -18,8 +18,14 @@
 - Use IP database to group up peers by ISP and regions
 
 ## Screenshot
-<img width="250" src="./figs/list.jpeg" alt="screenshot">
-<img width="250" src="./figs/detail.jpeg" alt="screenshot">
+<div style="text-align: center"><table><tr>
+<td style="text-align: center">
+<img src="./figs/list.jpeg" width="250"/>
+</td>
+  <td style="text-align: center">
+<img src="./figs/detail.jpeg" width="250"/>
+</td>
+</tr></table></div>
 
 ## Environment Configuration
 See [documentation](https://docs.cdnbye.com/#/flutter)

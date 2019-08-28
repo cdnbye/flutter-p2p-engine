@@ -18,8 +18,15 @@
 - 通过有效的调度策略来保证用户的播放体验以及p2p分享率
 - Tracker服务器根据访问IP的ISP、地域等进行智能调度
 
-## 引入插件
-在项目的[pubspec.yaml](https://flutterchina.club/using-packages/)中添加 `cdnbye` 作为依赖。
+## 截屏
+<div style="text-align: center"><table><tr>
+<td style="text-align: center">
+<img src="./figs/list.jpeg" width="250"/>
+</td>
+  <td style="text-align: center">
+<img src="./figs/detail.jpeg" width="250"/>
+</td>
+</tr></table></div>
 
 ## 环境配置
 参考 [文档](https://docs.cdnbye.com/#/flutter)

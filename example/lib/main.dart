@@ -1,5 +1,8 @@
-import 'package:cdnbye_example/pages/customVideoPage.dart';
+import 'package:cdnbye_example/global/cdnByeListener.dart';
+import 'package:cdnbye_example/pages/videoList.dart';
+import 'package:cdnbye_example/pages/videoPage.dart';
 import 'package:flutter/material.dart';
+import 'package:cdnbye/cdnbye.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,10 +12,21 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-
   @override
   void initState() {
+    // 初始化
+    Future.delayed(Duration.zero).then((_) async {
+      Cdnbye.init(
+        'free',
+        config: P2pConfig(
+          logLevel: P2pLogLevel.none,
+        ),
+        infoListener: (Map info) {
+          // 写入消息
+          CdnByeListener().videoInfo.value = info;
+        },
+      );
+    });
     super.initState();
   }
 
@@ -23,34 +37,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFFf5f5f4),
       ),
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: MaterialButton(
-          color: Colors.blue,
-          child: Text(
-            'open',
-            style: TextStyle(color: Colors.white),
-          ),
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return CustomVideoPlayerPage();
-            }));
-          },
-        ),
-      ),
+      home: VideoList(),
     );
   }
 }

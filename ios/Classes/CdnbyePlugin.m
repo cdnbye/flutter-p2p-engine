@@ -2,7 +2,6 @@
 #import <CDNByeKit/CBP2pEngine.h>
 #import "CBP2pConfig+FromDic.h"
 @interface CdnbyePlugin(){
-    CBP2pEngine *engine;
     FlutterMethodChannel* channel;
 }
 
@@ -25,8 +24,8 @@
       NSDictionary *configMap =args[@"config"];
       CBP2pConfig *config = [CBP2pConfig configFromDictionary:configMap];
       NSString *token = args[@"token"];
+       [[CBP2pEngine sharedInstance] startWithToken:token andP2pConfig:config];
       // NSLog(@"token:\n%@",token);
-      engine = [[CBP2pEngine alloc]initWithToken:token andP2pConfig:config];
       result(@1);
   }
   
@@ -35,7 +34,7 @@
 
       // NSLog(@"转换URL:\n%@",args);
       NSURL *originalUrl = [NSURL URLWithString:args[@"url"]];
-      result([engine parseStreamURL :originalUrl].absoluteString);
+      result([[CBP2pEngine sharedInstance] parseStreamURL :originalUrl].absoluteString);
   }
   
   else if([@"startListen" isEqualToString:call.method]){
@@ -51,7 +50,7 @@
   }
   
   else if([@"isConnected" isEqualToString:call.method]) {
-      if (engine.connected) {
+      if ([CBP2pEngine sharedInstance].connected) {
           result([NSNumber numberWithBool:YES]);
       } else {
           result([NSNumber numberWithBool:NO]);
@@ -59,17 +58,17 @@
   }
   
   else if([@"restartP2p" isEqualToString:call.method]) {
-      [engine restartP2p];
+      [[CBP2pEngine sharedInstance] restartP2p];
       result(@1);
   }
   
   else if([@"stopP2p" isEqualToString:call.method]) {
-      [engine stopP2p];
+      [[CBP2pEngine sharedInstance] stopP2p];
       result(@1);
   }
   
   else if([@"getPeerId" isEqualToString:call.method]) {
-      result(engine.peerId);
+      result([CBP2pEngine sharedInstance].peerId);
   }
     
   else {

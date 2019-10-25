@@ -1,5 +1,6 @@
 name: cdnbye_example
 description: Demonstrates how to use the cdnbye plugin.
+version: 1.5.0+1
 publish_to: 'none'
 
 environment:

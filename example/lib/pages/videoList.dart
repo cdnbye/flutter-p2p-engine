@@ -74,34 +74,35 @@ class _VideoListState extends State<VideoList> {
 
   @override
   Widget build(BuildContext context) {
+    var customUrlButton = Tapped(
+      child: Container(
+        height: 44,
+        color: Color(0xfff5f5f4),
+        padding: EdgeInsets.symmetric(horizontal: 24),
+        child: Row(
+          children: <Widget>[
+            Icon(
+              Icons.video_library,
+              size: 16,
+            ),
+            Container(width: 4),
+            Expanded(child: Text('使用自定义地址播放')),
+            Icon(
+              Icons.arrow_forward_ios,
+              size: 12,
+            ),
+          ],
+        ),
+      ),
+      onTap: _toCustomVideoPage,
+    );
     return Scaffold(
       appBar: AppBar(
         title: Text('列表'),
       ),
       body: Column(
         children: <Widget>[
-          Tapped(
-            child: Container(
-              height: 44,
-              color: Color(0xfff5f5f4),
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Row(
-                children: <Widget>[
-                  Icon(
-                    Icons.video_library,
-                    size: 16,
-                  ),
-                  Container(width: 4),
-                  Expanded(child: Text('使用自定义地址播放')),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 12,
-                  ),
-                ],
-              ),
-            ),
-            onTap: _toCustomVideoPage,
-          ),
+          customUrlButton,
           Expanded(
             child: ListView.builder(
               itemCount: _list.length,

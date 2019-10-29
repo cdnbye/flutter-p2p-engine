@@ -3,6 +3,7 @@ import 'package:cdnbye_example/model/videoResource.dart';
 import 'package:cdnbye_example/views/tapped.dart';
 import 'package:cdnbye_example/views/videoPlayer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:video_player/video_player.dart';
 import 'package:cdnbye/cdnbye.dart';
@@ -100,9 +101,9 @@ class _VideoPageState extends State<VideoPage> {
   // 监听：播放进度
   _onplay() {
     // if (isplay) {
-      _isLoading = false;
-      position = vpController.value.position.inMilliseconds;
-      setState(() {});
+    _isLoading = false;
+    position = vpController.value.position.inMilliseconds;
+    setState(() {});
     // }
   }
 
@@ -261,36 +262,59 @@ class _VideoPageState extends State<VideoPage> {
       ),
     );
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.resource?.title ?? 'CDNBye Demo'),
-      ),
-      body: ListView(
-        children: <Widget>[
-          topVideo,
-          actions,
-          Container(height: 8),
-          InfoRow(
-            k1: 'Http Download',
-            v1: ((map['httpDownloaded']??0)/1024).toStringAsFixed(0) + " MB",
-            k2: 'Peers',
-            v2: map['peers'],
-          ),
-          InfoRow(
-            k1: 'P2P Download',
-            v1: ((map['p2pDownloaded']??0)/1024).toStringAsFixed(0) + " MB",
-            k2: 'P2P Upload',
-            v2: ((map['p2pUploaded']??0)/1024).toStringAsFixed(0) + " MB",
-          ),
-          InfoRow(
-            k1: 'SDK Version',
-            v1: _version,
-            k2: 'P2P Connected',
-            v2: _connected,
-          ),
-          // Text("Peer ID:" + _peerId),
-        ],
-      ),
+    return OrientationBuilder(
+      builder: (ctx, ori) {
+        switch (ori) {
+          case Orientation.portrait:
+            Widget body = ListView(
+              children: <Widget>[
+                topVideo,
+                actions,
+                Container(height: 8),
+                InfoRow(
+                  k1: 'Http Download',
+                  v1: ((map['httpDownloaded'] ?? 0) / 1024).toStringAsFixed(0) +
+                      " MB",
+                  k2: 'Peers',
+                  v2: map['peers'],
+                ),
+                InfoRow(
+                  k1: 'P2P Download',
+                  v1: ((map['p2pDownloaded'] ?? 0) / 1024).toStringAsFixed(0) +
+                      " MB",
+                  k2: 'P2P Upload',
+                  v2: ((map['p2pUploaded'] ?? 0) / 1024).toStringAsFixed(0) +
+                      " MB",
+                ),
+                InfoRow(
+                  k1: 'SDK Version',
+                  v1: _version,
+                  k2: 'P2P Connected',
+                  v2: _connected,
+                ),
+                // Text("Peer ID:" + _peerId),
+              ],
+            );
+            SystemChrome.setEnabledSystemUIOverlays([
+              SystemUiOverlay.top,
+              SystemUiOverlay.bottom,
+            ]);
+            return Scaffold(
+              appBar: AppBar(
+                title: Text(widget.resource?.title ?? 'CDNBye Demo'),
+              ),
+              body: body,
+            );
+            break;
+          case Orientation.landscape:
+            SystemChrome.setEnabledSystemUIOverlays([]);
+            return Scaffold(
+              body: topVideo,
+            );
+            break;
+        }
+        return Container();
+      },
     );
   }
 }

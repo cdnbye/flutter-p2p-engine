@@ -92,16 +92,16 @@ class VideoPlayerWidget extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
         ),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 8),
-          child: Tapped(
-            child: Icon(
-              Icons.fullscreen,
-              color: Colors.white,
-            ),
-          ),
-          // TODO: 实现全屏功能
-        ),
+        // Container(
+        //   padding: EdgeInsets.symmetric(horizontal: 8),
+        //   child: Tapped(
+        //     child: Icon(
+        //       Icons.fullscreen,
+        //       color: Colors.white,
+        //     ),
+        //   ),
+        //   // TODO: 实现全屏功能
+        // ),
       ],
     );
     bottom = Container(

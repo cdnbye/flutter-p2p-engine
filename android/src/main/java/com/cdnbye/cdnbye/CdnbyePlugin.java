@@ -64,7 +64,6 @@ public class CdnbyePlugin implements MethodCallHandler {
               .diskCacheLimit((int)configMap.get("diskCacheLimit"))
               .memoryCacheLimit((int)configMap.get("memoryCacheLimit"))
               .p2pEnabled((boolean)configMap.get("p2pEnabled"))
-              .packetSize((int)configMap.get("packetSize"))
               .downloadTimeout((int)configMap.get("downloadTimeout"), TimeUnit.SECONDS)
               .dcDownloadTimeout((int)configMap.get("dcDownloadTimeout"), TimeUnit.SECONDS)
               .withTag((String)configMap.get("tag"))

@@ -16,7 +16,6 @@
     config.wsSignalerAddr = (NSString *)configMap[@"wsSignalerAddr"];
     config.announce = (NSString *)configMap[@"announce"];
     config.p2pEnabled = ((NSNumber *)configMap[@"p2pEnabled"]).integerValue;
-    config.packetSize = ((NSNumber *)configMap[@"packetSize"]).integerValue;
     config.diskCacheLimit = ((NSNumber *)configMap[@"diskCacheLimit"]).integerValue;
     config.memoryCacheLimit = ((NSNumber *)configMap[@"memoryCacheLimit"]).integerValue;
     config.downloadTimeout = ((NSNumber *)configMap[@"downloadTimeout"]).integerValue;

@@ -17,9 +17,9 @@ class _MyAppState extends State<MyApp> {
     // 初始化
     Future.delayed(Duration.zero).then((_) async {
       Cdnbye.init(
-        'free',
+        'free',                                 // replace with your token
         config: P2pConfig(
-          logLevel: P2pLogLevel.none,
+          logLevel: P2pLogLevel.info,
         ),
         infoListener: (Map info) {
           // 写入消息

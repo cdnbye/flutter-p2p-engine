@@ -70,7 +70,6 @@ class P2pConfig {
   final int diskCacheLimit;
   final int memoryCacheLimit;
   final bool p2pEnabled;
-  final int packetSize;
   final Duration downloadTimeout;
   final Duration dcDownloadTimeout;
   final String tag;
@@ -85,7 +84,6 @@ class P2pConfig {
     this.diskCacheLimit: 1024 * 1024 * 1024,
     this.memoryCacheLimit: 60 * 1024 * 1024,
     this.p2pEnabled: true,
-    this.packetSize: 64 * 1024,
     this.downloadTimeout: const Duration(seconds: 10),
     this.dcDownloadTimeout: const Duration(seconds: 4),
     this.tag: "flutter",
@@ -103,7 +101,6 @@ class P2pConfig {
         'diskCacheLimit': diskCacheLimit,
         'memoryCacheLimit': memoryCacheLimit,
         'p2pEnabled': p2pEnabled,
-        'packetSize': packetSize,
         'downloadTimeout': downloadTimeout.inSeconds,
         'dcDownloadTimeout': dcDownloadTimeout.inSeconds,
         'tag': tag,

@@ -250,7 +250,7 @@ class _VideoPageState extends State<VideoPage> {
           Container(
             padding: EdgeInsets.only(left: 6),
             child: Text(
-              'Peers ID: $_peerId',
+              'Peer ID: $_peerId',
               style: TextStyle(
                 color: Color(0xff9b9b9b),
                 fontSize: 12,
@@ -272,15 +272,15 @@ class _VideoPageState extends State<VideoPage> {
           Container(height: 8),
           InfoRow(
             k1: 'Http Download',
-            v1: map['httpDownloaded'],
+            v1: ((map['httpDownloaded']??0)/1024).toStringAsFixed(0) + " MB",
             k2: 'Peers',
             v2: map['peers'],
           ),
           InfoRow(
             k1: 'P2P Download',
-            v1: map['p2pDownloaded'],
+            v1: ((map['p2pDownloaded']??0)/1024).toStringAsFixed(0) + " MB",
             k2: 'P2P Upload',
-            v2: map['p2pUploaded'],
+            v2: ((map['p2pUploaded']??0)/1024).toStringAsFixed(0) + " MB",
           ),
           InfoRow(
             k1: 'SDK Version',

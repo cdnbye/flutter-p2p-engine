@@ -36,13 +36,41 @@ class _VideoListState extends State<VideoList> {
     ),
     VideoResource(
       title: '鹤峰综合',
-      image: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3005597700,3138816002&fm=26&gp=0.jpg',
-      description:
-          '新闻直播',
-      url:
-          'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8',
+      image:
+          'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3005597700,3138816002&fm=26&gp=0.jpg',
+      description: '新闻直播',
+      url: 'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8',
     ),
   ];
+
+  _toCustomVideoPage() async {
+    String url = await showDialog(
+      context: context,
+      builder: (context) => _InputDialog(),
+    );
+    if (url == null) {
+      return;
+    }
+    if (!url.endsWith('.m3u8')) {
+      var res = await showDialog(
+        context: context,
+        builder: (context) => _AlertUrlErrorDialog(url: url),
+      );
+      if (res != true) {
+        return;
+      }
+    }
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return VideoPage(
+        resource: VideoResource(
+          title: url.split('/').last,
+          image: '',
+          description: '自定视频',
+          url: url,
+        ),
+      );
+    }));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,12 +78,133 @@ class _VideoListState extends State<VideoList> {
       appBar: AppBar(
         title: Text('列表'),
       ),
-      body: ListView.builder(
-        itemCount: _list.length,
-        itemBuilder: (BuildContext context, int index) {
-          return VideoResourceRow(resource: _list[index]);
-        },
+      body: Column(
+        children: <Widget>[
+          Tapped(
+            child: Container(
+              height: 44,
+              color: Color(0xfff5f5f4),
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              child: Row(
+                children: <Widget>[
+                  Icon(
+                    Icons.video_library,
+                    size: 16,
+                  ),
+                  Container(width: 4),
+                  Expanded(child: Text('使用自定义地址播放')),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 12,
+                  ),
+                ],
+              ),
+            ),
+            onTap: _toCustomVideoPage,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: _list.length,
+              itemBuilder: (BuildContext context, int index) {
+                return VideoResourceRow(resource: _list[index]);
+              },
+            ),
+          ),
+        ],
       ),
+    );
+  }
+}
+
+class _AlertUrlErrorDialog extends StatelessWidget {
+  const _AlertUrlErrorDialog({
+    Key key,
+    @required this.url,
+  }) : super(key: key);
+
+  final String url;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      content: Text('地址$url 可能不能使用p2p加速'),
+      actions: <Widget>[
+        Tapped(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+            child: Text(
+              '取消',
+              style: TextStyle(color: Colors.blue),
+            ),
+          ),
+          onTap: () {
+            Navigator.of(context).pop(false);
+          },
+        ),
+        Tapped(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+            child: Text(
+              '仍然继续',
+              style: TextStyle(color: Colors.red),
+            ),
+          ),
+          onTap: () {
+            Navigator.of(context).pop(true);
+          },
+        ),
+      ],
+    );
+  }
+}
+
+class _InputDialog extends StatefulWidget {
+  const _InputDialog({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  __InputDialogState createState() => __InputDialogState();
+}
+
+class __InputDialogState extends State<_InputDialog> {
+  TextEditingController _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SimpleDialog(
+      title: Text('输入自定义地址'),
+      contentPadding: EdgeInsets.symmetric(horizontal: 20),
+      children: <Widget>[
+        TextField(
+          controller: _controller,
+          onSubmitted: (text) {
+            Navigator.of(context).pop(_controller.text);
+          },
+        ),
+        Container(
+          alignment: Alignment.centerRight,
+          child: Tapped(
+            child: Container(
+              margin: EdgeInsets.all(12),
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+              child: Text(
+                '确认',
+                style: TextStyle(color: Colors.blue),
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).pop(_controller.text);
+            },
+          ),
+        )
+      ],
     );
   }
 }

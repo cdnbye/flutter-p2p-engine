@@ -156,6 +156,8 @@ class _VideoPageState extends State<VideoPage> {
     // 顶部播放器
     Widget topVideo = Container(
       color: Colors.black,
+      width: double.infinity,
+      alignment:Alignment.center,
       child: AspectRatio(
         aspectRatio: 16 / 9.0,
         child: VideoPlayerWidget(

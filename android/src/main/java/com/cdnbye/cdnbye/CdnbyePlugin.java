@@ -3,11 +3,16 @@ package com.cdnbye.cdnbye;
 import android.app.Activity;
 import android.app.Application;
 
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.EventChannel;
+import io.flutter.plugin.common.EventChannel.EventSink;
+import io.flutter.plugin.common.EventChannel.StreamHandler;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
+import io.flutter.plugin.common.PluginRegistry;
 
 import com.cdnbye.sdk.*;
 
@@ -17,7 +22,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /** CdnbyePlugin */
-public class CdnbyePlugin implements MethodCallHandler {
+public class CdnbyePlugin implements MethodCallHandler, FlutterPlugin {
 
   private MethodChannel channel;
   private Activity activity;
@@ -26,8 +31,17 @@ public class CdnbyePlugin implements MethodCallHandler {
     this.channel = channel;
   }
 
+  @Override
+  public void onDetachedFromEngine(FlutterPluginBinding binding) {
+
+  }
+
+  @Override
+  public void onAttachedToEngine(FlutterPluginBinding binding) {
+  }
+
   /** Plugin registration. */
-  public static void registerWith(Registrar registrar) {
+  public static void registerWith(PluginRegistry.Registrar registrar) {
     final MethodChannel channel = new MethodChannel(registrar.messenger(), "cdnbye");
     channel.setMethodCallHandler(new CdnbyePlugin(registrar.activity(), channel));
   }

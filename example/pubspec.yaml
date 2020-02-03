@@ -11,7 +11,7 @@ dependencies:
     sdk: flutter
   # chewie: ^0.4.0
   # chewie: ^0.9.6
-  video_player: ^0.7.0
+  video_player: ^0.10.6
   cupertino_icons: ^0.1.2
   flutter_spinkit: any
   tapped: any

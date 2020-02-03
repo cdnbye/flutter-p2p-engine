@@ -83,6 +83,7 @@ public class CdnbyePlugin implements MethodCallHandler, FlutterPlugin {
               .withTag((String)configMap.get("tag"))
               .localPort((int)configMap.get("localPort"))
               .maxPeerConnections((int)configMap.get("maxPeerConnections"))
+              .useHttpRange((boolean)configMap.get("useHttpRange"))
               .build();
       P2pEngine.initEngine(activity.getApplication().getApplicationContext(), token, config);
       result.success(1);

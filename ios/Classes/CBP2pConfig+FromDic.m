@@ -23,6 +23,7 @@
     config.localPort = ((NSNumber *)configMap[@"localPort"]).integerValue;
     config.maxPeerConnections = ((NSNumber *)configMap[@"maxPeerConnections"]).integerValue;
     config.tag = (NSString *)configMap[@"tag"];
+    config.useHttpRange = ((NSNumber *)configMap[@"useHttpRange"]).integerValue;
    // config.agent = (NSString *)configMap[@"agent"];
     return config;
 }

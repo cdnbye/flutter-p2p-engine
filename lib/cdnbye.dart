@@ -75,6 +75,7 @@ class P2pConfig {
   final String tag;
   final int localPort;
   final int maxPeerConnections;
+  final bool useHttpRange;
 
   P2pConfig({
     this.logLevel: P2pLogLevel.warn,
@@ -89,6 +90,7 @@ class P2pConfig {
     this.tag: "flutter",
     this.localPort: 52019,
     this.maxPeerConnections: 10,
+    this.useHttpRange: true,
   });
 
   P2pConfig.byDefault() : this();
@@ -106,5 +108,6 @@ class P2pConfig {
         'tag': tag,
         'localPort': localPort,
         'maxPeerConnections': maxPeerConnections,
+        'useHttpRange': useHttpRange,
       };
 }

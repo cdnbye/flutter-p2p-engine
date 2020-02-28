@@ -76,7 +76,7 @@ public class CdnbyePlugin implements MethodCallHandler, FlutterPlugin {
               .wsSignalerAddr((String)configMap.get("wsSignalerAddr"))
               .announce((String)configMap.get("announce"))
               .diskCacheLimit((int)configMap.get("diskCacheLimit"))
-              .memoryCacheLimit((int)configMap.get("memoryCacheLimit"))
+              .memoryCacheCountLimit((int)configMap.get("memoryCacheCountLimit"))
               .p2pEnabled((boolean)configMap.get("p2pEnabled"))
               .downloadTimeout((int)configMap.get("downloadTimeout"), TimeUnit.SECONDS)
               .dcDownloadTimeout((int)configMap.get("dcDownloadTimeout"), TimeUnit.SECONDS)

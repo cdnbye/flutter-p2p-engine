@@ -23,19 +23,16 @@ class Cdnbye {
       'token': token,
       'config': config.toMap,
     });
-    await _setListen(infoListener);
-    return success;
-  }
-
-  static Future _setListen(CdnByeInfoListener infoListener) async {
     if (infoListener != null) {
       await _channel.invokeMethod('startListen');
       _channel.setMethodCallHandler((call) async {
         if (call.method == 'info') {
-          infoListener(call.arguments);
+          var map = Map<String, dynamic>.from(call.arguments);
+          infoListener?.call(map);
         }
       });
     }
+    return success;
   }
 
   // Get parsed local stream url by passing the original stream url(m3u8) to CBP2pEngine instance.
@@ -74,7 +71,6 @@ class P2pConfig {
   final P2pLogLevel logLevel;
 
   /// 通过webRTCConfig来修改WebRTC默认配置
-  @deprecated
   final Map<String, dynamic> webRTCConfig;
 
   /// 信令服务器地址
@@ -86,9 +82,10 @@ class P2pConfig {
   /// 点播模式下P2P在磁盘缓存的最大数据量(设为0可以禁用磁盘缓存)
   final int diskCacheLimit;
 
-  /// P2P在内存缓存的最大数据量，用ts文件个数表示
+  /// P2P在内存缓存的最大数据量，用ts文件个数表示，仅安卓有效
   final int memoryCacheCountLimit;
   // @Deprecated('Use memoryCacheCountLimit now')
+  // 仅iOS有效
   final int memoryCacheLimit;
 
   /// 开启或关闭p2p engine
@@ -118,7 +115,7 @@ class P2pConfig {
     this.wsSignalerAddr: 'wss://signal.cdnbye.com',
     this.announce: 'https://tracker.cdnbye.com/v1',
     this.diskCacheLimit: 1024 * 1024 * 1024,
-    this.memoryCacheLimit: 60 * 1024 * 1024, // deprecated
+    this.memoryCacheLimit: 60 * 1024 * 1024,
     this.memoryCacheCountLimit: 30,
     this.p2pEnabled: true,
     this.downloadTimeout: const Duration(seconds: 10),
@@ -137,7 +134,7 @@ class P2pConfig {
         'wsSignalerAddr': wsSignalerAddr,
         'announce': announce,
         'diskCacheLimit': diskCacheLimit,
-        // 'memoryCacheLimit': memoryCacheLimit,// deprecated
+        'memoryCacheLimit': memoryCacheLimit,
         'memoryCacheCountLimit': memoryCacheCountLimit,
         'p2pEnabled': p2pEnabled,
         'downloadTimeout': downloadTimeout.inSeconds,

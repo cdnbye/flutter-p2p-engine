@@ -12,21 +12,24 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  _listen(Map info) {
+    print('222,$info');
+    // 写入消息
+    CdnByeListener().videoInfo.value = info;
+  }
+
   @override
   void initState() {
     // 初始化
-    Future.delayed(Duration.zero).then((_) async {
-      Cdnbye.init(
-        'free',                                 // replace with your token
-        config: P2pConfig(
-          logLevel: P2pLogLevel.info,
-        ),
-        infoListener: (Map info) {
-          // 写入消息
-          CdnByeListener().videoInfo.value = info;
-        },
-      );
-    });
+    // Future.delayed(Duration.zero).then((_) async {
+    Cdnbye.init(
+      'free', // replace with your token
+      config: P2pConfig(
+        logLevel: P2pLogLevel.debug,
+      ),
+      infoListener: _listen,
+    );
+    // });
     super.initState();
   }
 

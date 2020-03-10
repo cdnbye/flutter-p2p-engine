@@ -29,7 +29,7 @@
 </tr></table></div>
 
 ## Demo下载
-[https://fir.im/cdnbye](https://fir.im/cdnbye)
+[http://d.6short.com/cdnbye](http://d.6short.com/cdnbye)
 
 ## 环境配置
 参考 [文档](https://docs.cdnbye.com/#/flutter)

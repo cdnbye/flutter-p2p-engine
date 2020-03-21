@@ -57,6 +57,10 @@ _loadVideo() async {
 }
 ```
 
+## Example using ijk_player.
+
+[cdnbye_ijk_example](https://github.com/mjl0602/cdnbye_ijk_example)
+
 ## Obtain Token
 See [here](https://docs.cdnbye.com/#/en/bindings?id=app-id-and-token)
 

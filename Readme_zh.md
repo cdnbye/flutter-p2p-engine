@@ -84,7 +84,7 @@ _loadVideo() async {
 }
 ```
 
-## Example use ijk_player.
+## ijkplayer使用示例.
 > 由于ijk的安装远没有官方的videoplayer快，所以单独作为一个仓库，而不是作为pub库中随附的example。
 
 GitHub地址：[cdnbye_ijk_example](https://github.com/mjl0602/cdnbye_ijk_example)  

@@ -1,4 +1,8 @@
 
+## 0.6.0
+
+解决了安卓不能以新形式注册依赖的问题，完全移除了旧的依赖注册方式，旧版flutter将无法继续使用
+
 ## 0.5.0
 Update SDK version: iOS(1.0.0) Android(1.2.4)
 Fix bug: can't listen value changed in flutter.

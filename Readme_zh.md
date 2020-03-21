@@ -34,6 +34,29 @@
 ## 环境配置
 参考 [文档](https://docs.cdnbye.com/#/flutter)
 
+## 引入插件
+
+```yaml
+dependencies:
+  cdnbye: ^0.6.0
+```
+
+如果你创建项目时的flutter版本低于1.12，那么你可能只能使用0.4.1版本的cdnbye插件
+```yaml
+dependencies:
+  cdnbye: ^0.4.1
+```
+通过如下方法可以升级flutter的安卓版本结构以使用更高版本的cndbye：
+```bash
+# 升级flutter到1.12以上
+flutter upgrade
+# 完全移除当前的安卓项目，请记得备份你的平台代码，图标与权限信息
+rm -rf ./android
+# 创建新的flutter项目，请不要遗漏命令最后的点号
+flutter creat -a java .
+# 恢复你的平台代码，图标与权限即可
+```
+
 ## 示例
 ```dart
 import 'package:flutter/material.dart';
@@ -60,6 +83,11 @@ _loadVideo() async {
     player.play();
 }
 ```
+
+## Example use ijk_player.
+> 由于ijk的安装远没有官方的videoplayer快，所以单独作为一个仓库，而不是作为pub库中随附的example。
+
+GitHub地址：[cdnbye_ijk_example](https://github.com/mjl0602/cdnbye_ijk_example)  
 
 ## 获取Token
 参考[如何获取token](https://docs.cdnbye.com/#/bindings?id=%e7%bb%91%e5%ae%9a-app-id-%e5%b9%b6%e8%8e%b7%e5%8f%96token)

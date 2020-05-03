@@ -32,7 +32,7 @@
 [http://d.6short.com/cdnbye](http://d.6short.com/cdnbye)
 
 ## 环境配置
-参考 [文档](https://docs.cdnbye.com/#/flutter)
+参考 [文档](https://www.cdnbye.com/views/flutter.html)
 
 ## 引入插件
 
@@ -90,7 +90,7 @@ _loadVideo() async {
 GitHub地址：[cdnbye_ijk_example](https://github.com/mjl0602/cdnbye_ijk_example)  
 
 ## 获取Token
-参考[如何获取token](https://docs.cdnbye.com/#/bindings?id=%e7%bb%91%e5%ae%9a-app-id-%e5%b9%b6%e8%8e%b7%e5%8f%96token)
+参考[如何获取token](https://www.cdnbye.com/views/bindings.html#%E7%BB%91%E5%AE%9A-app-id-%E5%B9%B6%E8%8E%B7%E5%8F%96token)
 
 ## 控制台
 登录 https://oms.cdnbye.com 并绑定 APPId, 即可查看P2P效果、在线人数等信息。
@@ -104,7 +104,7 @@ GitHub地址：[cdnbye_ijk_example](https://github.com/mjl0602/cdnbye_ijk_exampl
 - [ios-p2p-engine](https://gitee.com/cdnbye/ios-p2p-engine) - iOS端P2P流媒体加速引擎。
 
 ## FAQ
-我们收集了一些[常见问题](https://docs.cdnbye.com/#/FAQ)。在报告issue之前请先查看一下。
+我们收集了一些[常见问题](https://www.cdnbye.com/views/FAQ.html)。在报告issue之前请先查看一下。
 
 ## 联系我们
 邮箱：service@cdnbye.com

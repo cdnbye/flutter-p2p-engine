@@ -1,29 +1,29 @@
 PODS:
   - cdnbye (0.0.1):
-    - CDNByeSDK (~> 1.0.0)
+    - CDNByeSDK (~> 1.7.1)
     - Flutter
-  - CDNByeSDK (1.0.0):
+  - CDNByeSDK (1.7.1):
     - CocoaAsyncSocket (~> 7.6)
     - CocoaLumberjack (~> 3.5)
     - GCDWebServer (~> 3.5)
-    - GoogleWebRTC (~> 1.1)
+    - PINCache (~> 2.3)
     - SocketRocket (~> 0.5)
-    - YYCache (~> 1.0)
+    - WebRTCDatachannel (= 0.0.1)
   - CocoaAsyncSocket (7.6.4)
   - CocoaLumberjack (3.6.1):
     - CocoaLumberjack/Core (= 3.6.1)
   - CocoaLumberjack/Core (3.6.1)
   - Flutter (1.0.0)
-  - GCDWebServer (3.5.3):
-    - GCDWebServer/Core (= 3.5.3)
-  - GCDWebServer/Core (3.5.3)
-  - GoogleWebRTC (1.1.29400)
+  - GCDWebServer (3.5.4):
+    - GCDWebServer/Core (= 3.5.4)
+  - GCDWebServer/Core (3.5.4)
+  - PINCache (2.3)
   - SocketRocket (0.5.1)
   - video_player (0.0.1):
     - Flutter
   - video_player_web (0.0.1):
     - Flutter
-  - YYCache (1.0.4)
+  - WebRTCDatachannel (0.0.1)
 
 DEPENDENCIES:
   - cdnbye (from `.symlinks/plugins/cdnbye/ios`)
@@ -37,9 +37,9 @@ SPEC REPOS:
     - CocoaAsyncSocket
     - CocoaLumberjack
     - GCDWebServer
-    - GoogleWebRTC
+    - PINCache
     - SocketRocket
-    - YYCache
+    - WebRTCDatachannel
 
 EXTERNAL SOURCES:
   cdnbye:
@@ -52,17 +52,17 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/video_player_web/ios"
 
 SPEC CHECKSUMS:
-  cdnbye: d9c85ca4ccb4d54e2bbcb230e8dbc0a800a732a4
-  CDNByeSDK: d159f49ce4b1f17205803fbea03cb019513649a9
+  cdnbye: 74abda4447ee8b150fe3d6827515431b29aa34cf
+  CDNByeSDK: 09fdc5cd25f5d6bc030c7bab120df72a6a832d42
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   CocoaLumberjack: b17ae15142558d08bbacf69775fa10c4abbebcc9
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  GCDWebServer: c0ab22c73e1b84f358d1e2f74bf6afd1c60829f2
-  GoogleWebRTC: cfb83bc346435a17fe06bb05f04ad826b858a7fb
+  GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
+  PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   video_player: 69c5f029fac4ffe4fc8a85ea7f7b793709661549
   video_player_web: da8cadb8274ed4f8dbee8d7171b420dedd437ce7
-  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
+  WebRTCDatachannel: acddf02a4ed2f825ececd2e64cbf971c0a209ceb
 
 PODFILE CHECKSUM: e9e6b2d1b4659eb7ca9c31439eb8716d7d418981
 

@@ -40,6 +40,11 @@ android {
             jniLibs.srcDir 'libs'
         }
     }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 
 dependencies {

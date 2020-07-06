@@ -28,5 +28,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
     <orderEntry type="library" name="Flutter Plugins" level="project" />
+    <orderEntry type="library" name="cdnbye-1.7.7" level="project" />
+    <orderEntry type="library" name="cdnbye-flutter-1.8.1" level="project" />
   </component>
 </module>

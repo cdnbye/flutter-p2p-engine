@@ -17,6 +17,7 @@ rootProject.allprojects {
         google()
         jcenter()
     }
+
 }
 
 apply plugin: 'com.android.library'
@@ -40,11 +41,11 @@ android {
             jniLibs.srcDir 'libs'
         }
     }
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
+//    repositories {
+//        flatDir {
+//            dirs 'libs'
+//        }
+//    }
 }
 
 dependencies {
@@ -52,7 +53,7 @@ dependencies {
     implementation 'org.java-websocket:Java-WebSocket:1.4.0'
     implementation 'com.orhanobut:logger:2.2.0'
     implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    implementation 'org.webrtc:google-webrtc:1.0.30039'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    compile(name:'webrtc', ext:'aar')
 }
 

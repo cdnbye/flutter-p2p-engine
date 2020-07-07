@@ -125,6 +125,11 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                     });
 
                 }
+
+                @Override
+                public void onServerConnected(boolean connected) {
+                   
+                }
             });
             result.success(1);
         } else if (call.method.equals("isConnected")) {

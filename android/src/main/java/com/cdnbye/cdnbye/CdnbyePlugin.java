@@ -16,7 +16,8 @@ import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 
-import com.cdnbye.sdk.*;
+// import com.cdnbye.sdk.*;
+import com.cdnbye.cdnbye.*;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,4 +1,4 @@
-package java.com.cdnbye.cdnbye;
+package com.cdnbye.cdnbye;
 
 import android.app.Activity;
 import android.app.Application;

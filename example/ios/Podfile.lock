@@ -27,7 +27,7 @@ PODS:
 
 DEPENDENCIES:
   - cdnbye (from `.symlinks/plugins/cdnbye/ios`)
-  - Flutter (from `.symlinks/flutter/ios`)
+  - Flutter (from `.symlinks/flutter/ios-release`)
   - video_player (from `.symlinks/plugins/video_player/ios`)
   - video_player_web (from `.symlinks/plugins/video_player_web/ios`)
 
@@ -45,7 +45,7 @@ EXTERNAL SOURCES:
   cdnbye:
     :path: ".symlinks/plugins/cdnbye/ios"
   Flutter:
-    :path: ".symlinks/flutter/ios"
+    :path: ".symlinks/flutter/ios-release"
   video_player:
     :path: ".symlinks/plugins/video_player/ios"
   video_player_web:

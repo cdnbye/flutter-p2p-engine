@@ -13,7 +13,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   _listen(Map info) {
-    print('222,$info');
     // 写入消息
     CdnByeListener().videoInfo.value = info;
   }
@@ -23,7 +22,7 @@ class _MyAppState extends State<MyApp> {
     // 初始化
     // Future.delayed(Duration.zero).then((_) async {
     Cdnbye.init(
-      'free', // replace with your token
+      'ZMuO5qHZg', // replace with your token
       config: P2pConfig(
         logLevel: P2pLogLevel.debug,
       ),

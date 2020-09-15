@@ -58,8 +58,11 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                     level = LogLevel.DEBUG;
             }
             boolean logEnabled = (int) configMap.get("logLevel") != 0;
-            P2pConfig config = new P2pConfig.Builder().logEnabled(logEnabled).logLevel(level)
-                    .wsSignalerAddr((String) configMap.get("wsSignalerAddr")).announce((String) configMap.get("announce"))
+
+            P2pConfig config = new P2pConfig.Builder()
+                    .logEnabled(logEnabled).logLevel(level)
+                    .wsSignalerAddr((String) configMap.get("wsSignalerAddr"))
+                    .announce((String) configMap.get("announce"))
                     .diskCacheLimit((int) configMap.get("diskCacheLimit"))
                     .memoryCacheCountLimit((int) configMap.get("memoryCacheCountLimit"))
                     .p2pEnabled((boolean) configMap.get("p2pEnabled"))
@@ -67,7 +70,12 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                     .dcDownloadTimeout((int) configMap.get("dcDownloadTimeout"), TimeUnit.SECONDS)
                     .withTag((String) configMap.get("tag")).localPort((int) configMap.get("localPort"))
                     .maxPeerConnections((int) configMap.get("maxPeerConnections"))
-                    .useHttpRange((boolean) configMap.get("useHttpRange")).build();
+                    .useHttpRange((boolean) configMap.get("useHttpRange"))
+                    .wifiOnly((boolean) configMap.get("wifiOnly"))
+                    .isSetTopBox((boolean) configMap.get("isSetTopBox"))
+                    .channelIdPrefix((String) configMap.get("channelIdPrefix"))
+                    .setHttpHeaders((Map<String, String>) configMap.get("httpHeaders"))
+                    .build();
             P2pEngine.initEngine(activity.getApplication().getApplicationContext(), token, config);
             result.success(1);
         } else if (call.method.equals("parseStreamURL")) {

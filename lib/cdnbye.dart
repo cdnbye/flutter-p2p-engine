@@ -109,6 +109,18 @@ class P2pConfig {
   /// 在可能的情况下使用Http Range请求来补足p2p下载超时的剩余部分数据
   final bool useHttpRange;
 
+  /// 是否只在wifi和有线网络模式上传数据（建议在云端设置）
+  final bool wifiOnly;
+
+  /// 设置请求ts和m3u8时的HTTP请求头
+  final Map<String, String> httpHeaders;
+
+  /// 如果使用自定义的channelId，则此字段必须设置，且长度必须在5到15个字符之间，建议设置成你所在组织的唯一标识
+  final String channelIdPrefix;
+
+  /// 如果运行于机顶盒请设置成true
+  final bool isSetTopBox;
+
   P2pConfig({
     this.logLevel: P2pLogLevel.warn,
     this.webRTCConfig: const {}, // TODO: 默认值缺少
@@ -124,6 +136,10 @@ class P2pConfig {
     this.localPort: 52019,
     this.maxPeerConnections: 10,
     this.useHttpRange: true,
+    this.wifiOnly: false,
+    this.httpHeaders: null,
+    this.channelIdPrefix: "cdnbye",
+    this.isSetTopBox: false,
   });
 
   P2pConfig.byDefault() : this();
@@ -143,5 +159,11 @@ class P2pConfig {
         'localPort': localPort,
         'maxPeerConnections': maxPeerConnections,
         'useHttpRange': useHttpRange,
+        'wifiOnly': wifiOnly,
+        'httpHeaders': httpHeaders,
+        'channelIdPrefix': channelIdPrefix,
+        'isSetTopBox': isSetTopBox,
       };
 }
+
+

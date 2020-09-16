@@ -96,7 +96,7 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                                 @Override
                                 public void success(@Nullable Object result) {
                                     System.out.println("native result: " + result);
-                                    channelId = result.toString();
+                                    if (result != null) channelId = result.toString();
                                     latch.countDown();
                                 }
 

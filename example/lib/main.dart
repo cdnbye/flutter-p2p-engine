@@ -29,6 +29,9 @@ class _MyAppState extends State<MyApp> {
       infoListener: _listen,
     );
     // });
+
+    Cdnbye.setChannelId();
+    
     super.initState();
   }
 
@@ -42,4 +45,6 @@ class _MyAppState extends State<MyApp> {
       home: VideoList(),
     );
   }
+
+
 }

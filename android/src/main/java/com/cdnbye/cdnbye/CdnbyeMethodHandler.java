@@ -3,6 +3,9 @@ package com.cdnbye.cdnbye;
 
 import android.app.Activity;
 
+import androidx.annotation.Nullable;
+
+import com.cdnbye.sdk.ChannelIdCallback;
 import com.cdnbye.sdk.LogLevel;
 import com.cdnbye.sdk.P2pConfig;
 import com.cdnbye.sdk.P2pEngine;
@@ -11,6 +14,7 @@ import com.cdnbye.sdk.P2pStatisticsListener;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import io.flutter.plugin.common.MethodCall;
@@ -19,6 +23,8 @@ import io.flutter.plugin.common.MethodChannel;
 public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
 
     private Activity activity;
+
+    private volatile String channelId;
 
     private static CdnbyeMethodHandler instance;
 
@@ -77,6 +83,45 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                     .setHttpHeaders((Map<String, String>) configMap.get("httpHeaders"))
                     .build();
             P2pEngine.initEngine(activity.getApplication().getApplicationContext(), token, config);
+
+            P2pEngine.getInstance().setChannelId(new ChannelIdCallback() {
+                @Override
+                public String onChannelId(String urlString) {
+                    channelId = urlString;
+                    CountDownLatch latch = new CountDownLatch(1);
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            channel.invokeMethod("onChannelId", urlString, new MethodChannel.Result() {
+                                @Override
+                                public void success(@Nullable Object result) {
+                                    System.out.println("native result: " + result);
+                                    channelId = result.toString();
+                                    latch.countDown();
+                                }
+
+                                @Override
+                                public void error(String errorCode, @Nullable String errorMessage, @Nullable Object errorDetails) {
+                                    latch.countDown();
+                                }
+
+                                @Override
+                                public void notImplemented() {
+                                    latch.countDown();
+                                }
+                            });
+                        }
+                    });
+                    try {
+                        latch.await(100, TimeUnit.MILLISECONDS);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("native channelId: " + channelId);
+                    return channelId;
+                }
+            });
+
             result.success(1);
         } else if (call.method.equals("parseStreamURL")) {
             Map configMap = (Map) call.arguments;

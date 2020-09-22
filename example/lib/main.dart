@@ -30,7 +30,6 @@ class _MyAppState extends State<MyApp> {
     );
     // });
 
-    Cdnbye.setChannelId();
     
     super.initState();
   }

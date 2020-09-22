@@ -7,25 +7,6 @@ typedef CdnByeInfoListener = void Function(Map<String, dynamic>);
 class Cdnbye {
   static const MethodChannel _channel = const MethodChannel('cdnbye');
 
-  // ChannelIdCallback
-  static Future setChannelId() async {
-    _channel.setMethodCallHandler(_methodChannelHandler);
-  }
-
-  static Future<String> _methodChannelHandler(MethodCall call) async {
-    print("_methodChannelHandler");
-    String result = "";
-    switch (call.method) {
-    //收到Android的调用，并返回数据
-      case "onChannelId":
-        String url = call.arguments.toString();
-        print("flutter onChannelId " + url);
-        result = "6666666666666";
-        break;
-    }
-    return result;
-  }
-
   // The version of SDK. SDK的版本号
   static Future<String> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');

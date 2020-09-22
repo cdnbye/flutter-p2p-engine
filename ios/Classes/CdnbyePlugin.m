@@ -26,22 +26,7 @@
       NSString *token = args[@"token"];
        [[CBP2pEngine sharedInstance] startWithToken:token andP2pConfig:config];
       // NSLog(@"token:\n%@",token);
-      
-      [CBP2pEngine sharedInstance].channelId = ^NSString * _Nonnull(NSString * _Nonnull urlString) {
-          __block NSString *channelId = urlString;
-          dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-          [self->channel invokeMethod:@"onChannelId" arguments:urlString result:^(id  _Nullable result) {
-              NSLog(@"native onChannelId %@", result);
-              if (result) channelId = (NSString *)result;
-              dispatch_semaphore_signal(semaphore);
-          }];
-          dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, 100 * NSEC_PER_MSEC));
-          NSLog(@"native channelId %@", channelId);
-          return channelId;
-      };
-      
-      
-      
+
       result(@1);
   }
   
@@ -50,7 +35,8 @@
 
       // NSLog(@"转换URL:\n%@",args);
       NSURL *originalUrl = [NSURL URLWithString:args[@"url"]];
-      result([[CBP2pEngine sharedInstance] parseStreamURL :originalUrl].absoluteString);
+      result([[CBP2pEngine sharedInstance] parseStreamURL:originalUrl].absoluteString);
+      
   }
   
   else if([@"startListen" isEqualToString:call.method]){

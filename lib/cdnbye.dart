@@ -4,6 +4,21 @@ import 'package:flutter/services.dart';
 
 typedef CdnByeInfoListener = void Function(Map);
 
+extension NextMonth on DateTime {
+  DateTime nextMonth(int step) {
+    return DateTime(
+      year,
+      month + step,
+      day,
+      hour,
+      minute,
+      second,
+      millisecond,
+      microsecond,
+    );
+  }
+}
+
 class Cdnbye {
   static const MethodChannel _channel = const MethodChannel('cdnbye');
 
@@ -14,8 +29,11 @@ class Cdnbye {
   }
 
   // Create a new instance with token and the specified config.
-  static Future<int> init(token,
-      {P2pConfig config, CdnByeInfoListener infoListener}) async {
+  static Future<int> init(
+    token, {
+    P2pConfig config,
+    CdnByeInfoListener infoListener,
+  }) async {
     final int success = await _channel.invokeMethod('init', {
       'token': token,
       'config': config.toMap,
@@ -76,6 +94,7 @@ class P2pConfig {
   final int localPort;
   final int maxPeerConnections;
   final bool useHttpRange;
+  final String channelIdPrefix;
 
   P2pConfig({
     this.logLevel: P2pLogLevel.warn,
@@ -91,6 +110,7 @@ class P2pConfig {
     this.localPort: 52019,
     this.maxPeerConnections: 10,
     this.useHttpRange: true,
+    this.channelIdPrefix,
   });
 
   P2pConfig.byDefault() : this();
@@ -109,5 +129,6 @@ class P2pConfig {
         'localPort': localPort,
         'maxPeerConnections': maxPeerConnections,
         'useHttpRange': useHttpRange,
+        'channelIdPrefix': channelIdPrefix,
       };
 }

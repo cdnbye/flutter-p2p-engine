@@ -26,6 +26,7 @@
       NSString *token = args[@"token"];
        [[CBP2pEngine sharedInstance] startWithToken:token andP2pConfig:config];
       // NSLog(@"token:\n%@",token);
+
       result(@1);
   }
   
@@ -34,7 +35,8 @@
 
       // NSLog(@"转换URL:\n%@",args);
       NSURL *originalUrl = [NSURL URLWithString:args[@"url"]];
-      result([[CBP2pEngine sharedInstance] parseStreamURL :originalUrl].absoluteString);
+      result([[CBP2pEngine sharedInstance] parseStreamURL:originalUrl].absoluteString);
+      
   }
   
   else if([@"startListen" isEqualToString:call.method]){

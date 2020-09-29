@@ -18,7 +18,7 @@ A new flutter plugin project.
   s.dependency 'Flutter'
   
   s.dependency 'CDNByeSDK', '1.10.0'
-  s.ios.deployment_target = '9.0'
   
+  s.ios.deployment_target = '10.0'
 end
 

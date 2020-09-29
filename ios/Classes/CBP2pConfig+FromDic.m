@@ -24,6 +24,7 @@
     config.maxPeerConnections = ((NSNumber *)configMap[@"maxPeerConnections"]).integerValue;
     config.tag = (NSString *)configMap[@"tag"];
     config.useHttpRange = ((NSNumber *)configMap[@"useHttpRange"]).integerValue;
+    config.channelIdPrefix = (NSString *)configMap[@"channelIdPrefix"];
    // config.agent = (NSString *)configMap[@"agent"];
     return config;
 }

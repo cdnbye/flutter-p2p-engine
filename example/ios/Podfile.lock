@@ -1,8 +1,8 @@
 PODS:
   - cdnbye (0.0.1):
-    - CDNByeSDK (~> 1.8.0)
+    - CDNByeSDK (= 1.10.0)
     - Flutter
-  - CDNByeSDK (1.8.0):
+  - CDNByeSDK (1.10.0):
     - CocoaAsyncSocket (~> 7.6)
     - CocoaLumberjack (~> 3.5)
     - GCDWebServer (~> 3.5)
@@ -10,9 +10,9 @@ PODS:
     - SocketRocket (~> 0.5)
     - WebRTCDatachannel (= 0.0.1)
   - CocoaAsyncSocket (7.6.4)
-  - CocoaLumberjack (3.6.1):
-    - CocoaLumberjack/Core (= 3.6.1)
-  - CocoaLumberjack/Core (3.6.1)
+  - CocoaLumberjack (3.6.2):
+    - CocoaLumberjack/Core (= 3.6.2)
+  - CocoaLumberjack/Core (3.6.2)
   - Flutter (1.0.0)
   - GCDWebServer (3.5.4):
     - GCDWebServer/Core (= 3.5.4)
@@ -27,7 +27,7 @@ PODS:
 
 DEPENDENCIES:
   - cdnbye (from `.symlinks/plugins/cdnbye/ios`)
-  - Flutter (from `.symlinks/flutter/ios-release`)
+  - Flutter (from `.symlinks/flutter/ios`)
   - video_player (from `.symlinks/plugins/video_player/ios`)
   - video_player_web (from `.symlinks/plugins/video_player_web/ios`)
 
@@ -45,22 +45,22 @@ EXTERNAL SOURCES:
   cdnbye:
     :path: ".symlinks/plugins/cdnbye/ios"
   Flutter:
-    :path: ".symlinks/flutter/ios-release"
+    :path: ".symlinks/flutter/ios"
   video_player:
     :path: ".symlinks/plugins/video_player/ios"
   video_player_web:
     :path: ".symlinks/plugins/video_player_web/ios"
 
 SPEC CHECKSUMS:
-  cdnbye: 600d12a5d59532021057d8571a9c92f8d3a2b989
-  CDNByeSDK: 2267a0a52fc75beee902489926ffb14ba3899371
+  cdnbye: 14c5b96212228472d7056bc040d654c497420dc6
+  CDNByeSDK: 2a1df62a549901c14e83f0196aa9edb273c56c55
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
-  CocoaLumberjack: b17ae15142558d08bbacf69775fa10c4abbebcc9
+  CocoaLumberjack: bd155f2dd06c0e0b03f876f7a3ee55693122ec94
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
   PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
-  video_player: 69c5f029fac4ffe4fc8a85ea7f7b793709661549
+  video_player: 9cc823b1d9da7e8427ee591e8438bfbcde500e6e
   video_player_web: da8cadb8274ed4f8dbee8d7171b420dedd437ce7
   WebRTCDatachannel: acddf02a4ed2f825ececd2e64cbf971c0a209ceb
 

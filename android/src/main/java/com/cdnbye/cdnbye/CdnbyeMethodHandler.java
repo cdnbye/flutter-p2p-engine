@@ -67,6 +67,7 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                     .dcDownloadTimeout((int) configMap.get("dcDownloadTimeout"), TimeUnit.SECONDS)
                     .withTag((String) configMap.get("tag")).localPort((int) configMap.get("localPort"))
                     .maxPeerConnections((int) configMap.get("maxPeerConnections"))
+                    .channelIdPrefix((String) configMap.get("channelIdPrefix"))
                     .useHttpRange((boolean) configMap.get("useHttpRange")).build();
             P2pEngine.initEngine(activity.getApplication().getApplicationContext(), token, config);
             result.success(1);

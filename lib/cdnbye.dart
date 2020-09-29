@@ -123,6 +123,8 @@ class P2pConfig {
 
   /// 在可能的情况下使用Http Range请求来补足p2p下载超时的剩余部分数据
   final bool useHttpRange;
+
+  /// channelIdPrefix
   final String channelIdPrefix;
 
   P2pConfig({

@@ -9,6 +9,7 @@ import com.cdnbye.sdk.LogLevel;
 import com.cdnbye.sdk.P2pConfig;
 import com.cdnbye.sdk.P2pEngine;
 import com.cdnbye.sdk.P2pStatisticsListener;
+import com.cdnbye.sdk.SegmentIdCallback;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +24,7 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
 
     private Activity activity;
 
-    private volatile String channelId;
+    private volatile String segmentId;
 
     private static CdnbyeMethodHandler instance;
 
@@ -82,6 +83,48 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                     .setHttpHeaders((Map<String, String>) configMap.get("httpHeaders"))
                     .build();
             P2pEngine.initEngine(activity.getApplication().getApplicationContext(), token, config);
+
+            P2pEngine.getInstance().setSegmentId(new SegmentIdCallback() {
+                @Override
+                public String onSegmentId(int level, long sn, String urlString) {
+                    segmentId = urlString;
+                    Map<String, Object> args = new HashMap<>();
+                    args.put("level", level);
+                    args.put("sn", sn);
+                    args.put("urlString", urlString);
+                    CountDownLatch latch = new CountDownLatch(1);
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            channel.invokeMethod("segmentId", args, new MethodChannel.Result() {
+                                @Override
+                                public void success(@Nullable Object result) {
+                                    System.out.println("native result: " + result);
+                                    if (result != null) segmentId = result.toString();
+                                    latch.countDown();
+                                }
+
+                                @Override
+                                public void error(String errorCode, @Nullable String errorMessage, @Nullable Object errorDetails) {
+                                    latch.countDown();
+                                }
+
+                                @Override
+                                public void notImplemented() {
+                                    latch.countDown();
+                                }
+                            });
+                        }
+                    });
+                    try {
+                        latch.await(100, TimeUnit.MILLISECONDS);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("native segmentId: " + segmentId);
+                    return segmentId;
+                }
+            });
 
             result.success(1);
         } else if (call.method.equals("parseStreamURL")) {

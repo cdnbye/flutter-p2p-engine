@@ -35,7 +35,7 @@
 
       // NSLog(@"转换URL:\n%@",args);
       NSURL *originalUrl = [NSURL URLWithString:args[@"url"]];
-      result([[CBP2pEngine sharedInstance] parseStreamURL:originalUrl].absoluteString);
+      result([[CBP2pEngine sharedInstance] parseStreamURL:originalUrl withVideoId:args[@"videoId"]].absoluteString);
       
   }
   

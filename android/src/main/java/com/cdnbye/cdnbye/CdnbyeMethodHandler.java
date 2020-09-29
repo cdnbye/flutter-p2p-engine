@@ -87,7 +87,7 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
         } else if (call.method.equals("parseStreamURL")) {
             Map configMap = (Map) call.arguments;
             String url = (String) configMap.get("url");
-            String parsedUrl = P2pEngine.getInstance().parseStreamUrl(url);
+            String parsedUrl = P2pEngine.getInstance().parseStreamUrl(url,(String) configMap.get("videoId"));
             result.success(parsedUrl);
         } else if (call.method.equals("startListen")) {
             P2pEngine.getInstance().addP2pStatisticsListener(new P2pStatisticsListener() {

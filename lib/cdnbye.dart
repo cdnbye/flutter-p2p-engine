@@ -51,7 +51,7 @@ class Cdnbye {
   ]) async {
     final String url = await _channel.invokeMethod('parseStreamURL', {
       'url': sourceUrl,
-      'videoId': videoId,
+      'videoId': videoId ?? sourceUrl,
     });
     return url;
   }

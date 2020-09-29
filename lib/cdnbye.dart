@@ -4,21 +4,6 @@ import 'package:flutter/services.dart';
 
 typedef CdnByeInfoListener = void Function(Map<String, dynamic>);
 
-extension NextMonth on DateTime {
-  DateTime nextMonth(int step) {
-    return DateTime(
-      year,
-      month + step,
-      day,
-      hour,
-      minute,
-      second,
-      millisecond,
-      microsecond,
-    );
-  }
-}
-
 class Cdnbye {
   static const MethodChannel _channel = const MethodChannel('cdnbye');
 
@@ -33,6 +18,7 @@ class Cdnbye {
     token, {
     P2pConfig config,
     CdnByeInfoListener infoListener,
+    String Function(int level, int sn, String url) segmentIdGenerator,
   }) async {
     final int success = await _channel.invokeMethod('init', {
       'token': token,
@@ -40,13 +26,21 @@ class Cdnbye {
     });
     if (infoListener != null) {
       await _channel.invokeMethod('startListen');
-      _channel.setMethodCallHandler((call) async {
-        if (call.method == 'info') {
-          var map = Map<String, dynamic>.from(call.arguments);
-          infoListener?.call(map);
-        }
-      });
     }
+    _channel.setMethodCallHandler((call) async {
+      if (call.method == 'info') {
+        var map = Map<String, dynamic>.from(call.arguments);
+        infoListener?.call(map);
+      } else if (call.method == 'segmentId') {
+        await _channel.invokeMethod('onSegmentIdComplete', {
+          'result': segmentIdGenerator?.call(
+            call.arguments['level'],
+            call.arguments['sn'],
+            call.arguments['url'],
+          ),
+        });
+      }
+    });
     return success;
   }
 
@@ -179,7 +173,4 @@ class P2pConfig {
         'channelIdPrefix': channelIdPrefix,
         'isSetTopBox': isSetTopBox,
       };
-
 }
-
-

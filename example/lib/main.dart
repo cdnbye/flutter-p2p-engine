@@ -20,7 +20,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     // 初始化
-    // Future.delayed(Duration.zero).then((_) async {
     Cdnbye.init(
       'ZMuO5qHZg', // replace with your token
       config: P2pConfig(
@@ -28,9 +27,7 @@ class _MyAppState extends State<MyApp> {
       ),
       infoListener: _listen,
     );
-    // });
 
-    
     super.initState();
   }
 
@@ -44,6 +41,4 @@ class _MyAppState extends State<MyApp> {
       home: VideoList(),
     );
   }
-
-
 }

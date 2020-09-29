@@ -45,9 +45,13 @@ class Cdnbye {
   }
 
   // Get parsed local stream url by passing the original stream url(m3u8) to CBP2pEngine instance.
-  static Future<String> parseStreamURL(String sourceUrl) async {
+  static Future<String> parseStreamURL(
+    String sourceUrl, [
+    String videoId,
+  ]) async {
     final String url = await _channel.invokeMethod('parseStreamURL', {
       'url': sourceUrl,
+      'videoId': videoId,
     });
     return url;
   }
@@ -127,9 +131,6 @@ class P2pConfig {
   /// 如果使用自定义的channelId，则此字段必须设置，且长度必须在5到15个字符之间，建议设置成你所在组织的唯一标识
   final String channelIdPrefix;
 
-  /// videoId
-  final String videoId;
-
   /// 如果运行于机顶盒请设置成true
   final bool isSetTopBox;
 
@@ -150,7 +151,6 @@ class P2pConfig {
     this.useHttpRange: true,
     this.wifiOnly: false,
     this.httpHeaders,
-    this.videoId,
     this.channelIdPrefix: "cdnbye",
     this.isSetTopBox: false,
   });
@@ -175,7 +175,6 @@ class P2pConfig {
         'wifiOnly': wifiOnly,
         'httpHeaders': httpHeaders,
         'channelIdPrefix': channelIdPrefix,
-        'videoId': videoId,
         'isSetTopBox': isSetTopBox,
       };
 }

@@ -17,7 +17,7 @@
     config.announce = (NSString *)configMap[@"announce"];
     config.p2pEnabled = ((NSNumber *)configMap[@"p2pEnabled"]).integerValue;
     config.diskCacheLimit = ((NSNumber *)configMap[@"diskCacheLimit"]).integerValue;
-    config.memoryCacheLimit = ((NSNumber *)configMap[@"memoryCacheLimit"]).integerValue;
+//    config.memoryCacheCountLimit = ((NSNumber *)configMap[@"memoryCacheCountLimit"]).integerValue;
     config.downloadTimeout = ((NSNumber *)configMap[@"downloadTimeout"]).integerValue;
     config.dcDownloadTimeout = ((NSNumber *)configMap[@"dcDownloadTimeout"]).integerValue;
     config.localPort = ((NSNumber *)configMap[@"localPort"]).integerValue;

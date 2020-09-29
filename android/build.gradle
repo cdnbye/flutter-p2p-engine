@@ -17,6 +17,7 @@ rootProject.allprojects {
         google()
         jcenter()
     }
+
 }
 
 apply plugin: 'com.android.library'
@@ -26,14 +27,37 @@ android {
 
     defaultConfig {
         minSdkVersion 19
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
     lintOptions {
         disable 'InvalidPackage'
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
+//    repositories {
+//        flatDir {
+//            dirs 'libs'
+//        }
+//    }
 }
 
 dependencies {
+<<<<<<< HEAD
     implementation 'com.cdnbye:sdk:1.10.0'
+=======
+    implementation 'com.alibaba:fastjson:1.2.58'
+    implementation 'org.java-websocket:Java-WebSocket:1.4.0'
+    implementation 'com.orhanobut:logger:2.2.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    implementation 'org.webrtc:google-webrtc:1.0.30039'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+>>>>>>> master
 }
 

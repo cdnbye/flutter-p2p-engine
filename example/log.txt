@@ -1,0 +1,391 @@
+[CDNBye INFO]--> -[CBTrackerClient report]_line[431]  report {
+    http = 2561;
+}
+[CDNBye INFO]--> -[CBP2pEngine startLocalServer]_block_invoke_line[400]  receive m3u8
+2020-03-10 21:56:10.313705+0800 Runner[25192:11224115] flutter: Original URL: http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/index.m3u8
+[CDNBye INFO]--> -[CBP2pEngine restartP2p]_line[238]  engine restart p2p
+[CDNBye INFO]--> -[CBP2pEngine stopP2p]_line[227]  engine stop p2p
+[CDNBye INFO]--> -[CBSignalClient close]_line[85]  close signaler
+[CDNBye INFO]--> -[CBScheduler destroy]_line[295]  scheduler destroy
+[CDNBye WARN]--> -[CBTrackerClient stopP2p]_line[222]  tracker stop p2p 耗时 0.404000
+[CDNBye INFO]--> -[CBTrackerClient dealloc]_line[685]  tracker dealloc
+2020-03-10 21:56:10.360450+0800 Runner[25192:11224115] flutter: Parsed URL: http://127.0.0.1:52019/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/index.m3u8
+[CDNBye INFO]--> -[CBP2pEngine startLocalServer]_block_invoke_line[367]  request m3u8 http://127.0.0.1:52019/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/index.m3u8
+[CDNBye INFO]--> -[CBP2pEngine startLocalServer]_block_invoke_line[400]  receive m3u8
+[CDNBye INFO]--> -[CBP2pEngine loadSegment:request:withBlock:]_line[588]  engine request ts from http
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00000.ts segId 0-0
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 372428 segId 0-0
+[CDNBye INFO]--> -[CBP2pEngine loadSegment:request:withBlock:]_line[588]  engine request ts from http
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00001.ts segId 0-1
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 110356 segId 0-1
+[CDNBye INFO]--> -[CBP2pEngine loadSegment:request:withBlock:]_line[588]  engine request ts from http
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00002.ts segId 0-2
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 879088 segId 0-2
+[CDNBye INFO]--> -[CBP2pEngine loadSegment:request:withBlock:]_line[588]  engine request ts from http
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00003.ts segId 0-3
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 740908 segId 0-3
+[CDNBye INFO]--> -[CBP2pEngine loadSegment:request:withBlock:]_line[588]  engine request ts from http
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00004.ts segId 0-4
+[CDNBye INFO]--> -[CBP2pEngine initTrackerClient:endSN:testUrl:]_line[293]  Init tracker endSN 1060
+[CDNBye INFO]--> -[CBP2pEngine initTrackerClient:endSN:testUrl:]_line[311]  channelStr cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/index|signal.cdnbye.com[v2]
+[CDNBye INFO]--> -[CBP2pEngine initTrackerClient:endSN:testUrl:]_line[315]  channel id Y242LnF4cmVhZGVyLmNvbSUyRmhscyUyRjIwMjAwMjAxJTJGZTk4N2EwZTAwZTFhODQzMWFjNDA4MDMyYmEwMjM5NTglMkYxNTgwNTUwNjgwJTJGaW5kZXglN0NzaWduYWwuY2RuYnllLmNvbSU1QnYyJTVE
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+2020-03-10 21:56:13.330363+0800 Runner[25192:11224112] Reachability Flag Status: -R ------- networkStatusForFlags
+[CDNBye INFO]--> -[CBTrackerClient channelRequest]_line[152]  channel post body {
+    announce = "tracker.cdnbye.com";
+    app = CDNByeDemo;
+    bundle = "com.cdnbye.cdnbyeDemo";
+    channel = Y242LnF4cmVhZGVyLmNvbSUyRmhscyUyRjIwMjAwMjAxJTJGZTk4N2EwZTAwZTFhODQzMWFjNDA4MDMyYmEwMjM5NTglMkYxNTgwNTUwNjgwJTJGaW5kZXglN0NzaWduYWwuY2RuYnllLmNvbSU1QnYyJTVE;
+    device = "ios-native";
+    live = 0;
+    nat = UdpBlocked;
+    netType = wifi;
+    tag = flutter;
+    ts = 1583848573;
+    type = hls;
+    v = 52f3d12e;
+    version = "1.0.0";
+}
+[CDNBye INFO]--> -[CBTrackerClient channelRequest]_block_invoke_line[164]  channelRequest success--{
+    data =     {
+        id = 03411XqW7uWR;
+        "min_conns" = 3;
+        peers =         (
+        );
+        "report_interval" = 50;
+        v = 224b41a8;
+    };
+    ret = 0;
+}
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 463608 segId 0-4
+[CDNBye INFO]--> -[CBP2pEngine loadSegment:request:withBlock:]_line[588]  engine request ts from http
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00005.ts segId 0-5
+[CDNBye INFO]--> -[CBSignalClient webSocketDidOpen:]_line[198]  signaler connection open
+[CDNBye INFO]--> -[CBTrackerClient SRWebSocketDidOpen]_line[629]  ws connection opened
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 363404 segId 0-5
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 30.48745700359345
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00006.ts segId 0-6
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00006.ts segId 0-6
+[CDNBye INFO]--> -[CBP2pEngine initTrackerClient:endSN:testUrl:]_block_invoke_line[331]  http range request is supported
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 256996 segId 0-6
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-6
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 33.53060400009156
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00007.ts segId 0-7
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00007.ts segId 0-7
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 310200 segId 0-7
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-7
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 38.10858998775483
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00008.ts segId 0-8
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00008.ts segId 0-8
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 1710800 segId 0-3947
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-3947
+[CDNBye INFO]--> -[CBScheduler dealloc]_line[578]  scheduler dealloc
+[ERROR] Error while writing to socket 26: Broken pipe (32)
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 506660 segId 0-8
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-8
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 48.72031197071076
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00009.ts segId 0-9
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00009.ts segId 0-9
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 201348 segId 0-9
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-9
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 52.46032402038575
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00010.ts segId 0-10
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00010.ts segId 0-10
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 310764 segId 0-10
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-10
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 58.1533679676056
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00011.ts segId 0-11
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00011.ts segId 0-11
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 257184 segId 0-11
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-11
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 61.43478094100953
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00012.ts segId 0-12
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00012.ts segId 0-12
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 448192 segId 0-12
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-12
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 65.81130897045136
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00013.ts segId 0-13
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00013.ts segId 0-13
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 426760 segId 0-13
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-13
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 71.44688092708589
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00014.ts segId 0-14
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00014.ts segId 0-14
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 236880 segId 0-14
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-14
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 75.32865085601807
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00015.ts segId 0-15
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00015.ts segId 0-15
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 320352 segId 0-15
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-15
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 79.97419481754304
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00016.ts segId 0-16
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00016.ts segId 0-16
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 472068 segId 0-16
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-16
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 84.69124681949616
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00017.ts segId 0-17
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00017.ts segId 0-17
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 400816 segId 0-17
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-17
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 89.53832279205322
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00018.ts segId 0-18
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00018.ts segId 0-18
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 267900 segId 0-18
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-18
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 93.86770783901214
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00019.ts segId 0-19
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00019.ts segId 0-19
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 190256 segId 0-19
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-19
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 98.14340175151824
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00020.ts segId 0-20
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00020.ts segId 0-20
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 516060 segId 0-20
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-20
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 103.754687795639
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00021.ts segId 0-21
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00021.ts segId 0-21
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 547644 segId 0-21
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-21
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 107.1669697856903
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00022.ts segId 0-22
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00022.ts segId 0-22
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 724176 segId 0-22
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-22
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 111.1942898130417
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00023.ts segId 0-23
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00023.ts segId 0-23
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 274856 segId 0-23
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-23
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 116.9209307527542
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00024.ts segId 0-24
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00024.ts segId 0-24
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 560428 segId 0-24
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-24
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 119.7737528324127
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00025.ts segId 0-25
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00025.ts segId 0-25
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 560428 segId 0-25
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-25
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 124.2034637355804
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00026.ts segId 0-26
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00026.ts segId 0-26
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 424316 segId 0-26
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-26
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 128.3356487989426
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00027.ts segId 0-27
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00027.ts segId 0-27
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 477520 segId 0-27
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-27
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 133.5406937217712
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00028.ts segId 0-28
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00028.ts segId 0-28
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 343852 segId 0-28
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-28
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 137.1347948312759
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00029.ts segId 0-29
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00029.ts segId 0-29
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 369044 segId 0-29
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-29
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 142.2485238027573
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00030.ts segId 0-30
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00030.ts segId 0-30
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 362652 segId 0-30
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-30
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 145.5885518169403
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00031.ts segId 0-31
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00031.ts segId 0-31
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 573024 segId 0-31
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-31
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 150.8996468162537
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00032.ts segId 0-32
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00032.ts segId 0-32
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 310952 segId 0-32
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-32
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 154.3013467550278
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00033.ts segId 0-33
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00033.ts segId 0-33
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 262260 segId 0-33
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-33
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 158.7537658071518
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00034.ts segId 0-34
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00034.ts segId 0-34
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 231804 segId 0-34
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-34
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 162.1690897512436
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00035.ts segId 0-35
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00035.ts segId 0-35
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 471880 segId 0-35
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-35
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 167.2106547927856
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00036.ts segId 0-36
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00036.ts segId 0-36
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 336896 segId 0-36
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-36
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 171.2614128065109
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00037.ts segId 0-37
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00037.ts segId 0-37
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 492560 segId 0-37
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-37
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 176.7995017671585
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00038.ts segId 0-38
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00038.ts segId 0-38
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 377128 segId 0-38
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-38
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 181.6231448030471
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00039.ts segId 0-39
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00039.ts segId 0-39
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 340468 segId 0-39
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-39
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 185.0934558391571
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00040.ts segId 0-40
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00040.ts segId 0-40
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 471316 segId 0-40
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-40
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 189.6794558811187
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00041.ts segId 0-41
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00041.ts segId 0-41
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 372616 segId 0-41
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-41
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 193.6292118167877
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00042.ts segId 0-42
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00042.ts segId 0-42
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 426196 segId 0-42
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-42
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 199.1567128515243
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00043.ts segId 0-43
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00043.ts segId 0-43
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 347236 segId 0-43
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-43
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 203.1403128528595
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00044.ts segId 0-44
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00044.ts segId 0-44
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 604984 segId 0-44
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-44
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 208.0614489412307
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00045.ts segId 0-45
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00045.ts segId 0-45
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 375624 segId 0-45
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-45
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 212.9205178260803
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00046.ts segId 0-46
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00046.ts segId 0-46
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 424880 segId 0-46
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-46
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 217.8710957860946
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00047.ts segId 0-47
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00047.ts segId 0-47
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 318848 segId 0-47
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-47
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 221.8586428165436
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00048.ts segId 0-48
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00048.ts segId 0-48
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 417172 segId 0-48
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-48
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 226.4089917993545
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00049.ts segId 0-49
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00049.ts segId 0-49
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 356824 segId 0-49
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-49
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 229.8482017850876
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00050.ts segId 0-50
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00050.ts segId 0-50
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 597652 segId 0-50
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-50
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 235.6970197486878
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00051.ts segId 0-51
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00051.ts segId 0-51
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 327308 segId 0-51
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-51
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 238.8744667863846
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00052.ts segId 0-52
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00052.ts segId 0-52
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 323736 segId 0-52
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-52
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 243.6499227714539
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00053.ts segId 0-53
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00053.ts segId 0-53
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 273352 segId 0-53
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-53
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 248.0019068002701
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00054.ts segId 0-54
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00054.ts segId 0-54
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 278240 segId 0-54
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-54
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 252.3179708051682
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00055.ts segId 0-55
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00055.ts segId 0-55
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 249852 segId 0-55
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-55
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 256.7308138465881
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00056.ts segId 0-56
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00056.ts segId 0-56
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 448380 segId 0-56
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-56
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 262.2228008747101
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00057.ts segId 0-57
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00057.ts segId 0-57
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 283316 segId 0-57
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-57
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 266.3986468696594
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00058.ts segId 0-58
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00058.ts segId 0-58
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 244212 segId 0-58
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-58
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 270.0299738645554
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00059.ts segId 0-59
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00059.ts segId 0-59
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 435784 segId 0-59
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-59
+[CDNBye INFO]--> -[CBScheduler loadSegment:request:withBlock:]_line[130]  bufferTime 274.9281108236313
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_line[339]  scheduler request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00060.ts segId 0-60
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_line[53]  request ts from http http://cn6.qxreader.com/hls/20200201/e987a0e00e1a8431ac408032ba023958/1580550680/film_00060.ts segId 0-60
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> +[CBUtils httpLoadSegment:request:Timeout:withBlock:]_block_invoke_line[66]  receive ts from http size 692404 segId 0-60
+[CDNBye INFO]--> -[CBScheduler httpLoadSegment:request:withBlock:]_block_invoke_line[348]  cache segment 0-60
+[ERROR] Error while writing to socket 26: Broken pipe (32)
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBTrackerClient report]_line[431]  report {
+    http = 20903;
+}
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+2020-03-10 21:57:48.733132+0800 Runner[25192:11224080] Can't end BackgroundTask: no background task exists with identifier 7 (0x7), or it may have already been ended. Break in UIApplicationEndBackgroundTaskError() to debug.
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBTrackerClient report]_line[431]  report {
+}
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000
+[CDNBye INFO]--> -[CBScheduler checkRecursively]_line[422]  loaded peers 0 next checkDelay is 3.000000

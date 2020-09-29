@@ -40,12 +40,14 @@ class _VideoPageState extends State<VideoPage> {
   _updateVideoInfo() async {
     Map info = CdnByeListener().videoInfo.value;
     print('Received SDK info: $info');
-    String key = info.keys.toList().first;
-    dynamic value = info.values.toList().first;
-    if (value is int) {
-      _addValue(key, value);
-    } else if (value is List) {
-      map[key] = value.length;
+    if (info.isNotEmpty) {
+      String key = info.keys.toList().first;
+      dynamic value = info.values.toList().first;
+      if (value is int) {
+        _addValue(key, value);
+      } else if (value is List) {
+        map[key] = value.length;
+      }
     }
     _connected = await Cdnbye.isConnected() ? 'YES' : 'NO';
     _peerId = await Cdnbye.getPeerId();
@@ -157,7 +159,7 @@ class _VideoPageState extends State<VideoPage> {
     Widget topVideo = Container(
       color: Colors.black,
       width: double.infinity,
-      alignment:Alignment.center,
+      alignment: Alignment.center,
       child: AspectRatio(
         aspectRatio: 16 / 9.0,
         child: VideoPlayerWidget(

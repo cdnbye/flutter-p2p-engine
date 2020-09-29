@@ -1,6 +1,6 @@
 name: cdnbye_example
 description: Demonstrates how to use the cdnbye plugin.
-version: 1.5.0+2
+version: 1.6.0+4
 publish_to: "none"
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
     sdk: flutter
   # chewie: ^0.4.0
   # chewie: ^0.9.6
-  video_player: ^0.7.0
+  video_player: ^0.10.6
   cupertino_icons: ^0.1.2
   flutter_spinkit: any
   tapped: any

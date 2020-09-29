@@ -28,7 +28,7 @@
 </tr></table></div>
 
 ## Environment Configuration
-See [documentation](https://docs.cdnbye.com/#/flutter)
+See [documentation](https://p2p.cdnbye.com/en/views/flutter.html)
 
 ## Example
 ```dart
@@ -57,8 +57,12 @@ _loadVideo() async {
 }
 ```
 
+## Example using ijk_player.
+
+[cdnbye_ijk_example](https://github.com/mjl0602/cdnbye_ijk_example)
+
 ## Obtain Token
-See [here](https://docs.cdnbye.com/#/en/bindings?id=app-id-and-token)
+See [here](https://p2p.cdnbye.com/en/views/bindings.html#app-id-and-token)
 
 ## Consloe
 Register your AppId at https://oms.cdnbye.com, where you can view p2p-related information.
@@ -73,7 +77,14 @@ Register your AppId at https://oms.cdnbye.com, where you can view p2p-related in
 - [android-p2p-engine](https://github.com/cdnbye/android-p2p-engine) -  iOS Video P2P Engine for Any Player.
 
 ## FAQ
-We have collected some [frequently asked questions](https://docs.cdnbye.com/#/en/FAQ). Before reporting an issue, please search if the FAQ has the answer to your problem.
+We have collected some [frequently asked questions](https://p2p.cdnbye.com/en/views/FAQ.html). Before reporting an issue, please search if the FAQ has the answer to your problem.
 
 ## Contact Us
 Email：service@cdnbye.com
+<br>
+Telegram: @cdnbye
+<br>
+Skype: live:86755838
+
+### Join the Discussion
+[Telegram Group](https://t.me/cdnbye_group)

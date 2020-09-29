@@ -17,7 +17,11 @@ A new flutter plugin project.
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
   
+<<<<<<< HEAD
   s.dependency 'CDNByeSDK', '1.10.0'
+=======
+  s.dependency 'CDNByeSDK', '~> 1.8.0'
+>>>>>>> master
   
   s.ios.deployment_target = '9.0'
 end

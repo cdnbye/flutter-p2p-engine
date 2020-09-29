@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 
-typedef CdnByeInfoListener = void Function(Map);
+typedef CdnByeInfoListener = void Function(Map<String, dynamic>);
 
 extension NextMonth on DateTime {
   DateTime nextMonth(int step) {
@@ -42,7 +42,8 @@ class Cdnbye {
       await _channel.invokeMethod('startListen');
       _channel.setMethodCallHandler((call) async {
         if (call.method == 'info') {
-          infoListener(call.arguments);
+          var map = Map<String, dynamic>.from(call.arguments);
+          infoListener?.call(map);
         }
       });
     }
@@ -81,18 +82,46 @@ enum P2pLogLevel {
 
 // The configuration of p2p engine.
 class P2pConfig {
+  /// 打印日志的级别
   final P2pLogLevel logLevel;
-  final Map webRTCConfig;
+
+  /// 通过webRTCConfig来修改WebRTC默认配置
+  final Map<String, dynamic> webRTCConfig;
+
+  /// 信令服务器地址
   final String wsSignalerAddr;
+
+  /// tracker服务器地址
   final String announce;
+
+  /// 点播模式下P2P在磁盘缓存的最大数据量(设为0可以禁用磁盘缓存)
   final int diskCacheLimit;
+
+  /// P2P在内存缓存的最大数据量，用ts文件个数表示，仅安卓有效
+  final int memoryCacheCountLimit;
+  // @Deprecated('Use memoryCacheCountLimit now')
+  // 仅iOS有效
   final int memoryCacheLimit;
+
+  /// 开启或关闭p2p engine
   final bool p2pEnabled;
+
+  /// HTTP下载ts文件超时时间
   final Duration downloadTimeout;
+
+  /// datachannel下载二进制数据的最大超时时间
   final Duration dcDownloadTimeout;
+
+  /// 用户自定义的标签，可以在控制台查看分布图
   final String tag;
+
+  /// 本地代理服务器的端口号
   final int localPort;
+
+  /// 最大连接节点数量
   final int maxPeerConnections;
+
+  /// 在可能的情况下使用Http Range请求来补足p2p下载超时的剩余部分数据
   final bool useHttpRange;
   final String channelIdPrefix;
 
@@ -103,6 +132,7 @@ class P2pConfig {
     this.announce: 'https://tracker.cdnbye.com/v1',
     this.diskCacheLimit: 1024 * 1024 * 1024,
     this.memoryCacheLimit: 60 * 1024 * 1024,
+    this.memoryCacheCountLimit: 30,
     this.p2pEnabled: true,
     this.downloadTimeout: const Duration(seconds: 10),
     this.dcDownloadTimeout: const Duration(seconds: 4),
@@ -115,13 +145,14 @@ class P2pConfig {
 
   P2pConfig.byDefault() : this();
 
-  Map get toMap => {
+  Map<String, dynamic> get toMap => {
         'logLevel': logLevel.index,
         'webRTCConfig': webRTCConfig,
         'wsSignalerAddr': wsSignalerAddr,
         'announce': announce,
         'diskCacheLimit': diskCacheLimit,
         'memoryCacheLimit': memoryCacheLimit,
+        'memoryCacheCountLimit': memoryCacheCountLimit,
         'p2pEnabled': p2pEnabled,
         'downloadTimeout': downloadTimeout.inSeconds,
         'dcDownloadTimeout': dcDownloadTimeout.inSeconds,

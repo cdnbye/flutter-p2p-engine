@@ -29,10 +29,33 @@
 </tr></table></div>
 
 ## Demo下载
-[https://fir.im/cdnbye](https://fir.im/cdnbye)
+[http://d.6short.com/cdnbye](http://d.6short.com/cdnbye)
 
 ## 环境配置
-参考 [文档](https://docs.cdnbye.com/#/flutter)
+参考 [文档](https://www.cdnbye.com/views/flutter.html)
+
+## 引入插件
+
+```yaml
+dependencies:
+  cdnbye: ^0.6.0
+```
+
+如果你创建项目时的flutter版本低于1.12，那么你可能只能使用0.4.1版本的cdnbye插件
+```yaml
+dependencies:
+  cdnbye: ^0.4.1
+```
+通过如下方法可以升级flutter的安卓版本结构以使用更高版本的cndbye：
+```bash
+# 升级flutter到1.12以上
+flutter upgrade
+# 完全移除当前的安卓项目，请记得备份你的平台代码，图标与权限信息
+rm -rf ./android
+# 创建新的flutter项目，请不要遗漏命令最后的点号
+flutter creat -a java .
+# 恢复你的平台代码，图标与权限即可
+```
 
 ## 示例
 ```dart
@@ -61,8 +84,13 @@ _loadVideo() async {
 }
 ```
 
+## ijkplayer使用示例.
+> 由于ijk的安装远没有官方的videoplayer快，所以单独作为一个仓库，而不是作为pub库中随附的example。
+
+GitHub地址：[cdnbye_ijk_example](https://github.com/mjl0602/cdnbye_ijk_example)  
+
 ## 获取Token
-参考[如何获取token](https://docs.cdnbye.com/#/bindings?id=%e7%bb%91%e5%ae%9a-app-id-%e5%b9%b6%e8%8e%b7%e5%8f%96token)
+参考[如何获取token](https://www.cdnbye.com/views/bindings.html#%E7%BB%91%E5%AE%9A-app-id-%E5%B9%B6%E8%8E%B7%E5%8F%96token)
 
 ## 控制台
 登录 https://oms.cdnbye.com 并绑定 APPId, 即可查看P2P效果、在线人数等信息。
@@ -76,7 +104,7 @@ _loadVideo() async {
 - [ios-p2p-engine](https://gitee.com/cdnbye/ios-p2p-engine) - iOS端P2P流媒体加速引擎。
 
 ## FAQ
-我们收集了一些[常见问题](https://docs.cdnbye.com/#/FAQ)。在报告issue之前请先查看一下。
+我们收集了一些[常见问题](https://www.cdnbye.com/views/FAQ.html)。在报告issue之前请先查看一下。
 
 ## 联系我们
 邮箱：service@cdnbye.com

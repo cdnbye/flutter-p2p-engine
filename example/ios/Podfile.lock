@@ -32,7 +32,7 @@ DEPENDENCIES:
   - video_player_web (from `.symlinks/plugins/video_player_web/ios`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - CDNByeSDK
     - CocoaAsyncSocket
     - CocoaLumberjack
@@ -60,10 +60,10 @@ SPEC CHECKSUMS:
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
   PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
-  video_player: 9cc823b1d9da7e8427ee591e8438bfbcde500e6e
+  video_player: 69c5f029fac4ffe4fc8a85ea7f7b793709661549
   video_player_web: da8cadb8274ed4f8dbee8d7171b420dedd437ce7
   WebRTCDatachannel: acddf02a4ed2f825ececd2e64cbf971c0a209ceb
 
 PODFILE CHECKSUM: e9e6b2d1b4659eb7ca9c31439eb8716d7d418981
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.9.1

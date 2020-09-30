@@ -4,6 +4,7 @@ import 'package:cdnbye_example/pages/videoPage.dart';
 import 'package:flutter/material.dart';
 import 'package:cdnbye/cdnbye.dart';
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -28,7 +29,8 @@ class _MyAppState extends State<MyApp> {
       infoListener: _listen,
       segmentIdGenerator: (level, sn, url) {
         // TODO: segmentIdGenerator
-        return url;
+        // return url;
+        return "$level-$sn";
       },
     );
 

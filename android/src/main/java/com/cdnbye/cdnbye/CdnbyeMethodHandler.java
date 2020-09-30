@@ -91,7 +91,7 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                     Map<String, Object> args = new HashMap<>();
                     args.put("level", level);
                     args.put("sn", sn);
-                    args.put("urlString", urlString);
+                    args.put("url", urlString);
                     CountDownLatch latch = new CountDownLatch(1);
                     activity.runOnUiThread(new Runnable() {
                         @Override
@@ -99,8 +99,11 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                             channel.invokeMethod("segmentId", args, new MethodChannel.Result() {
                                 @Override
                                 public void success(@Nullable Object result) {
-                                    System.out.println("native result: " + result);
-                                    if (result != null) segmentId = result.toString();
+//                                    System.out.println("native result: " + result);
+                                    if (result != null) {
+                                        Map map = (Map<String, String>) result;
+                                        segmentId = (String) map.get("result");
+                                    }
                                     latch.countDown();
                                 }
 
@@ -121,7 +124,7 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("native segmentId: " + segmentId);
+//                    System.out.println("native segmentId: " + segmentId);
                     return segmentId;
                 }
             });

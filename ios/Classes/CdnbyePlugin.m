@@ -29,15 +29,18 @@
 
       [CBP2pEngine sharedInstance].segmentId = ^NSString * _Nonnull(NSUInteger level, NSUInteger sn, NSString * _Nonnull urlString) {
 
-              NSDictionary *arguments = @{@"level": @(level), @"sn": @(sn), @"urlString": urlString};
+              NSDictionary *arguments = @{@"level": @(level), @"sn": @(sn), @"url": urlString};
               __block NSString *segmentId = urlString;
               dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
               [self->channel invokeMethod:@"segmentId" arguments:arguments result:^(id  _Nullable result) {
-                  NSLog(@"native segmentId %@", result);
-                  if (result) segmentId = (NSString *)result;
+                  if (result) {
+                      NSDictionary *map = (NSDictionary *)result;
+                      segmentId = (NSString *)map[@"result"];
+                  }
                   dispatch_semaphore_signal(semaphore);
               }];
               dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, 100 * NSEC_PER_MSEC));
+//              NSLog(@"native segmentId %@", segmentId);
               return segmentId;
           };
 

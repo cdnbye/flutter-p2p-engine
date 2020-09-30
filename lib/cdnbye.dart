@@ -32,14 +32,15 @@ class Cdnbye {
         var map = Map<String, dynamic>.from(call.arguments);
         infoListener?.call(map);
       } else if (call.method == 'segmentId') {
-        await _channel.invokeMethod('onSegmentIdComplete', {
+        return {
           'result': segmentIdGenerator?.call(
             call.arguments['level'],
             call.arguments['sn'],
             call.arguments['url'],
           ),
-        });
+        };
       }
+      return {"success": true};
     });
     return success;
   }

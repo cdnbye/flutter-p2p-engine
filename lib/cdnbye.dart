@@ -34,10 +34,11 @@ class Cdnbye {
       } else if (call.method == 'segmentId') {
         return {
           'result': segmentIdGenerator?.call(
-            call.arguments['level'],
-            call.arguments['sn'],
-            call.arguments['url'],
-          ),
+                call.arguments['level'],
+                call.arguments['sn'],
+                call.arguments['url'],
+              ) ??
+              call.arguments['url'],
         };
       }
       return {"success": true};

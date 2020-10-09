@@ -181,15 +181,17 @@ Cdnbye.init(
   },
 );
 ```
-<!-- 
 ### 设置HTTP请求头
-出于防盗链或者统计的需求，有些HTTP请求需要加上 ***referer*** 或者 ***User-Agent*** 等头信息，可以通过 ***setHttpHeaders*** 进行设置：
-```java
-Map headers = new HashMap();
-headers.put("referer", "XXX");
-headers.put("User-Agent", "XXX");
-engine.setHttpHeaders(headers);
+出于防盗链或者统计的需求，有些HTTP请求需要加上 ***referer*** 或者 ***User-Agent*** 等头信息，可以通过 ***httpHeaders*** 进行设置：
+```dart
+P2pConfig(
+  httpHeaders: {
+    "referer": "XXX",
+    "User-Agent": "XXX",
+  }
+)
 ```
+<!-- 
 
 ### 切换信令
 某些场景下需要动态修改信令地址，防止单个信令负载过大，例如根据播放地址的哈希值选择信令。可以通过调用 ***engine.setConfig(config)*** 运行时动态调整配置，示例如下：

@@ -7,13 +7,13 @@ typedef CdnByeInfoListener = void Function(Map<String, dynamic>);
 class Cdnbye {
   static const MethodChannel _channel = const MethodChannel('cdnbye');
 
-  // The version of SDK. SDK的版本号
+  /// The version of SDK. SDK的版本号
   static Future<String> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');
     return version;
   }
 
-  // Create a new instance with token and the specified config.
+  /// Create a new instance with token and the specified config.
   static Future<int> init(
     token, {
     P2pConfig config,
@@ -46,7 +46,7 @@ class Cdnbye {
     return success;
   }
 
-  // Get parsed local stream url by passing the original stream url(m3u8) to CBP2pEngine instance.
+  /// Get parsed local stream url by passing the original stream url(m3u8) to CBP2pEngine instance.
   static Future<String> parseStreamURL(
     String sourceUrl, [
     String videoId,
@@ -58,20 +58,20 @@ class Cdnbye {
     return url;
   }
 
-  // Get the connection state of p2p engine. 获取P2P Engine的连接状态
+  /// Get the connection state of p2p engine. 获取P2P Engine的连接状态
   static Future<bool> isConnected() => _channel.invokeMethod('isConnected');
 
-  // Restart p2p engine.
+  /// Restart p2p engine.
   static Future restartP2p() => _channel.invokeMethod('restartP2p');
 
-  // Stop p2p and free used resources.
+  /// Stop p2p and free used resources.
   static Future stopP2p() => _channel.invokeMethod('stopP2p');
 
-  // Get the peer ID of p2p engine. 获取P2P Engine的peer ID
+  /// Get the peer ID of p2p engine. 获取P2P Engine的peer ID
   static Future<String> getPeerId() => _channel.invokeMethod('getPeerId');
 }
 
-// Print log level.
+/// Print log level.
 enum P2pLogLevel {
   none,
   debug,
@@ -80,7 +80,7 @@ enum P2pLogLevel {
   error,
 }
 
-// The configuration of p2p engine.
+/// The configuration of p2p engine.
 class P2pConfig {
   /// 打印日志的级别
   final P2pLogLevel logLevel;

@@ -29,8 +29,8 @@ class _MyAppState extends State<MyApp> {
       infoListener: _listen,
       segmentIdGenerator: (level, sn, url) {
         // TODO: segmentIdGenerator
-        // return url;
-        return "$level-$sn";
+        return url;
+        // return "$level-$sn";
       },
     );
 

@@ -33,7 +33,7 @@
 [http://d.6short.com/cdnbye](http://d.6short.com/cdnbye)
 
 ## 使用方法
-参考 [文档](https://www.cdnbye.com/views/flutter/usage.html)
+参考 [文档](https://www.cdnbye.com/cn/views/flutter/usage.html)
 
 ## ijkplayer使用示例
 > 由于ijk的安装远没有官方的videoplayer快，所以单独作为一个仓库，而不是作为pub库中随附的example。

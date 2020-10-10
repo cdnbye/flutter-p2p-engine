@@ -16,6 +16,7 @@
 - Efficient scheduling policies to enhance the performance of P2P streaming
 - Highly configurable
 - Use IP database to group up peers by ISP and regions
+- Only use Datachannels and PeerConnection modules in WenRTC, which made smaller SDK size(< 2MB)
 
 ## Screenshot
 <div style="text-align: center"><table><tr>
@@ -27,41 +28,13 @@
 </td>
 </tr></table></div>
 
-## Environment Configuration
-See [documentation](https://p2p.cdnbye.com/en/views/flutter.html)
+## Usage
+See [documentation](https://p2p.cdnbye.com/en/views/flutter/usage.html)
 
-## Example
-```dart
-import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
-import 'package:cdnbye/cdnbye.dart';
-
-// Init p2p engine
-_initEngine();
-
-// Start playing video
-_loadVideo();
-
-_initEngine() async {
-    await Cdnbye.init(
-      YOUR_TOKEN,
-      config: P2pConfig.byDefault()
-    );
-}
-
-_loadVideo() async {
-    var url = YOUR_STREAM_URL;
-    url = await Cdnbye.parseStreamURL(url);           // Parse your stream url
-    player = VideoPlayerController.network(url);
-    player.play();
-}
-```
-
-## Example using ijk_player.
-
+## Example using ijk_player
 [cdnbye_ijk_example](https://github.com/mjl0602/cdnbye_ijk_example)
 
-## Obtain Token
+## Request Token
 See [here](https://p2p.cdnbye.com/en/views/bindings.html#app-id-and-token)
 
 ## Consloe
@@ -86,5 +59,3 @@ Telegram: @cdnbye
 <br>
 Skype: live:86755838
 
-### Join the Discussion
-[Telegram Group](https://t.me/cdnbye_group)

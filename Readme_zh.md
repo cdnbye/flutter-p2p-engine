@@ -17,6 +17,7 @@
 - 高可配置化，用户可以根据特定的使用环境调整各个参数
 - 通过有效的调度策略来保证用户的播放体验以及p2p分享率
 - Tracker服务器根据访问IP的ISP、地域等进行智能调度
+- 已将WebRTC无用模块裁减掉，SDK体积不到2MB
 
 ## 截屏
 <div style="text-align: center"><table><tr>
@@ -31,60 +32,10 @@
 ## Demo下载
 [http://d.6short.com/cdnbye](http://d.6short.com/cdnbye)
 
-## 环境配置
-参考 [文档](https://www.cdnbye.com/views/flutter.html)
+## 使用方法
+参考 [文档](https://www.cdnbye.com/views/flutter/usage.html)
 
-## 引入插件
-
-```yaml
-dependencies:
-  cdnbye: ^0.6.0
-```
-
-如果你创建项目时的flutter版本低于1.12，那么你可能只能使用0.4.1版本的cdnbye插件
-```yaml
-dependencies:
-  cdnbye: ^0.4.1
-```
-通过如下方法可以升级flutter的安卓版本结构以使用更高版本的cndbye：
-```bash
-# 升级flutter到1.12以上
-flutter upgrade
-# 完全移除当前的安卓项目，请记得备份你的平台代码，图标与权限信息
-rm -rf ./android
-# 创建新的flutter项目，请不要遗漏命令最后的点号
-flutter creat -a java .
-# 恢复你的平台代码，图标与权限即可
-```
-
-## 示例
-```dart
-import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
-import 'package:cdnbye/cdnbye.dart';
-
-// Init p2p engine
-_initEngine();
-
-// Start playing video
-_loadVideo();
-
-_initEngine() async {
-    await Cdnbye.init(
-      YOUR_TOKEN,
-      config: P2pConfig.byDefault()
-    );
-}
-
-_loadVideo() async {
-    var url = YOUR_STREAM_URL;
-    url = await Cdnbye.parseStreamURL(url);           // Parse your stream url
-    player = VideoPlayerController.network(url);
-    player.play();
-}
-```
-
-## ijkplayer使用示例.
+## ijkplayer使用示例
 > 由于ijk的安装远没有官方的videoplayer快，所以单独作为一个仓库，而不是作为pub库中随附的example。
 
 GitHub地址：[cdnbye_ijk_example](https://github.com/mjl0602/cdnbye_ijk_example)  

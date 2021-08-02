@@ -7,20 +7,21 @@ typedef CdnByeInfoListener = void Function(Map<String, dynamic>);
 class Cdnbye {
   static const MethodChannel _channel = const MethodChannel('cdnbye');
 
-  /// The version of SDK. SDK的版本号
+  /// The version of SDK.
+  /// SDK的版本号
   static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
+    final String? version = await _channel.invokeMethod('getPlatformVersion');
+    return version ?? 'Unknown Version';
   }
 
   /// Create a new instance with token and the specified config.
   static Future<int> init(
     token, {
-    P2pConfig config,
-    CdnByeInfoListener infoListener,
-    String Function(int level, int sn, String url) segmentIdGenerator,
+    required P2pConfig config,
+    CdnByeInfoListener? infoListener,
+    String Function(int? level, int? sn, String? url)? segmentIdGenerator,
   }) async {
-    final int success = await _channel.invokeMethod('init', {
+    final int? success = await _channel.invokeMethod('init', {
       'token': token,
       'config': config.toMap,
     });
@@ -43,15 +44,18 @@ class Cdnbye {
       }
       return {"success": true};
     });
+    if (success == null) {
+      throw 'Not Avaliable Result: $success. Init fail.';
+    }
     return success;
   }
 
   /// Get parsed local stream url by passing the original stream url(m3u8) to CBP2pEngine instance.
-  static Future<String> parseStreamURL(
+  static Future<String?> parseStreamURL(
     String sourceUrl, [
-    String videoId,
+    String? videoId,
   ]) async {
-    final String url = await _channel.invokeMethod('parseStreamURL', {
+    final String? url = await _channel.invokeMethod('parseStreamURL', {
       'url': sourceUrl,
       'videoId': videoId ?? sourceUrl,
     });
@@ -59,16 +63,18 @@ class Cdnbye {
   }
 
   /// Get the connection state of p2p engine. 获取P2P Engine的连接状态
-  static Future<bool> isConnected() => _channel.invokeMethod('isConnected');
+  static Future<bool> isConnected() async =>
+      (await _channel.invokeMethod('isConnected')) == true;
 
   /// Restart p2p engine.
-  static Future restartP2p() => _channel.invokeMethod('restartP2p');
+  static Future<void> restartP2p() => _channel.invokeMethod('restartP2p');
 
   /// Stop p2p and free used resources.
-  static Future stopP2p() => _channel.invokeMethod('stopP2p');
+  static Future<void> stopP2p() => _channel.invokeMethod('stopP2p');
 
   /// Get the peer ID of p2p engine. 获取P2P Engine的peer ID
-  static Future<String> getPeerId() => _channel.invokeMethod('getPeerId');
+  static Future<String> getPeerId() async =>
+      (await _channel.invokeMethod('getPeerId')) ?? 'Unknown peer Id';
 }
 
 /// Print log level.
@@ -128,7 +134,7 @@ class P2pConfig {
   final bool wifiOnly;
 
   /// 设置请求ts和m3u8时的HTTP请求头
-  final Map<String, String> httpHeaders;
+  final Map<String, String>? httpHeaders;
 
   /// 如果使用自定义的channelId，则此字段必须设置，且长度必须在5到15个字符之间，建议设置成你所在组织的唯一标识
   final String channelIdPrefix;
@@ -175,7 +181,7 @@ class P2pConfig {
         'maxPeerConnections': maxPeerConnections,
         'useHttpRange': useHttpRange,
         'wifiOnly': wifiOnly,
-        'httpHeaders': httpHeaders,
+        'httpHeaders': httpHeaders ?? {},
         'channelIdPrefix': channelIdPrefix,
         'isSetTopBox': isSetTopBox,
       };

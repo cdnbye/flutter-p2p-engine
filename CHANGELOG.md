@@ -1,4 +1,8 @@
 
+## 1.0.0-nullsafety.0
+
+将dart代码升级到了空安全
+
 ## 0.7.0
 
 * Update SDK version: iOS(1.8.0) Android(1.8.1)

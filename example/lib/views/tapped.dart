@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 class Tapped extends StatefulWidget {
   Tapped({this.child, this.onTap});
-  final Widget child;
-  final Function onTap;
+  final Widget? child;
+  final Function? onTap;
   @override
   _TappedState createState() => _TappedState();
 }
 
 class _TappedState extends State<Tapped> with TickerProviderStateMixin {
   bool isChangeAlpha = false;
-  double alpha;
+  double? alpha;
 
-  AnimationController controller;
-  Animation animation;
+  late AnimationController controller;
+  late Animation animation;
 
   @override
   void initState() {
@@ -49,7 +49,7 @@ class _TappedState extends State<Tapped> with TickerProviderStateMixin {
       onTap: () async {
         if (widget.onTap != null) {
           await Future.delayed(Duration(milliseconds: 100));
-          widget.onTap();
+          widget.onTap!();
         }
       },
       onTapDown: (detail) async {

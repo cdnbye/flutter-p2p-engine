@@ -36,7 +36,7 @@ class _VideoListState extends State<VideoList> {
       ];
 
   _toCustomVideoPage() async {
-    String url = await showDialog(
+    String? url = await showDialog(
       context: context,
       builder: (context) => _InputDialog(),
     );
@@ -111,8 +111,8 @@ class _VideoListState extends State<VideoList> {
 
 class _AlertUrlErrorDialog extends StatelessWidget {
   const _AlertUrlErrorDialog({
-    Key key,
-    @required this.url,
+    Key? key,
+    required this.url,
   }) : super(key: key);
 
   final String url;
@@ -153,7 +153,7 @@ class _AlertUrlErrorDialog extends StatelessWidget {
 
 class _InputDialog extends StatefulWidget {
   const _InputDialog({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -203,9 +203,9 @@ class __InputDialogState extends State<_InputDialog> {
 }
 
 class VideoResourceRow extends StatelessWidget {
-  final VideoResource resource;
+  final VideoResource? resource;
   const VideoResourceRow({
-    Key key,
+    Key? key,
     this.resource,
   }) : super(key: key);
   @override
@@ -215,7 +215,7 @@ class VideoResourceRow extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          resource.title,
+          resource!.title,
           style: TextStyle(
             fontSize: 16,
             color: Color(0xff4a4a4a),
@@ -224,7 +224,7 @@ class VideoResourceRow extends StatelessWidget {
         Container(
           margin: EdgeInsets.only(top: 10),
           child: Text(
-            resource.description,
+            resource!.description,
             maxLines: 4,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
@@ -249,7 +249,7 @@ class VideoResourceRow extends StatelessWidget {
                 minHeight: 88,
               ),
               margin: EdgeInsets.fromLTRB(12, 10, 12, 10),
-              child: Image.network(resource.image),
+              child: Image.network(resource!.image),
             ),
             Expanded(
               child: Container(

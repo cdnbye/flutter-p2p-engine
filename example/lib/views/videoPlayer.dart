@@ -3,26 +3,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class VideoPlayerWidget extends StatelessWidget {
-  final Widget video;
-  final double aspectRatio;
-  final int videoDuration;
-  final int videoPositon;
-  final bool showToolLayer;
-  final bool isPlaying;
-  final bool loading;
+  final Widget? video;
+  final double? aspectRatio;
+  final int? videoDuration;
+  final int? videoPositon;
+  final bool? showToolLayer;
+  final bool? isPlaying;
+  final bool? loading;
   // 事件
-  final Function onTap;
-  final Function onTapPlay;
-  final Function onTapFullScreen;
-  final Function(double) onSlideStart;
-  final Function(double) onSlideChange;
-  final Function(double) onSlideEnd;
+  final Function? onTap;
+  final Function? onTapPlay;
+  final Function? onTapFullScreen;
+  final Function(double)? onSlideStart;
+  final Function(double)? onSlideChange;
+  final Function(double)? onSlideEnd;
 
   String get positionStr {
-    var sec = (videoDuration ~/ 1000) % 60;
-    var min = (videoDuration ~/ 1000) ~/ 60;
-    var nowSec = (videoPositon ~/ 1000) % 60;
-    var nowMin = (videoPositon ~/ 1000) ~/ 60;
+    var sec = (videoDuration! ~/ 1000) % 60;
+    var min = (videoDuration! ~/ 1000) ~/ 60;
+    var nowSec = (videoPositon! ~/ 1000) % 60;
+    var nowMin = (videoPositon! ~/ 1000) ~/ 60;
     return '${f2(nowMin)}:${f2(nowSec)}/${f2(min)}:${f2(sec)}';
   }
 
@@ -35,7 +35,7 @@ class VideoPlayerWidget extends StatelessWidget {
   }
 
   const VideoPlayerWidget({
-    Key key,
+    Key? key,
     this.video,
     this.aspectRatio,
     this.videoDuration,
@@ -54,7 +54,7 @@ class VideoPlayerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double sliderValue = 0;
     if (videoDuration != 0) {
-      sliderValue = videoPositon / videoDuration;
+      sliderValue = videoPositon! / videoDuration!;
 
       if (sliderValue <= 0) {
         sliderValue = 0;
@@ -69,7 +69,7 @@ class VideoPlayerWidget extends StatelessWidget {
       children: <Widget>[
         Tapped(
           child: Icon(
-            isPlaying ? Icons.pause : Icons.play_arrow,
+            isPlaying! ? Icons.pause : Icons.play_arrow,
             color: Colors.white,
           ),
           onTap: onTapPlay,
@@ -120,7 +120,7 @@ class VideoPlayerWidget extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       child: GestureDetector(
-        onTap: onTap,
+        onTap: onTap as void Function()?,
       ),
     );
 
@@ -130,7 +130,7 @@ class VideoPlayerWidget extends StatelessWidget {
       ],
     );
     toolLayer = AnimatedOpacity(
-      opacity: showToolLayer ? 1 : 0,
+      opacity: showToolLayer! ? 1 : 0,
       duration: Duration(milliseconds: 200),
       curve: Curves.bounceInOut,
       child: toolLayer,
@@ -149,13 +149,13 @@ class VideoPlayerWidget extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           child: AspectRatio(
-            aspectRatio: aspectRatio,
+            aspectRatio: aspectRatio!,
             child: Container(
               child: video,
             ),
           ),
         ),
-        loading ? loadingWidget : Container(),
+        loading! ? loadingWidget : Container(),
         eventGesture,
         Container(
           height: double.infinity,

@@ -9,10 +9,10 @@ import 'package:video_player/video_player.dart';
 import 'package:cdnbye/cdnbye.dart';
 
 class VideoPage extends StatefulWidget {
-  final VideoResource resource;
+  final VideoResource? resource;
 
   const VideoPage({
-    Key key,
+    Key? key,
     this.resource,
   }) : super(key: key);
 
@@ -21,7 +21,7 @@ class VideoPage extends StatefulWidget {
 }
 
 class _VideoPageState extends State<VideoPage> {
-  VideoPlayerController vpController;
+  VideoPlayerController? vpController;
 
   @override
   void dispose() {
@@ -63,19 +63,17 @@ class _VideoPageState extends State<VideoPage> {
   }
 
   // 累加value到map中，如果没有就新建
-  _addValue(key, value) {
+  _addValue(String key, int value) {
     if (map.containsKey(key)) {
-      map[key] += value;
+      map[key] = map[key]! + value;
     } else {
       map[key] = value;
     }
   }
 
   _loadVideo() async {
-    var url = widget.resource?.url ??
+    String? url = widget.resource?.url ??
         'https://iqiyi.com-t-iqiyi.com/20190722/5120_0f9eec31/index.m3u8';
-    // var url =
-    //     'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8';
     print('Original URL: $url');
     url = await Cdnbye.parseStreamURL(url);
     print('Parsed URL: $url');
@@ -86,12 +84,12 @@ class _VideoPageState extends State<VideoPage> {
     isplay = true;
     vpController?.dispose();
     setState(() {});
-    vpController = VideoPlayerController.network(url);
+    vpController = VideoPlayerController.network(url!);
     try {
-      await vpController.initialize();
-      vpController.addListener(_onplay);
-      vpController.play();
-      videoDuration = vpController.value.duration?.inMilliseconds;
+      await vpController!.initialize();
+      vpController!.addListener(_onplay);
+      vpController!.play();
+      videoDuration = vpController!.value.duration.inMilliseconds;
       setState(() {});
     } catch (e) {
       print('catch:$e');
@@ -104,14 +102,14 @@ class _VideoPageState extends State<VideoPage> {
   _onplay() {
     // if (isplay) {
     _isLoading = false;
-    position = vpController.value.position.inMilliseconds;
+    position = vpController!.value.position.inMilliseconds;
     setState(() {});
     // }
   }
 
   // 拖动进度条
   _seekVideoTo(double value) async {
-    await vpController.seekTo(
+    await vpController!.seekTo(
       Duration(milliseconds: (value * videoDuration).toInt()),
     );
     position = (value * videoDuration).toInt();
@@ -144,12 +142,12 @@ class _VideoPageState extends State<VideoPage> {
   bool isplay = false;
   @override
   Widget build(BuildContext context) {
-    bool hasVideo = vpController?.value?.isPlaying ?? false;
+    bool hasVideo = vpController?.value.isPlaying ?? false;
     Widget video;
     double aspectRatio = 16 / 9.0;
     if (hasVideo) {
-      video = VideoPlayer(vpController);
-      aspectRatio = vpController?.value?.aspectRatio ?? 16 / 9.0;
+      video = VideoPlayer(vpController!);
+      aspectRatio = vpController?.value.aspectRatio ?? 16 / 9.0;
     } else {
       video = Container(
         color: Color(0xff000000),
@@ -172,7 +170,7 @@ class _VideoPageState extends State<VideoPage> {
           showToolLayer: showUi,
           onTap: () async {
             // 隐藏或显示UI
-            if (!vpController.value.initialized) {
+            if (!vpController!.value.isInitialized) {
               return;
             }
             showUi = !showUi;
@@ -185,13 +183,13 @@ class _VideoPageState extends State<VideoPage> {
           },
           onTapPlay: () async {
             // 点击播放
-            if (!vpController.value.initialized) {
+            if (!vpController!.value.isInitialized) {
               return;
             }
             if (isplay) {
-              vpController.pause();
+              vpController!.pause();
             } else {
-              vpController.play();
+              vpController!.play();
             }
             isplay = !isplay;
             setState(() {});
@@ -228,8 +226,8 @@ class _VideoPageState extends State<VideoPage> {
           title: 'Replay',
           onTap: () async {
             position = 0;
-            await vpController.seekTo(Duration(seconds: 0));
-            vpController.play();
+            await vpController!.seekTo(Duration(seconds: 0));
+            vpController!.play();
           },
         ),
         ActionButton(
@@ -324,16 +322,16 @@ class _VideoPageState extends State<VideoPage> {
 }
 
 class InfoRow extends StatelessWidget {
-  final String k1;
+  final String? k1;
   final dynamic v1;
-  final String k2;
+  final String? k2;
   final dynamic v2;
 
   String get v1Str => v1?.toString() ?? '0';
   String get v2Str => v2?.toString() ?? '0';
 
   const InfoRow({
-    Key key,
+    Key? key,
     this.k1,
     this.v1,
     this.k2,
@@ -361,17 +359,17 @@ class InfoRow extends StatelessWidget {
 }
 
 class ActionButton extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final Function onTap;
+  final IconData? icon;
+  final String? title;
+  final Function? onTap;
   final Color color;
 
   const ActionButton({
-    Key key,
+    Key? key,
     this.icon,
     this.title,
     this.onTap,
-    @required this.color,
+    required this.color,
   }) : super(key: key);
 
   @override
@@ -399,7 +397,7 @@ class ActionButton extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(top: 4),
                 child: Text(
-                  title,
+                  title!,
                   style: TextStyle(
                     color: textColor,
                     fontSize: 8,
@@ -417,13 +415,13 @@ class ActionButton extends StatelessWidget {
 
 class OneInfo extends StatelessWidget {
   const OneInfo({
-    Key key,
+    Key? key,
     this.tag,
     this.value,
   }) : super(key: key);
 
-  final String tag;
-  final String value;
+  final String? tag;
+  final String? value;
 
   @override
   Widget build(BuildContext context) {
@@ -448,7 +446,7 @@ class OneInfo extends StatelessWidget {
                 ),
               ),
             ),
-            Text(value),
+            Text(value!),
           ],
         ),
       ),

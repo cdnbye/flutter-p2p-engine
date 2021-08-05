@@ -5,12 +5,14 @@ import android.app.Activity;
 
 import androidx.annotation.Nullable;
 
-import com.cdnbye.sdk.LogLevel;
-import com.cdnbye.sdk.P2pConfig;
+import com.cdnbye.core.p2p.P2pConfig;
+import com.cdnbye.core.p2p.P2pStatisticsListener;
+import com.cdnbye.core.segment.HlsSegmentIdGenerator;
+import com.cdnbye.core.utils.LogLevel;
 import com.cdnbye.sdk.P2pEngine;
-import com.cdnbye.sdk.P2pStatisticsListener;
-import com.cdnbye.sdk.SegmentIdCallback;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,24 +76,27 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                     .p2pEnabled((boolean) configMap.get("p2pEnabled"))
                     .downloadTimeout((int) configMap.get("downloadTimeout"), TimeUnit.SECONDS)
                     .dcDownloadTimeout((int) configMap.get("dcDownloadTimeout"), TimeUnit.SECONDS)
-                    .withTag((String) configMap.get("tag")).localPort((int) configMap.get("localPort"))
+                    .withTag((String) configMap.get("tag")).localPortHls((int) configMap.get("localPort"))
                     .maxPeerConnections((int) configMap.get("maxPeerConnections"))
                     .useHttpRange((boolean) configMap.get("useHttpRange"))
                     .wifiOnly((boolean) configMap.get("wifiOnly"))
                     .isSetTopBox((boolean) configMap.get("isSetTopBox"))
                     .channelIdPrefix((String) configMap.get("channelIdPrefix"))
-                    .setHttpHeaders((Map<String, String>) configMap.get("httpHeaders"))
+                    .httpHeadersForHls((Map<String, String>) configMap.get("httpHeaders"))
                     .build();
-            P2pEngine.initEngine(activity.getApplication().getApplicationContext(), token, config);
+            P2pEngine.init(activity.getApplication().getApplicationContext(), token, config);
 
-            P2pEngine.getInstance().setSegmentId(new SegmentIdCallback() {
+            P2pEngine.getInstance().setHlsSegmentIdGenerator(new HlsSegmentIdGenerator() {
                 @Override
-                public String onSegmentId(int level, long sn, String urlString) {
-                    segmentId = urlString;
+//                public String onSegmentId(int level, long sn, String urlString) {
+                public String onSegmentId(String streamId, long sn, String segmentUrl, String range) {
+                    segmentId = segmentUrl;
                     Map<String, Object> args = new HashMap<>();
                     args.put("level", level);
                     args.put("sn", sn);
-                    args.put("url", urlString);
+                    args.put("url", segmentUrl);
+                    args.put("streamId", streamId);
+                    args.put("range", range);
                     CountDownLatch latch = new CountDownLatch(1);
                     activity.runOnUiThread(new Runnable() {
                         @Override
@@ -151,7 +156,7 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                 }
 
                 @Override
-                public void onP2pDownloaded(final long value) {
+                public void onP2pDownloaded(final long value, final int value2) {
                     final Map info = new HashMap();
                     info.put("p2pDownloaded", value);
                     activity.runOnUiThread(new Runnable() {
@@ -196,7 +201,17 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
         } else if (call.method.equals("isConnected")) {
             result.success(P2pEngine.getInstance().isConnected());
         } else if (call.method.equals("restartP2p")) {
-            P2pEngine.getInstance().restartP2p();
+            try {
+                Map arguments = (Map) call.arguments;
+                String url = (String) arguments.get("url");
+                if (url == null) {
+                    result.error("No Url","Fail to restart p2p without url.",null);
+                    return;
+                }
+                P2pEngine.getInstance().restartP2p(this.activity.getApplicationContext(),new URL(url));
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
             result.success(1);
         } else if (call.method.equals("stopP2p")) {
             P2pEngine.getInstance().stopP2p();

@@ -1,5 +1,4 @@
 #import "CdnbyePlugin.h"
-#import <CDNByeKit/CBP2pEngine.h>
 #import "CBP2pConfig+FromDic.h"
 @interface CdnbyePlugin(){
     FlutterMethodChannel* channel;
@@ -22,27 +21,26 @@
       NSDictionary *args = call.arguments;
       // NSLog(@"读取初始化配置:\n%@",args);
       NSDictionary *configMap =args[@"config"];
-      CBP2pConfig *config = [CBP2pConfig configFromDictionary:configMap];
+      SWCP2pConfig *config = [SWCP2pConfig configFromDictionary:configMap];
       NSString *token = args[@"token"];
-      [[CBP2pEngine sharedInstance] startWithToken:token andP2pConfig:config];
+      [[SWCP2pEngine sharedInstance] startWithToken:token andP2pConfig:config];
       // NSLog(@"token:\n%@",token);
 
-      [CBP2pEngine sharedInstance].segmentId = ^NSString * _Nonnull(NSUInteger level, NSUInteger sn, NSString * _Nonnull urlString) {
-
-              NSDictionary *arguments = @{@"level": @(level), @"sn": @(sn), @"url": urlString};
-              __block NSString *segmentId = urlString;
-              dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-              [self->channel invokeMethod:@"segmentId" arguments:arguments result:^(id  _Nullable result) {
-                  if (result) {
-                      NSDictionary *map = (NSDictionary *)result;
-                      segmentId = (NSString *)map[@"result"];
-                  }
-                  dispatch_semaphore_signal(semaphore);
-              }];
-              dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, 100 * NSEC_PER_MSEC));
+      [SWCP2pEngine sharedInstance].segmentIdForHls = ^NSString * _Nonnull(NSString * _Nonnull streamId, NSNumber * _Nonnull sn, NSString * _Nonnull segmentUrl, SWCRange byteRange) {
+          NSDictionary *arguments = @{@"level": @(config.logLevel), @"sn": sn, @"url": segmentUrl};
+          __block NSString *segmentId = segmentUrl;
+          dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+          [self->channel invokeMethod:@"segmentId" arguments:arguments result:^(id  _Nullable result) {
+              if (result) {
+                  NSDictionary *map = (NSDictionary *)result;
+                  segmentId = (NSString *)map[@"result"];
+              }
+              dispatch_semaphore_signal(semaphore);
+          }];
+          dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, 100 * NSEC_PER_MSEC));
 //              NSLog(@"native segmentId %@", segmentId);
-              return segmentId;
-          };
+          return segmentId;
+      };
 
       result(@1);
   }
@@ -52,7 +50,7 @@
 
       // NSLog(@"转换URL:\n%@",args);
       NSURL *originalUrl = [NSURL URLWithString:args[@"url"]];
-      result([[CBP2pEngine sharedInstance] parseStreamURL:originalUrl withVideoId:args[@"videoId"]].absoluteString);
+      result([[SWCP2pEngine sharedInstance] parseStreamURL:originalUrl withVideoId:args[@"videoId"]].absoluteString);
       
   }
   
@@ -65,11 +63,11 @@
   }
   
   else if([@"getPlatformVersion" isEqualToString:call.method]) {
-      result(CBP2pEngine.engineVersion);
+      result(SWCP2pEngine.engineVersion);
   }
   
   else if([@"isConnected" isEqualToString:call.method]) {
-      if ([CBP2pEngine sharedInstance].connected) {
+      if ([SWCP2pEngine sharedInstance].isConnected) {
           result([NSNumber numberWithBool:YES]);
       } else {
           result([NSNumber numberWithBool:NO]);
@@ -77,17 +75,17 @@
   }
   
   else if([@"restartP2p" isEqualToString:call.method]) {
-      [[CBP2pEngine sharedInstance] restartP2p];
+      [[SWCP2pEngine sharedInstance] restartP2p];
       result(@1);
   }
   
   else if([@"stopP2p" isEqualToString:call.method]) {
-      [[CBP2pEngine sharedInstance] stopP2p];
+      [[SWCP2pEngine sharedInstance] stopP2p];
       result(@1);
   }
   
   else if([@"getPeerId" isEqualToString:call.method]) {
-      result([CBP2pEngine sharedInstance].peerId);
+      result([SWCP2pEngine sharedInstance].peerId);
   }
     
   else {

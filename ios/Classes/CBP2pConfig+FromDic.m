@@ -7,10 +7,10 @@
 
 #import "CBP2pConfig+FromDic.h"
 
-@implementation CBP2pConfig (FromDic)
+@implementation SWCP2pConfig (FromDic)
 
 +(instancetype)configFromDictionary:(NSDictionary *)configMap{
-    CBP2pConfig *config = [[CBP2pConfig alloc]init];
+    SWCP2pConfig *config = [[SWCP2pConfig alloc]init];
     config.logLevel = ((NSNumber *)configMap[@"logLevel"]).integerValue;
     //config.webRTCConfig = (NSDictionary *)configMap[@"webRTCConfig"];
     config.wsSignalerAddr = (NSString *)configMap[@"wsSignalerAddr"];
@@ -20,7 +20,7 @@
 //    config.memoryCacheCountLimit = ((NSNumber *)configMap[@"memoryCacheCountLimit"]).integerValue;
     config.downloadTimeout = ((NSNumber *)configMap[@"downloadTimeout"]).integerValue;
     config.dcDownloadTimeout = ((NSNumber *)configMap[@"dcDownloadTimeout"]).integerValue;
-    config.localPort = ((NSNumber *)configMap[@"localPort"]).integerValue;
+    config.localPortHls = ((NSNumber *)configMap[@"localPort"]).integerValue;
     config.maxPeerConnections = ((NSNumber *)configMap[@"maxPeerConnections"]).integerValue;
     config.tag = (NSString *)configMap[@"tag"];
     config.useHttpRange = ((NSNumber *)configMap[@"useHttpRange"]).integerValue;
@@ -29,7 +29,7 @@
     
     NSDictionary* httpHeaders = (NSDictionary *)configMap[@"httpHeaders"];
     if (![httpHeaders isEqual:[NSNull null]]) {
-        config.httpHeaders = httpHeaders;
+        config.httpHeadersForHls = httpHeaders;
     }
     
     return config;

@@ -1,6 +1,0 @@
-framework module SwarmCloudSDK {
-  umbrella header "SwarmCloudSDK.h"
-
-  export *
-  module * { export * }
-}

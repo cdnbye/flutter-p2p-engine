@@ -27,11 +27,11 @@ class _MyAppState extends State<MyApp> {
         logLevel: P2pLogLevel.debug,
       ),
       infoListener: _listen,
-      segmentIdGenerator: (level, sn, url) {
-        // TODO: segmentIdGenerator
-        return url!;
-        // return "$level-$sn";
-      },
+      // segmentIdGenerator: (level, sn, url) {
+      //   // TODO: segmentIdGenerator
+      //   return url!;
+      //   // return "$level-$sn";
+      // },
     );
 
     super.initState();

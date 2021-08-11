@@ -11,27 +11,17 @@ class VideoList extends StatefulWidget {
 class _VideoListState extends State<VideoList> {
   List<VideoResource> get _list => [
         VideoResource(
-          title: 'VOD Test',
-          image: 'https://geo-media.beatport.com/image/bcca19bb-9857-4b58-8ffe-7b6eab8bb92f.jpg',
-          description:
-              'VOD Test',
-          url:
-              'https://demo-vod.streamroot.io/index.m3u8',
+          title: '直播测试',
+          description: '直播测试',
+          isLive: true,
+          url: 'https://wowza.peer5.com'
+              '/live/smil:bbb_abr.smil/chunklist_b591000.m3u8',
         ),
         VideoResource(
-          title: 'Live Test',
-          image: 'https://p.kindpng.com/picc/s/207-2078945_live-icon-png-transparent-png.png',
-          description:
-              'Live Test',
-          url:
-              'https://wowza.peer5.com/live/smil:bbb_abr.smil/playlist.m3u8',
-        ),
-        VideoResource(
-          title: '鹤峰综合',
-          image:
-              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3005597700,3138816002&fm=26&gp=0.jpg',
-          description: '新闻直播',
-          url: 'http://hefeng.live.tempsource.cjyun.org/videotmp/s10100-hftv.m3u8',
+          title: '点播测试',
+          description: '点播测试',
+          url: 'https://video.cdnbye.com'
+              '/0cf6732evodtransgzp1257070836/e0d4b12e5285890803440736872/v.f100220.m3u8',
         ),
       ];
 
@@ -203,10 +193,10 @@ class __InputDialogState extends State<_InputDialog> {
 }
 
 class VideoResourceRow extends StatelessWidget {
-  final VideoResource? resource;
+  final VideoResource resource;
   const VideoResourceRow({
     Key? key,
-    this.resource,
+    required this.resource,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -215,7 +205,7 @@ class VideoResourceRow extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          resource!.title,
+          resource.title,
           style: TextStyle(
             fontSize: 16,
             color: Color(0xff4a4a4a),
@@ -224,7 +214,7 @@ class VideoResourceRow extends StatelessWidget {
         Container(
           margin: EdgeInsets.only(top: 10),
           child: Text(
-            resource!.description,
+            resource.description,
             maxLines: 4,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
@@ -242,15 +232,16 @@ class VideoResourceRow extends StatelessWidget {
         width: double.infinity,
         child: Row(
           children: <Widget>[
-            Container(
-              width: 66,
-              constraints: BoxConstraints(
-                minWidth: 66,
-                minHeight: 88,
+            if (resource.image.isNotEmpty)
+              Container(
+                width: 66,
+                constraints: BoxConstraints(
+                  minWidth: 66,
+                  minHeight: 88,
+                ),
+                margin: EdgeInsets.fromLTRB(12, 10, 12, 10),
+                child: Image.network(resource.image),
               ),
-              margin: EdgeInsets.fromLTRB(12, 10, 12, 10),
-              child: Image.network(resource!.image),
-            ),
             Expanded(
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 16),

@@ -1,8 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+import 'package:safemap/safemap.dart';
 
 typedef CdnByeInfoListener = void Function(Map<String, dynamic>);
+typedef SegmentIdGenerator = String? Function(
+  String streamId,
+  int sn,
+  String segmentUrl,
+  String? range,
+);
 
 class Cdnbye {
   static const MethodChannel _channel = const MethodChannel('cdnbye');
@@ -19,7 +26,7 @@ class Cdnbye {
     token, {
     required P2pConfig config,
     CdnByeInfoListener? infoListener,
-    String Function(int? level, int? sn, String? url)? segmentIdGenerator,
+    SegmentIdGenerator? segmentIdGenerator,
   }) async {
     final int? success = await _channel.invokeMethod('init', {
       'token': token,
@@ -33,11 +40,13 @@ class Cdnbye {
         var map = Map<String, dynamic>.from(call.arguments);
         infoListener?.call(map);
       } else if (call.method == 'segmentId') {
+        var data = SafeMap(call.arguments);
         return {
-          'result': segmentIdGenerator?.call(
-                call.arguments['level'],
-                call.arguments['sn'],
-                call.arguments['url'],
+          'result': (segmentIdGenerator ?? defaultSegmentIdGenerator).call(
+                data['streamId'].string ?? "",
+                data['sn'].intValue ?? 0,
+                data['segmentUrl'].string ?? "",
+                data['range'].string,
               ) ??
               call.arguments['url'],
         };
@@ -61,6 +70,25 @@ class Cdnbye {
     });
     return url;
   }
+
+  static SegmentIdGenerator defaultSegmentIdGenerator = (
+    String streamId,
+    int sn,
+    String segmentUrl,
+    String? range,
+  ) {
+    String segId = segmentUrl;
+    if (segmentUrl.contains("?")) {
+      segId = segmentUrl.substring(0, segmentUrl.indexOf('?'));
+    }
+    if (segmentUrl.startsWith("http")) {
+      segId = segmentUrl.replaceFirst("(http|https):\\/\\/", "");
+    }
+    if (range != null) {
+      segId += "|" + range;
+    }
+    return segId;
+  };
 
   /// Get the connection state of p2p engine. 获取P2P Engine的连接状态
   static Future<bool> isConnected() async =>

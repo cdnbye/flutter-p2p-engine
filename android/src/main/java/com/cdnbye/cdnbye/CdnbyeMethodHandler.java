@@ -92,7 +92,6 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                 public String onSegmentId(String streamId, long sn, String segmentUrl, String range) {
                     segmentId = segmentUrl;
                     Map<String, Object> args = new HashMap<>();
-                    args.put("level", level);
                     args.put("sn", sn);
                     args.put("url", segmentUrl);
                     args.put("streamId", streamId);

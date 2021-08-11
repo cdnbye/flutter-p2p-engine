@@ -81,6 +81,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.8.0"
+  safemap:
+    dependency: "direct main"
+    description:
+      name: safemap
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.1.0"
   sky_engine:
     dependency: transitive
     description: flutter

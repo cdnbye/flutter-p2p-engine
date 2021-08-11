@@ -27,7 +27,7 @@
       // NSLog(@"token:\n%@",token);
 
       [SWCP2pEngine sharedInstance].segmentIdForHls = ^NSString * _Nonnull(NSString * _Nonnull streamId, NSNumber * _Nonnull sn, NSString * _Nonnull segmentUrl, SWCRange byteRange) {
-          NSDictionary *arguments = @{@"level": @(config.logLevel), @"sn": sn, @"url": segmentUrl};
+          NSDictionary *arguments = @{@"streamId": streamId, @"sn": sn, @"segmentUrl": segmentUrl, @"byteRange": byteRange};
           __block NSString *segmentId = segmentUrl;
           dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
           [self->channel invokeMethod:@"segmentId" arguments:arguments result:^(id  _Nullable result) {
@@ -38,7 +38,6 @@
               dispatch_semaphore_signal(semaphore);
           }];
           dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, 100 * NSEC_PER_MSEC));
-//              NSLog(@"native segmentId %@", segmentId);
           return segmentId;
       };
 

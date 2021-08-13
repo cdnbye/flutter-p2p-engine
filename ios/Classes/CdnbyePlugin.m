@@ -16,6 +16,19 @@
     
 }
 
++ (NSString *)SWCRangeGetHeaderString:(SWCRange)range
+{
+    NSMutableString *string = [NSMutableString stringWithFormat:@"bytes="];
+    if (range.start != SWCNotFound) {
+        [string appendFormat:@"%lld", range.start];
+    }
+    [string appendFormat:@"-"];
+    if (range.end != SWCNotFound) {
+        [string appendFormat:@"%lld", range.end];
+    }
+    return [string copy];
+}
+
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
   if ([@"init" isEqualToString:call.method]) {
       NSDictionary *args = call.arguments;
@@ -27,7 +40,12 @@
       // NSLog(@"token:\n%@",token);
 
       [SWCP2pEngine sharedInstance].segmentIdForHls = ^NSString * _Nonnull(NSString * _Nonnull streamId, NSNumber * _Nonnull sn, NSString * _Nonnull segmentUrl, SWCRange byteRange) {
-          NSDictionary *arguments = @{@"streamId": streamId, @"sn": sn, @"segmentUrl": segmentUrl, @"byteRange": byteRange};
+          NSDictionary *arguments = @{
+              @"streamId": streamId,
+              @"sn": sn,
+              @"segmentUrl": segmentUrl,
+              @"byteRange": [CdnbyePlugin SWCRangeGetHeaderString:byteRange]
+          };
           __block NSString *segmentId = segmentUrl;
           dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
           [self->channel invokeMethod:@"segmentId" arguments:arguments result:^(id  _Nullable result) {

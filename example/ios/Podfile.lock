@@ -1,7 +1,7 @@
 PODS:
   - cdnbye (0.0.1):
     - Flutter
-    - SwarmCloudSDK (= 2.1.1)
+    - SwarmCloudSDK (= 2.1.2)
     - WebRTCDatachannel (= 0.0.1)
   - CocoaAsyncSocket (7.6.5)
   - CocoaLumberjack (3.7.2):
@@ -11,13 +11,20 @@ PODS:
   - GCDWebServer (3.5.4):
     - GCDWebServer/Core (= 3.5.4)
   - GCDWebServer/Core (3.5.4)
-  - PINCache (2.3)
-  - SocketRocket (0.5.1)
-  - SwarmCloudSDK (2.1.1):
+  - PINCache (3.0.3):
+    - PINCache/Arc-exception-safe (= 3.0.3)
+    - PINCache/Core (= 3.0.3)
+  - PINCache/Arc-exception-safe (3.0.3):
+    - PINCache/Core
+  - PINCache/Core (3.0.3):
+    - PINOperation (~> 1.2.1)
+  - PINOperation (1.2.1)
+  - SocketRocket (0.6.0)
+  - SwarmCloudSDK (2.1.2):
     - CocoaAsyncSocket (~> 7.6)
-    - CocoaLumberjack (~> 3.5)
+    - CocoaLumberjack (~> 3.7)
     - GCDWebServer (~> 3.5)
-    - PINCache (~> 2.3)
+    - PINCache (~> 3.0)
     - SocketRocket (~> 0.5)
     - WebRTCDatachannel (= 0.0.1)
   - video_player (0.0.1):
@@ -35,6 +42,7 @@ SPEC REPOS:
     - CocoaLumberjack
     - GCDWebServer
     - PINCache
+    - PINOperation
     - SocketRocket
     - SwarmCloudSDK
     - WebRTCDatachannel
@@ -48,14 +56,15 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/video_player/ios"
 
 SPEC CHECKSUMS:
-  cdnbye: 92a71f95c7f7ff49036275b0d1e9a0669f68b997
+  cdnbye: 831d3f9a4ad8af1ed4844be186b3654d82ac0087
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
-  PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
-  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
-  SwarmCloudSDK: 6a6036d5c184e0893ad6b45a5ec1a1ffea3b849a
+  PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
+  PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
+  SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
+  SwarmCloudSDK: 2d9a04c6dea35ebe5501e0285f4c3c72f7090a13
   video_player: 9cc823b1d9da7e8427ee591e8438bfbcde500e6e
   WebRTCDatachannel: acddf02a4ed2f825ececd2e64cbf971c0a209ceb
 

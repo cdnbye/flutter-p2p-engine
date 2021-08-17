@@ -123,10 +123,10 @@ class P2pConfig {
   final Map<String, dynamic> webRTCConfig;
 
   /// 信令服务器地址
-  final String wsSignalerAddr;
+  final String? wsSignalerAddr;
 
   /// tracker服务器地址
-  final String announce;
+  final String? announce;
 
   /// 点播模式下P2P在磁盘缓存的最大数据量(设为0可以禁用磁盘缓存)
   final int diskCacheLimit;
@@ -173,8 +173,8 @@ class P2pConfig {
   P2pConfig({
     this.logLevel: P2pLogLevel.warn,
     this.webRTCConfig: const {}, // TODO: 默认值缺少
-    this.wsSignalerAddr: 'wss://signal.cdnbye.com',
-    this.announce: 'https://tracker.cdnbye.com/v1',
+    this.wsSignalerAddr, //: 'wss://signal.cdnbye.com',
+    this.announce, //: 'https://tracker.cdnbye.com/v1',
     this.diskCacheLimit: 1024 * 1024 * 1024,
     this.memoryCacheLimit: 60 * 1024 * 1024,
     this.memoryCacheCountLimit: 30,

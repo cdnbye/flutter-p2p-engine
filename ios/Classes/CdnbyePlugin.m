@@ -44,7 +44,7 @@
               @"streamId": streamId,
               @"sn": sn,
               @"segmentUrl": segmentUrl,
-              @"byteRange": [CdnbyePlugin SWCRangeGetHeaderString:byteRange]
+              @"range": [CdnbyePlugin SWCRangeGetHeaderString:byteRange]
           };
           __block NSString *segmentId = segmentUrl;
           dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);

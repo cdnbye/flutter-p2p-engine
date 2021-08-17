@@ -2,6 +2,7 @@ package com.cdnbye.cdnbye;
 
 
 import android.app.Activity;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -93,9 +94,10 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                     segmentId = segmentUrl;
                     Map<String, Object> args = new HashMap<>();
                     args.put("sn", sn);
-                    args.put("url", segmentUrl);
+                    args.put("segmentUrl", segmentUrl);
                     args.put("streamId", streamId);
                     args.put("range", range);
+
                     CountDownLatch latch = new CountDownLatch(1);
                     activity.runOnUiThread(new Runnable() {
                         @Override
@@ -107,6 +109,7 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                                     if (result != null) {
                                         Map map = (Map<String, String>) result;
                                         segmentId = (String) map.get("result");
+                                       System.out.println(segmentId);
                                     }
                                     latch.countDown();
                                 }

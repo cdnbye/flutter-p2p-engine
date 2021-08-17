@@ -13,8 +13,13 @@
     SWCP2pConfig *config = [[SWCP2pConfig alloc]init];
     config.logLevel = ((NSNumber *)configMap[@"logLevel"]).integerValue;
     //config.webRTCConfig = (NSDictionary *)configMap[@"webRTCConfig"];
-    config.wsSignalerAddr = (NSString *)configMap[@"wsSignalerAddr"];
-    config.announce = (NSString *)configMap[@"announce"];
+    
+    if(![configMap[@"wsSignalerAddr"] isKindOfClass:[NSNull class]])
+        config.wsSignalerAddr = (NSString *)configMap[@"wsSignalerAddr"];
+    
+    if(![configMap[@"announce"] isKindOfClass:[NSNull class]])
+        config.announce = (NSString *)configMap[@"announce"];
+    
     config.p2pEnabled = ((NSNumber *)configMap[@"p2pEnabled"]).integerValue;
     config.diskCacheLimit = ((NSNumber *)configMap[@"diskCacheLimit"]).integerValue;
 //    config.memoryCacheCountLimit = ((NSNumber *)configMap[@"memoryCacheCountLimit"]).integerValue;

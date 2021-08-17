@@ -68,10 +68,8 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
             }
             boolean logEnabled = (int) configMap.get("logLevel") != 0;
 
-            P2pConfig config = new P2pConfig.Builder()
+            P2pConfig.Builder builder = new P2pConfig.Builder()
                     .logEnabled(logEnabled).logLevel(level)
-                    .wsSignalerAddr((String) configMap.get("wsSignalerAddr"))
-                    .announce((String) configMap.get("announce"))
                     .diskCacheLimit((int) configMap.get("diskCacheLimit"))
                     .memoryCacheCountLimit((int) configMap.get("memoryCacheCountLimit"))
                     .p2pEnabled((boolean) configMap.get("p2pEnabled"))
@@ -83,8 +81,14 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                     .wifiOnly((boolean) configMap.get("wifiOnly"))
                     .isSetTopBox((boolean) configMap.get("isSetTopBox"))
                     .channelIdPrefix((String) configMap.get("channelIdPrefix"))
-                    .httpHeadersForHls((Map<String, String>) configMap.get("httpHeaders"))
-                    .build();
+                    .httpHeadersForHls((Map<String, String>) configMap.get("httpHeaders"));
+            if(configMap.get("wsSignalerAddr") != null){
+                builder= builder.wsSignalerAddr((String) configMap.get("wsSignalerAddr"));
+            }
+            if(configMap.get("announce") != null) {
+                builder = builder.announce((String) configMap.get("announce"));
+            }
+            P2pConfig config = builder.build();
             P2pEngine.init(activity.getApplication().getApplicationContext(), token, config);
 
             P2pEngine.getInstance().setHlsSegmentIdGenerator(new HlsSegmentIdGenerator() {

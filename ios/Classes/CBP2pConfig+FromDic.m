@@ -20,23 +20,24 @@
     if(![configMap[@"announce"] isKindOfClass:[NSNull class]])
         config.announce = (NSString *)configMap[@"announce"];
     
+    if(![configMap[@"channelIdPrefix"] isKindOfClass:[NSNull class]])
+        config.channelIdPrefix = (NSString *)configMap[@"channelIdPrefix"];
+    
+    if(![configMap[@"tag"] isKindOfClass:[NSNull class]])
+        config.tag = (NSString *)configMap[@"tag"];
+
+    if (![configMap[@"httpHeaders"] isEqual:[NSNull null]])
+        config.httpHeadersForHls = (NSDictionary *)configMap[@"httpHeaders"];
+    
     config.p2pEnabled = ((NSNumber *)configMap[@"p2pEnabled"]).integerValue;
     config.diskCacheLimit = ((NSNumber *)configMap[@"diskCacheLimit"]).integerValue;
-//    config.memoryCacheCountLimit = ((NSNumber *)configMap[@"memoryCacheCountLimit"]).integerValue;
     config.downloadTimeout = ((NSNumber *)configMap[@"downloadTimeout"]).integerValue;
     config.dcDownloadTimeout = ((NSNumber *)configMap[@"dcDownloadTimeout"]).integerValue;
     config.localPortHls = ((NSNumber *)configMap[@"localPort"]).integerValue;
     config.maxPeerConnections = ((NSNumber *)configMap[@"maxPeerConnections"]).integerValue;
-    config.tag = (NSString *)configMap[@"tag"];
     config.useHttpRange = ((NSNumber *)configMap[@"useHttpRange"]).integerValue;
     config.wifiOnly = ((NSNumber *)configMap[@"wifiOnly"]).integerValue;
-    config.channelIdPrefix = (NSString *)configMap[@"channelIdPrefix"];
-    
-    NSDictionary* httpHeaders = (NSDictionary *)configMap[@"httpHeaders"];
-    if (![httpHeaders isEqual:[NSNull null]]) {
-        config.httpHeadersForHls = httpHeaders;
-    }
-    
+   
     return config;
 }
 

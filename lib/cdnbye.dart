@@ -165,7 +165,7 @@ class P2pConfig {
   final Map<String, String>? httpHeaders;
 
   /// 如果使用自定义的channelId，则此字段必须设置，且长度必须在5到15个字符之间，建议设置成你所在组织的唯一标识
-  final String channelIdPrefix;
+  final String? channelIdPrefix;
 
   /// 如果运行于机顶盒请设置成true
   final bool isSetTopBox;
@@ -187,7 +187,7 @@ class P2pConfig {
     this.useHttpRange: true,
     this.wifiOnly: false,
     this.httpHeaders,
-    this.channelIdPrefix: "cdnbye",
+    this.channelIdPrefix,
     this.isSetTopBox: false,
   });
 

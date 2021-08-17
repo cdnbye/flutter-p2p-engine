@@ -1,4 +1,8 @@
 
+## 1.1.0-pre.3
+
+修复了segmentid builder的正则替换问题
+
 ## 1.1.0-pre.2
 
 修复了segmentid builder的参数问题

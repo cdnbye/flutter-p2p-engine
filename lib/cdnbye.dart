@@ -82,7 +82,7 @@ class Cdnbye {
       segId = segmentUrl.substring(0, segmentUrl.indexOf('?'));
     }
     if (segmentUrl.startsWith("http")) {
-      segId = segmentUrl.replaceFirst("(http|https):\\/\\/", "");
+      segId = segmentUrl.replaceFirst(RegExp('(http|https):\\/\\/'), "");
     }
     if (range != null) {
       segId += "|" + range;

@@ -44,11 +44,16 @@
               @"streamId": streamId,
               @"sn": sn,
               @"segmentUrl": segmentUrl,
-              @"range": [CdnbyePlugin SWCRangeGetHeaderString:byteRange]
           };
+          NSMutableDictionary *argumentsM = [NSMutableDictionary dictionaryWithDictionary:arguments];
+          if (byteRange.start == SWCNotFound) {
+              argumentsM[@"range"] = [NSNull null];
+          } else {
+              argumentsM[@"range"] = [CdnbyePlugin SWCRangeGetHeaderString:byteRange];
+          }
           __block NSString *segmentId = segmentUrl;
           dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-          [self->channel invokeMethod:@"segmentId" arguments:arguments result:^(id  _Nullable result) {
+          [self->channel invokeMethod:@"segmentId" arguments:argumentsM result:^(id  _Nullable result) {
               if (result) {
                   NSDictionary *map = (NSDictionary *)result;
                   segmentId = (NSString *)map[@"result"];

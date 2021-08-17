@@ -67,7 +67,14 @@
 
       // NSLog(@"转换URL:\n%@",args);
       NSURL *originalUrl = [NSURL URLWithString:args[@"url"]];
-      result([[SWCP2pEngine sharedInstance] parseStreamURL:originalUrl withVideoId:args[@"videoId"]].absoluteString);
+      NSString *targetUrl = @"";
+      if ([args[@"videoId"] isKindOfClass:[NSNull class]]) {
+          targetUrl = [[SWCP2pEngine sharedInstance] parseStreamURL:originalUrl].absoluteString;
+      }else{
+          targetUrl = [[SWCP2pEngine sharedInstance] parseStreamURL:originalUrl withVideoId:args[@"videoId"]].absoluteString;
+      }
+     
+      result(targetUrl);
       
   }
   

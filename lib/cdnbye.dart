@@ -147,7 +147,7 @@ class P2pConfig {
   final Duration dcDownloadTimeout;
 
   /// 用户自定义的标签，可以在控制台查看分布图
-  final String tag;
+  final String? tag;
 
   /// 本地代理服务器的端口号
   final int localPort;
@@ -181,7 +181,7 @@ class P2pConfig {
     this.p2pEnabled: true,
     this.downloadTimeout: const Duration(seconds: 15),
     this.dcDownloadTimeout: const Duration(seconds: 6),
-    this.tag: "flutter",
+    this.tag,
     this.localPort: 52019,
     this.maxPeerConnections: 20,
     this.useHttpRange: true,

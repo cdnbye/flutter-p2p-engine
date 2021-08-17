@@ -75,19 +75,27 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
                     .p2pEnabled((boolean) configMap.get("p2pEnabled"))
                     .downloadTimeout((int) configMap.get("downloadTimeout"), TimeUnit.SECONDS)
                     .dcDownloadTimeout((int) configMap.get("dcDownloadTimeout"), TimeUnit.SECONDS)
-                    .withTag((String) configMap.get("tag")).localPortHls((int) configMap.get("localPort"))
+                    .localPortHls((int) configMap.get("localPort"))
                     .maxPeerConnections((int) configMap.get("maxPeerConnections"))
                     .useHttpRange((boolean) configMap.get("useHttpRange"))
                     .wifiOnly((boolean) configMap.get("wifiOnly"))
-                    .isSetTopBox((boolean) configMap.get("isSetTopBox"))
-                    .channelIdPrefix((String) configMap.get("channelIdPrefix"))
-                    .httpHeadersForHls((Map<String, String>) configMap.get("httpHeaders"));
-            if(configMap.get("wsSignalerAddr") != null){
+                    .isSetTopBox((boolean) configMap.get("isSetTopBox"));
+
+            if(configMap.get("wsSignalerAddr") != null)
                 builder= builder.wsSignalerAddr((String) configMap.get("wsSignalerAddr"));
-            }
-            if(configMap.get("announce") != null) {
+
+            if(configMap.get("announce") != null)
                 builder = builder.announce((String) configMap.get("announce"));
-            }
+
+            if(configMap.get("channelIdPrefix") != null)
+                builder = builder.channelIdPrefix((String) configMap.get("channelIdPrefix"));
+
+            if(configMap.get("tag") != null)
+                builder = builder.withTag((String) configMap.get("tag"));
+
+            if(configMap.get("httpHeaders") != null)
+                builder = builder.httpHeadersForHls((Map<String, String>) configMap.get("httpHeaders"));
+
             P2pConfig config = builder.build();
             P2pEngine.init(activity.getApplication().getApplicationContext(), token, config);
 
@@ -145,7 +153,13 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
             Map configMap = (Map) call.arguments;
             String url = (String) configMap.get("url");
             String videoId = (String) configMap.get("videoId");
-            String parsedUrl = P2pEngine.getInstance().parseStreamUrl(url, videoId);
+            String parsedUrl = "";
+            if(videoId== null){
+                parsedUrl = P2pEngine.getInstance().parseStreamUrl(url);
+            }else{
+                parsedUrl = P2pEngine.getInstance().parseStreamUrl(url, videoId);
+            }
+
             result.success(parsedUrl);
         } else if (call.method.equals("startListen")) {
             P2pEngine.getInstance().addP2pStatisticsListener(new P2pStatisticsListener() {

@@ -21,7 +21,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.1.0-pre.4"
+    version: "1.1.1-pre"
   characters:
     dependency: transitive
     description:

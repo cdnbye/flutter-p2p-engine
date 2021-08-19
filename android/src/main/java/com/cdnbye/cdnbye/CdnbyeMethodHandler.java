@@ -14,6 +14,7 @@ import com.cdnbye.sdk.P2pEngine;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -95,6 +96,15 @@ public class CdnbyeMethodHandler implements MethodChannel.MethodCallHandler {
 
             if(configMap.get("httpHeaders") != null)
                 builder = builder.httpHeadersForHls((Map<String, String>) configMap.get("httpHeaders"));
+
+            builder = builder.httpLoadTime((long) configMap.get("httpLoadTime"));
+            builder = builder.logPersistent((boolean) configMap.get("logPersistent"));
+            builder = builder.sharePlaylist((boolean) configMap.get("sharePlaylist"));
+            builder = builder.waitForPeer((boolean) configMap.get("waitForPeer"));
+            builder = builder.waitForPeerTimeout((int) configMap.get("waitForPeerTimeout"));
+
+            if(configMap.get("hlsMediaFiles") != null)
+                builder = builder.hlsMediaFiles((ArrayList<String>) configMap.get("hlsMediaFiles"));
 
             P2pConfig config = builder.build();
             P2pEngine.init(activity.getApplication().getApplicationContext(), token, config);

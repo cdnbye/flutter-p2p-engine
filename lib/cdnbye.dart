@@ -170,6 +170,34 @@ class P2pConfig {
   /// 如果运行于机顶盒请设置成true
   final bool isSetTopBox;
 
+  /// SDK新增
+  /// P2P下载超时后留给HTTP下载的时间(ms)
+  final int httpLoadTime;
+
+  /// SDK新增
+  /// 是否允许m3u8文件的P2P传输
+  final bool sharePlaylist;
+
+  /// SDK新增
+  /// 是否将日志持久化到外部存储
+  final bool logPersistent;
+
+  /// SDK新增, iOS特有
+  /// 日志文件的存储路径，默认路径是 Library/Caches/Logs/
+  final String? logFilePathInIos;
+
+  /// SDK新增, Android特有
+  /// 优先尝试从对等端下载前几片数据，可以提高P2P比例，但可能会增加起播延时
+  final bool waitForPeerInAndroid;
+
+  /// SDK新增, Android特有
+  /// waitForPeer的超时时间，超时后恢复从http下载(ms)
+  final int waitForPeerTimeoutInAndroid;
+
+  /// SDK新增, Android特有
+  /// waitForPeer的超时时间，超时后恢复从http下载(ms)
+  final List<String> hlsMediaFiles;
+
   P2pConfig({
     this.logLevel: P2pLogLevel.warn,
     this.webRTCConfig: const {}, // TODO: 默认值缺少
@@ -189,6 +217,14 @@ class P2pConfig {
     this.httpHeaders,
     this.channelIdPrefix,
     this.isSetTopBox: false,
+    // 新增的几个属性
+    this.httpLoadTime: 2000,
+    this.logPersistent: false,
+    this.sharePlaylist: false,
+    this.waitForPeerInAndroid: false,
+    this.waitForPeerTimeoutInAndroid: 4500,
+    this.hlsMediaFiles: const ["ts", "mp4", "m4s"],
+    this.logFilePathInIos,
   });
 
   P2pConfig.byDefault() : this();
@@ -212,5 +248,13 @@ class P2pConfig {
         'httpHeaders': httpHeaders ?? {},
         'channelIdPrefix': channelIdPrefix,
         'isSetTopBox': isSetTopBox,
+        // new
+        'httpLoadTime': httpLoadTime,
+        'sharePlaylist': sharePlaylist,
+        'logPersistent': logPersistent,
+        'logFilePath': logFilePathInIos,
+        'waitForPeer': waitForPeerInAndroid,
+        'waitForPeerTimeout': waitForPeerTimeoutInAndroid,
+        'hlsMediaFiles': hlsMediaFiles,
       };
 }

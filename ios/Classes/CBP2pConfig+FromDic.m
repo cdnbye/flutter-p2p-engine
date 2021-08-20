@@ -40,10 +40,10 @@
     // 新增的属性
     config.httpLoadTime = ((NSNumber *)configMap[@"httpLoadTime"]).integerValue;
     config.sharePlaylist = ((NSNumber *)configMap[@"sharePlaylist"]).integerValue > 0;
-//    config.logPersistent = ((NSNumber *)configMap[@"logPersistent"]).integerValue > 0;
-//
-//    if (![configMap[@"logFilePath"] isEqual:[NSNull null]])
-//        config.logFilePath = ((NSString *)configMap[@"logFilePath"]);
+    config.logPersistent = ((NSNumber *)configMap[@"logPersistent"]).integerValue > 0;
+
+    if (![configMap[@"logFilePath"] isEqual:[NSNull null]])
+        config.logFilePath = ((NSString *)configMap[@"logFilePath"]);
     
     return config;
 }

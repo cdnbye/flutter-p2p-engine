@@ -73,7 +73,7 @@ class _VideoPageState extends State<VideoPage> {
 
   _loadVideo() async {
     String? url = widget.resource?.url ??
-        'https://iqiyi.com-t-iqiyi.com/20190722/5120_0f9eec31/index.m3u8';
+        'https://video.cdnbye.com/0cf6732evodtransgzp1257070836/e0d4b12e5285890803440736872/v.f100220.m3u8';
     print('Original URL: $url');
     url = await Cdnbye.parseStreamURL(url);
     print('Parsed URL: $url');

@@ -3,5 +3,6 @@
 .idea
 .packages
 .pub/
+example/ios/Podfile.lock
 
 build/

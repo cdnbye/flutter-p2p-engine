@@ -11,15 +11,15 @@ class VideoList extends StatefulWidget {
 class _VideoListState extends State<VideoList> {
   List<VideoResource> get _list => [
         VideoResource(
-          title: '直播测试',
-          description: '直播测试',
+          title: 'Living Streaming',
+          description: 'Living Streaming',
           isLive: true,
           url: 'https://wowza.peer5.com'
               '/live/smil:bbb_abr.smil/chunklist_b591000.m3u8',
         ),
         VideoResource(
-          title: '点播测试',
-          description: '点播测试',
+          title: 'VOD Streaming',
+          description: 'VOD Streaming',
           url: 'https://video.cdnbye.com'
               '/0cf6732evodtransgzp1257070836/e0d4b12e5285890803440736872/v.f100220.m3u8',
         ),
@@ -47,7 +47,7 @@ class _VideoListState extends State<VideoList> {
         resource: VideoResource(
           title: url.split('/').last,
           image: '',
-          description: '自定视频',
+          description: 'Custom Url',
           url: url,
         ),
       );
@@ -110,13 +110,13 @@ class _AlertUrlErrorDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      content: Text('地址$url 可能不能使用p2p加速'),
+      content: Text('Url:$url 可能不能使用p2p加速'),
       actions: <Widget>[
         Tapped(
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
             child: Text(
-              '取消',
+              'Cancel',
               style: TextStyle(color: Colors.blue),
             ),
           ),
@@ -128,7 +128,7 @@ class _AlertUrlErrorDialog extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
             child: Text(
-              '仍然继续',
+              'Continue',
               style: TextStyle(color: Colors.red),
             ),
           ),

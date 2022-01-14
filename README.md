@@ -37,7 +37,7 @@ See [documentation](https://p2p.cdnbye.com/en/views/flutter/usage.html)
 ## Request Token
 See [here](https://p2p.cdnbye.com/en/views/bindings.html#app-id-and-token)
 
-## Consloe
+## Console
 Register your AppId at https://oms.cdnbye.com, where you can view p2p-related information.
 
 ## Issue & Feature Request

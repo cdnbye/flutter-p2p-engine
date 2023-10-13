@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'flutter_p2p_engine.dart';
 import 'flutter_p2p_engine_platform_interface.dart';
 
 /// An implementation of [FlutterP2pEnginePlatform] that uses method channels.

@@ -5,7 +5,6 @@ import android.util.Log
 import com.p2pengine.core.p2p.P2pConfig
 import com.p2pengine.core.p2p.P2pStatisticsListener
 import com.p2pengine.core.p2p.PlayerInteractor
-import com.p2pengine.core.segment.StrictHlsSegmentIdGenerator
 import com.p2pengine.core.tracking.TrackerZone
 import com.p2pengine.core.utils.LogLevel
 import com.p2pengine.sdk.P2pEngine
@@ -200,7 +199,8 @@ class MethodHandler : MethodChannel.MethodCallHandler {
             }
 
             configMap["useStrictHlsSegmentId"]?.let {
-                P2pEngine.instance?.setHlsSegmentIdGenerator(StrictHlsSegmentIdGenerator())
+//                P2pEngine.instance?.setHlsSegmentIdGenerator(StrictHlsSegmentIdGenerator())
+                builder = builder.useStrictHlsSegmentId(it as Boolean)
             }
 
             val config: P2pConfig = builder.build()

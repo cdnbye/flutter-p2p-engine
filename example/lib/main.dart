@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_p2p_engine/flutter_p2p_engine_platform_interface.dart';
 import 'package:safemap/safemap.dart';
 import 'package:flutter_p2p_engine/flutter_p2p_engine.dart';
 import 'package:flutter_p2p_engine_example/style/color.dart';

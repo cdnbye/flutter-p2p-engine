@@ -6,3 +6,7 @@
 
 * Update iOS sdk to v3.1.2.
 * Update android sdk to v3.6.4.
+
+## 1.1.1
+
+* Update android sdk to v3.6.5.

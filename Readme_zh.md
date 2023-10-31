@@ -19,10 +19,10 @@
 - Tracker服务器根据访问IP的ISP、地域等进行智能调度
 
 ## 使用方法
-参考 [文档](https://www.cdnbye.com/cn/views/flutter/usage.html)
+参考 [文档](https://www.cdnbye.com/cn/flutter/usage.html)
 
 ## 获取Token
-参考[如何获取token](https://www.cdnbye.com/views/bindings.html#%E7%BB%91%E5%AE%9A-app-id-%E5%B9%B6%E8%8E%B7%E5%8F%96token)
+参考[如何获取token](https://www.cdnbye.com/cn/bindings.html#%E7%BB%91%E5%AE%9A-app-id-%E5%B9%B6%E8%8E%B7%E5%8F%96token)
 
 ## 控制台
 登录 https://oms.cdnbye.com 并绑定 APPId, 即可查看P2P效果、在线人数等信息。
@@ -36,7 +36,7 @@
 - [ios-p2p-engine](https://gitee.com/cdnbye/ios-p2p-engine) - iOS端P2P流媒体加速引擎。
 
 ## FAQ
-我们收集了一些[常见问题](https://www.cdnbye.com/views/FAQ.html)。在报告issue之前请先查看一下。
+我们收集了一些[常见问题](https://www.cdnbye.com/faq.html)。在报告issue之前请先查看一下。
 
 ## 联系我们
 邮箱：service@cdnbye.com

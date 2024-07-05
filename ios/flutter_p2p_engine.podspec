@@ -17,7 +17,7 @@ SwarmCloud p2p engine for flutter
   s.dependency 'Flutter'
   s.platform = :ios, '13.0'
 
-  s.dependency 'P2pEngine-iOS', '= 3.1.2'
+  s.dependency 'P2pEngine-iOS', '= 3.2.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

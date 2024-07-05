@@ -16,7 +16,7 @@ SwarmCloud p2p engine for flutter
   s.source           = { :path => '.' }
   s.source_files     = 'Classes/**/*'
   s.dependency 'FlutterMacOS'
-  s.dependency 'P2pEngine-iOS', '= 3.1.1'
+  s.dependency 'P2pEngine-iOS', '= 3.2.0'
 
   s.platform = :osx, '10.15'
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }

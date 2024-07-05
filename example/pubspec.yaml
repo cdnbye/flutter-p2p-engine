@@ -30,9 +30,10 @@ dependencies:
   tapped: ^2.0.0
   safemap: ^2.0.0
   path_provider: ^2.0.1
-  media_kit: ^1.1.8
-  media_kit_video: ^1.2.1
-  media_kit_libs_video: ^1.0.3
+  media_kit: ^1.1.10
+  media_kit_video: ^1.2.4
+  media_kit_libs_video: ^1.0.4
+  video_player: ^2.8.5
 
 dev_dependencies:
   integration_test:

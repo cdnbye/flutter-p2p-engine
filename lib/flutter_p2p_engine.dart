@@ -1,7 +1,7 @@
 
 import 'flutter_p2p_engine_platform_interface.dart';
 
-const String version = "1.1.0";
+const String version = "1.2.0";
 
 class FlutterP2pEngine {
   static FlutterP2pEnginePlatform get _platform => FlutterP2pEnginePlatform.instance;
@@ -69,7 +69,7 @@ enum TrackerZone {
 class P2pConfig {
   final P2pLogLevel logLevel;
   final bool logEnabled;
-  final String? wsSignalerAddr;
+  final String? signalConfig;
   final String? announce;
   final int? diskCacheLimit;
   final int? memoryCacheCountLimit;
@@ -82,6 +82,7 @@ class P2pConfig {
   final int? maxPeerConnections;
   final bool useHttpRange;
   final bool wifiOnly;
+  final bool prefetchOnly;
   final Map<String, String>? httpHeadersForHls;
   final Map<String, String>? httpHeadersForDash;
   final bool isSetTopBox;
@@ -92,6 +93,7 @@ class P2pConfig {
   final bool? geoIpPreflight;
   final bool? useStrictHlsSegmentId;
   final List<String>? hlsMediaFiles;
+  final List<String>? dashMediaFiles;
   final String? mediaFileSeparator;
   final double? playlistTimeOffset;
   final int? maxMediaFilesInPlaylist;
@@ -99,7 +101,7 @@ class P2pConfig {
 
   P2pConfig({
     this.logLevel = P2pLogLevel.warn,
-    this.wsSignalerAddr, //: 'wss://signal.cdnbye.com',
+    this.signalConfig, //: 'wss://signal.cdnbye.com',
     this.announce, //: 'https://tracker.cdnbye.com/v1',
     this.diskCacheLimit,
     this.memoryCacheCountLimit,
@@ -112,6 +114,7 @@ class P2pConfig {
     this.maxPeerConnections,
     this.useHttpRange = true,
     this.wifiOnly = false,
+    this.prefetchOnly = false,
     this.httpHeadersForHls,
     this.httpHeadersForDash,
     this.isSetTopBox = false,
@@ -120,6 +123,7 @@ class P2pConfig {
     this.logPersistent = false,
     this.sharePlaylist = false,
     this.hlsMediaFiles,
+    this.dashMediaFiles,
     this.mediaFileSeparator,
     this.trackerZone,
     this.playlistTimeOffset,
@@ -134,7 +138,7 @@ class P2pConfig {
   Map<String, dynamic> get toMap => {
     'logEnabled': logEnabled,
     'logLevel': logLevel.index,
-    'wsSignalerAddr': wsSignalerAddr,
+    'signalConfig': signalConfig,
     'announce': announce,
     'diskCacheLimit': diskCacheLimit,
     'memoryCacheCountLimit': memoryCacheCountLimit,
@@ -147,6 +151,7 @@ class P2pConfig {
     'maxPeerConnections': maxPeerConnections,
     'useHttpRange': useHttpRange,
     'wifiOnly': wifiOnly,
+    'prefetchOnly': prefetchOnly,
     'httpHeadersForHls': httpHeadersForHls ?? {},
     'httpHeadersForDash': httpHeadersForDash ?? {},
     'isSetTopBox': isSetTopBox,
@@ -154,6 +159,7 @@ class P2pConfig {
     'sharePlaylist': sharePlaylist,
     'logPersistent': logPersistent,
     'hlsMediaFiles': hlsMediaFiles,
+    'dashMediaFiles': dashMediaFiles,
     'trackerZone': trackerZone?.index,
     'mediaFileSeparator': mediaFileSeparator,
     'playlistTimeOffset': playlistTimeOffset,

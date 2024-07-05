@@ -110,6 +110,10 @@ class MethodHandler : MethodChannel.MethodCallHandler {
                 builder = builder.wifiOnly(it as Boolean)
             }
 
+            configMap["prefetchOnly"]?.let {
+                builder = builder.prefetchOnly(it as Boolean)
+            }
+
             configMap["useHttpRange"]?.let {
                 builder = builder.useHttpRange(it as Boolean)
             }
@@ -142,7 +146,7 @@ class MethodHandler : MethodChannel.MethodCallHandler {
                 builder = builder.memoryCacheCountLimit(it as Int)
             }
 
-            configMap["wsSignalerAddr"]?.let {
+            configMap["signalConfig"]?.let {
                 builder = builder.signalConfig(it as String)
             }
 
@@ -176,6 +180,10 @@ class MethodHandler : MethodChannel.MethodCallHandler {
 
             configMap["hlsMediaFiles"]?.let {
                 builder = builder.hlsMediaFiles((it as ArrayList<String>))
+            }
+
+            configMap["dashMediaFiles"]?.let {
+                builder = builder.dashMediaFiles((it as ArrayList<String>))
             }
 
             configMap["mediaFileSeparator"]?.let {

@@ -102,8 +102,8 @@ public class FlutterP2pEnginePlugin: NSObject, FlutterPlugin {
         if let diskCacheLimit = configMap["diskCacheLimit"] as? UInt {
             config.diskCacheLimit = diskCacheLimit
         }
-        if let wsSignalerAddr = configMap["wsSignalerAddr"] as? String {
-            config.signalConfig = SignalConfig(mainAddr: wsSignalerAddr)
+        if let signalConfig = configMap["signalConfig"] as? String {
+            config.signalConfig = SignalConfig(mainAddr: signalConfig)
         }
         if let announce = configMap["announce"] as? String {
             config.announce = announce
@@ -128,9 +128,6 @@ public class FlutterP2pEnginePlugin: NSObject, FlutterPlugin {
         }
         if let mediaFileSeparator = configMap["mediaFileSeparator"] as? String {
             config.mediaFileSeparator = mediaFileSeparator
-        }
-        if let playlistTimeOffset = configMap["playlistTimeOffset"] as? TimeInterval {
-            config.playlistTimeOffset = playlistTimeOffset
         }
         if let maxMediaFilesInPlaylist = configMap["maxMediaFilesInPlaylist"] as? Int {
             config.maxMediaFilesInPlaylist = maxMediaFilesInPlaylist

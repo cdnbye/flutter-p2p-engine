@@ -6,11 +6,11 @@ import 'package:flutter_p2p_engine_example/style/color.dart';
 import 'package:flutter_p2p_engine_example/views/confirm.dart';
 import 'package:tapped/tapped.dart';
 import 'package:flutter/material.dart';
-import 'package:media_kit/media_kit.dart';
-import 'package:media_kit_video/media_kit_video.dart';
+import 'package:video_player/video_player.dart';
+
+const token = 'ZMuO5qHZg';    // replace with your own token
 
 void main() {
-  MediaKit.ensureInitialized();
   runApp(const VideoApp());
 
   SystemUiOverlayStyle systemUiOverlayStyle = const SystemUiOverlayStyle(
@@ -38,30 +38,32 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late final player = Player();
-  late final controller = VideoController(player);
+  var playerReady = false;
+  late final VideoPlayerController _controller;
   @override
   void initState() {
     super.initState();
     init();
   }
 
-  var url =
-      'https://video.cdnbye.com/0cf6732evodtransgzp1257070836/e0d4b12e5285890803440736872/v.f100220.m3u8';
-  var urlResult = "";
-  var token = 'ZMuO5qHZg';    // replace with your own token
+  var url = 'https://test-streams.mux.dev/x36xhzz/url_0/193039199_mp4_h264_aac_hd_7.m3u8';
+  // var url = 'https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/level_0.m3u8';
+
 
   var totalHTTPDn = 0;
   var totalP2PDn = 0;
   var totalP2PUp = 0;
   var connected = false;
+  var sdkVersion = '';
 
   init() async {
     try {
+      // Do not init FlutterP2pEngine more than once! 请不要多次init FlutterP2pEngine！
       await FlutterP2pEngine.init(
         token,
         config: P2pConfig(
           trackerZone: TrackerZone.Europe,
+          playlistTimeOffset: 0.0,
           logEnabled: true,
           logLevel: P2pLogLevel.debug,
         ),
@@ -79,17 +81,19 @@ class _HomePageState extends State<HomePage> {
             });
           }
         },
-        bufferedDurationGeneratorEnable: true
       );
-      var res = await FlutterP2pEngine.parseStreamURL(url, bufferedDurationGenerator: () {
-        // print("bufferedDurationGenerator ${player.state.buffer}");
-        return player.state.buffer;
-      });
-      urlResult = res ?? url;
-      // print('urlResult $urlResult $res');
+      var res = await FlutterP2pEngine.parseStreamURL(url);
+      print('urlResult $res');
       setState(() {});
-      player.open(Media(urlResult));
-      // controller.player.setVolume(0.0);
+      _controller = VideoPlayerController.networkUrl(Uri.parse(res ?? url))
+        ..initialize().then((_) {
+          // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+          setState(() {
+            playerReady = true;
+          });
+          _controller.play();
+        });
+      sdkVersion = await FlutterP2pEngine.getSDKVersion();
     } catch (e) {
       // print('Init Error $e');
     }
@@ -99,7 +103,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    player.dispose();
+    // player.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -116,7 +121,23 @@ class _HomePageState extends State<HomePage> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.width * 9.0 / 16.0,
                 // Use [Video] widget to display video output.
-                child: Video(controller: controller),
+                child: playerReady
+                    ? AspectRatio(
+                  aspectRatio: _controller.value.aspectRatio,
+                  child: Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: <Widget>[
+                      VideoPlayer(_controller),
+                      VideoProgressIndicator(_controller, allowScrubbing: true),
+                      GestureDetector(
+                        onTap: () {
+                          _controller.value.isPlaying ? _controller.pause() : _controller.play();
+                        },
+                      ),
+                    ],
+                  ),
+                )
+                    : Container(),
               ),
             ),
             Positioned(
@@ -171,10 +192,11 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   child: Text(
                                     [
-                                      'Connected:$connected',
-                                      'TotalHTTPDownloaded:$totalHTTPDn',
-                                      'TotalP2PDownloaded:$totalP2PDn',
-                                      'TotalP2PUploaded:$totalP2PUp',
+                                      'SDK Version: $sdkVersion',
+                                      'Connected: $connected',
+                                      'TotalHTTPDownloaded: $totalHTTPDn',
+                                      'TotalP2PDownloaded: $totalP2PDn',
+                                      'TotalP2PUploaded: $totalP2PUp',
                                     ].join('\n'),
                                   ),
                                 ),
@@ -205,16 +227,13 @@ class _HomePageState extends State<HomePage> {
                           if (showDetail)
                             Tapped(
                               onTap: () async {
-                                var res = await editUrlAndToken(
+                                var res = await editUrl(
                                   context,
                                   url: url,
-                                  token: token,
                                 );
-                                var _token = res?.asMap()[0];
                                 var _url = res?.asMap()[0];
-                                if (_token != null && _url != null) {
-                                  token = _token;
-                                  url = url;
+                                if (_url != null) {
+                                  url = _url;
                                   setState(() {});
                                   init();
                                 }
@@ -241,19 +260,29 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            if (playerReady) {
+              _controller.value.isPlaying ? _controller.pause(): _controller.play();
+            }
+          });
+        },
+        child: Icon(
+          playerReady && _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+        ),
+      ),
     );
   }
 }
 
 /// 输入文本，可以通过onWillConfirm方法检查
-Future<List<String>?> editUrlAndToken(
+Future<List<String>?> editUrl(
     BuildContext context, {
       ConfirmType? type,
       String? url,
-      String? token,
     }) async {
   InputHelper urlInput = InputHelper(defaultText: url);
-  InputHelper tokenInput = InputHelper(defaultText: token);
   var res = await confirm(
     context,
     type: type,
@@ -263,27 +292,6 @@ Future<List<String>?> editUrlAndToken(
     onWillConfirm: () async => true,
     contentBuilder: (ctx) => Column(
       children: [
-        Container(
-          margin: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 6,
-          ),
-          decoration: BoxDecoration(
-            color: ColorPlate.lightGray,
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: StInput.helper(
-            autofocus: false,
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 12,
-              vertical: 14,
-            ),
-            maxLength: 120,
-            clearable: true,
-            helper: tokenInput,
-            hintText: 'Input Token',
-          ),
-        ),
         Container(
           margin: const EdgeInsets.symmetric(
             horizontal: 12,
@@ -305,7 +313,6 @@ Future<List<String>?> editUrlAndToken(
   );
   if (res == true) {
     return [
-      tokenInput.text,
       urlInput.text,
     ];
   }

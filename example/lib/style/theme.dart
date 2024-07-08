@@ -10,7 +10,7 @@ class MyTheme {
       hintColor: ColorPlate.mainBlue,
       textTheme: TextTheme(
         //设置Material的默认字体样式
-        bodyText2: TextStyle(
+        bodyMedium: TextStyle(
           color: ColorPlate.darkGray,
           fontSize: SysSize.normal,
         ),

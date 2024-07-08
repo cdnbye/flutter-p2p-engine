@@ -39,7 +39,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var playerReady = false;
-  late final VideoPlayerController _controller;
+  VideoPlayerController? _controller;
   @override
   void initState() {
     super.initState();
@@ -48,7 +48,6 @@ class _HomePageState extends State<HomePage> {
 
   var url = 'https://test-streams.mux.dev/x36xhzz/url_0/193039199_mp4_h264_aac_hd_7.m3u8';
   // var url = 'https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/level_0.m3u8';
-
 
   var totalHTTPDn = 0;
   var totalP2PDn = 0;
@@ -61,6 +60,7 @@ class _HomePageState extends State<HomePage> {
       // Do not init FlutterP2pEngine more than once! 请不要多次init FlutterP2pEngine！
       await FlutterP2pEngine.init(
         token,
+        // bufferedDurationGeneratorEnable: true,
         config: P2pConfig(
           trackerZone: TrackerZone.Europe,
           playlistTimeOffset: 0.0,
@@ -82,17 +82,10 @@ class _HomePageState extends State<HomePage> {
           }
         },
       );
-      var res = await FlutterP2pEngine.parseStreamURL(url);
-      print('urlResult $res');
+
       setState(() {});
-      _controller = VideoPlayerController.networkUrl(Uri.parse(res ?? url))
-        ..initialize().then((_) {
-          // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-          setState(() {
-            playerReady = true;
-          });
-          _controller.play();
-        });
+      setUpVideo(url);
+
       sdkVersion = await FlutterP2pEngine.getSDKVersion();
     } catch (e) {
       // print('Init Error $e');
@@ -101,10 +94,29 @@ class _HomePageState extends State<HomePage> {
 
   bool showDetail = false;
 
+  setUpVideo(String url) async {
+    _controller?.dispose();
+    var res = await FlutterP2pEngine.parseStreamURL(url,
+    //     bufferedDurationGenerator: () {
+    //   return _controller!.value.buffered.last.end - _controller!.value.position;
+    // }
+    );
+    print('urlResult $res');
+
+    _controller = VideoPlayerController.networkUrl(Uri.parse(res ?? url))..initialize().then((_) {
+      // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+      setState(() {
+        playerReady = true;
+      });
+      _controller?.play();
+    });
+
+  }
+
   @override
   void dispose() {
     // player.dispose();
-    _controller.dispose();
+    _controller?.dispose();
     super.dispose();
   }
 
@@ -123,15 +135,15 @@ class _HomePageState extends State<HomePage> {
                 // Use [Video] widget to display video output.
                 child: playerReady
                     ? AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
+                  aspectRatio: _controller!.value.aspectRatio,
                   child: Stack(
                     alignment: Alignment.bottomCenter,
                     children: <Widget>[
-                      VideoPlayer(_controller),
-                      VideoProgressIndicator(_controller, allowScrubbing: true),
+                      VideoPlayer(_controller!),
+                      VideoProgressIndicator(_controller!, allowScrubbing: true),
                       GestureDetector(
                         onTap: () {
-                          _controller.value.isPlaying ? _controller.pause() : _controller.play();
+                          _controller!.value.isPlaying ? _controller!.pause() : _controller!.play();
                         },
                       ),
                     ],
@@ -229,13 +241,11 @@ class _HomePageState extends State<HomePage> {
                               onTap: () async {
                                 var res = await editUrl(
                                   context,
-                                  url: url,
                                 );
                                 var _url = res?.asMap()[0];
                                 if (_url != null) {
-                                  url = _url;
                                   setState(() {});
-                                  init();
+                                  setUpVideo(_url);
                                 }
                               },
                               child: Container(
@@ -260,18 +270,18 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            if (playerReady) {
-              _controller.value.isPlaying ? _controller.pause(): _controller.play();
-            }
-          });
-        },
-        child: Icon(
-          playerReady && _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     setState(() {
+      //       if (playerReady) {
+      //         _controller!.value.isPlaying ? _controller!.pause(): _controller!.play();
+      //       }
+      //     });
+      //   },
+      //   child: Icon(
+      //     playerReady && _controller!.value.isPlaying ? Icons.pause : Icons.play_arrow,
+      //   ),
+      // ),
     );
   }
 }

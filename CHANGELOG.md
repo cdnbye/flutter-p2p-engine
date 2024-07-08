@@ -15,3 +15,7 @@
 * Update android sdk to v3.8.1.
 * Update iOS sdk to v3.2.0.
 * Change example player to video_player.
+
+## 1.2.1
+* Update iOS sdk to v3.2.1.
+* Use sharedDarwinSource

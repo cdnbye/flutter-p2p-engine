@@ -1,11 +1,11 @@
 name: flutter_p2p_engine
 description: SwarmCloud p2p engine for flutter
-version: 1.2.0
+version: 1.2.2
 homepage: https://www.cdnbye.com/en/
 
 environment:
   sdk: '>=3.1.2 <4.0.0'
-  flutter: '>=3.3.0'
+  flutter: '>=3.7.0'
 
 dependencies:
   flutter:
@@ -40,8 +40,10 @@ flutter:
         pluginClass: FlutterP2pEnginePlugin
       ios:
         pluginClass: FlutterP2pEnginePlugin
+        sharedDarwinSource: true
       macos:
         pluginClass: FlutterP2pEnginePlugin
+        sharedDarwinSource: true
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

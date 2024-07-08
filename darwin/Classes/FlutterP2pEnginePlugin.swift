@@ -1,5 +1,10 @@
+#if os(iOS)
 import Flutter
 import UIKit
+#elseif os(macOS)
+import Cocoa
+import FlutterMacOS
+#endif
 import SwarmCloudKit
 
 public class FlutterP2pEnginePlugin: NSObject, FlutterPlugin {
@@ -13,10 +18,17 @@ public class FlutterP2pEnginePlugin: NSObject, FlutterPlugin {
     var channel: FlutterMethodChannel?
 
   public static func register(with registrar: FlutterPluginRegistrar) {
+    #if os(iOS)
     let channel = FlutterMethodChannel(name: "p2p_engine", binaryMessenger: registrar.messenger())
     let instance = FlutterP2pEnginePlugin(channel)
     FlutterEventChannel(name: "p2p_engine_stats", binaryMessenger: registrar.messenger()).setStreamHandler(instance)
     registrar.addMethodCallDelegate(instance, channel: channel)
+    #elseif os(macOS)
+    let channel = FlutterMethodChannel(name: "p2p_engine", binaryMessenger: registrar.messenger)
+    let instance = FlutterP2pEnginePlugin(channel)
+    registrar.addMethodCallDelegate(instance, channel: channel)
+    FlutterEventChannel(name: "p2p_engine_stats", binaryMessenger: registrar.messenger).setStreamHandler(instance)
+    #endif
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -252,13 +264,15 @@ extension FlutterP2pEnginePlugin : PlayerInteractor {
     public func onBufferedDuration() -> TimeInterval {
         let sema = DispatchSemaphore(value: 0)
         var bufferedDuration: TimeInterval = -1
-        self.channel?.invokeMethod("bufferedDuration", arguments: nil, result: { arg in
-            guard let map = arg as? Dictionary<String, Any> else {
-                return
-            }
-            bufferedDuration = map["result"] as? TimeInterval ?? -1
-            sema.signal()
-        })
+        DispatchQueue.main.async {
+          self.channel?.invokeMethod("bufferedDuration", arguments: nil, result: { arg in
+                      guard let map = arg as? Dictionary<String, Any> else {
+                          return
+                      }
+                      bufferedDuration = map["result"] as? TimeInterval ?? -1
+                      sema.signal()
+                  })
+        }
         _ = sema.wait(timeout: DispatchTime.now() + 0.1)
         return bufferedDuration;
     }

@@ -1,7 +1,7 @@
 
 import 'flutter_p2p_engine_platform_interface.dart';
 
-const String version = "1.2.2";
+const String version = "1.2.3";
 
 class FlutterP2pEngine {
   static FlutterP2pEnginePlatform get _platform => FlutterP2pEnginePlatform.instance;

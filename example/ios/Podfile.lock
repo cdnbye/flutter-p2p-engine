@@ -3,13 +3,13 @@ PODS:
   - flutter_p2p_engine (0.0.1):
     - Flutter
     - FlutterMacOS
-    - SwarmCloudKit (= 3.2.2)
+    - SwarmCloudKit (= 3.2.3)
   - integration_test (0.0.1):
     - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - SwarmCloudKit (3.2.2)
+  - SwarmCloudKit (3.2.3)
   - video_player_avfoundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -39,10 +39,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  flutter_p2p_engine: b7b850516212fd577c266161932f61b6b866f793
+  flutter_p2p_engine: 66edcd22d04d15d179864c7ca75c58037081814e
   integration_test: ce0a3ffa1de96d1a89ca0ac26fca7ea18a749ef4
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
-  SwarmCloudKit: e521ef747664dc4d9890fc895364113263eac1cb
+  SwarmCloudKit: 1bbf118a0e70093733bf9af83e8c16bfe5c7bf4e
   video_player_avfoundation: 7c6c11d8470e1675df7397027218274b6d2360b3
 
 PODFILE CHECKSUM: a57f30d18f102dd3ce366b1d62a55ecbef2158e5

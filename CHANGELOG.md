@@ -19,3 +19,11 @@
 ## 1.2.1
 * Update iOS sdk to v3.2.1.
 * Use sharedDarwinSource
+
+## 1.2.2
+* Update android sdk to v3.8.2.
+* Optimize example.
+
+## 1.2.3
+* Update android sdk to v3.8.4.
+* Update iOS sdk to v3.2.3.

@@ -27,3 +27,6 @@
 ## 1.2.3
 * Update android sdk to v3.8.4.
 * Update iOS sdk to v3.2.3.
+
+## 1.2.4
+* Update android sdk to v3.8.7.

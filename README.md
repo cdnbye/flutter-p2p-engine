@@ -22,7 +22,7 @@ See [documentation](https://docs.swarmcloud.net/flutter)
 ## Request Token
 See [here](https://docs.swarmcloud.net/guides/getting-started#for-mobile-app-integration)
 
-## Consloe
+## Console
 Register your AppId at https://oms.cdnbye.com, where you can view p2p-related information.
 
 ## Issue & Feature Request

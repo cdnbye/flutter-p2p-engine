@@ -69,6 +69,10 @@ abstract class FlutterP2pEnginePlatform extends PlatformInterface {
 
   Future<void> notifyPlaybackStalled() => _instance.notifyPlaybackStalled();
 
+  Future<void> setHttpHeadersForHls(Map<String, String>? headers) => _instance.setHttpHeadersForHls(headers);
+
+  Future<void> setHttpHeadersForDash(Map<String, String>? headers) => _instance.setHttpHeadersForDash(headers);
+
   /// Get the peer ID of p2p engine
   Future<String> getPeerId() => _instance.getPeerId();
 }

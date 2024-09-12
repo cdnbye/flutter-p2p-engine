@@ -63,10 +63,10 @@ class _HomePageState extends State<HomePage> {
         // bufferedDurationGeneratorEnable: true,
         config: P2pConfig(
           trackerZone: TrackerZone.Europe,
-          playlistTimeOffset: 0.0,
           logEnabled: true,
           logLevel: P2pLogLevel.debug,
           // useStrictHlsSegmentId: true,
+          // playlistTimeOffset: 0.0,
         ),
         infoListener: (info) {
           // print('p2p listen: $info');
@@ -103,7 +103,6 @@ class _HomePageState extends State<HomePage> {
     // }
     );
     print('urlResult $res');
-
     _controller = VideoPlayerController.networkUrl(Uri.parse(res ?? url))..initialize().then((_) {
       // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
       setState(() {

@@ -79,6 +79,8 @@ public class FlutterP2pEnginePlugin: NSObject, FlutterPlugin {
             zone = .HongKong
         case 2:
             zone = .USA
+        case 3:
+            zone = .China
         default:
             zone = .Europe
         }
@@ -92,6 +94,12 @@ public class FlutterP2pEnginePlugin: NSObject, FlutterPlugin {
         config.logLevel = level
         if let wifiOnly = configMap["wifiOnly"] as? Bool {
             config.wifiOnly = wifiOnly
+        }
+        if let prefetchOnly = configMap["prefetchOnly"] as? Bool {
+            config.prefetchOnly = prefetchOnly
+        }
+        if let downloadOnly = configMap["downloadOnly"] as? Bool {
+            config.downloadOnly = downloadOnly
         }
         if let useHttpRange = configMap["useHttpRange"] as? Bool {
             config.useHttpRange = useHttpRange
@@ -214,6 +222,14 @@ public class FlutterP2pEnginePlugin: NSObject, FlutterPlugin {
     }
     case "shutdown": do {
         P2pEngine.shared.shutdown()
+        result(1)
+    }
+    case "setHttpHeadersForHls": do {
+        if let arguments = call.arguments as? Dictionary<String, Any> {
+            if let headers = arguments["headers"] as? Dictionary<String, String> {
+                P2pEngine.shared.setHttpHeadersForHls(headers: headers)
+            }
+        }
         result(1)
     }
     default:

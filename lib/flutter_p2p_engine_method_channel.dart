@@ -109,4 +109,16 @@ class MethodChannelFlutterP2pEngine extends FlutterP2pEnginePlatform {
   @override
   Future<String> getSDKVersion() async =>
       (await _channel.invokeMethod('getSDKVersion')) ?? '';
+
+  @override
+  Future<void> setHttpHeadersForHls(Map<String, String>? headers) =>
+      _channel.invokeMethod('setHttpHeadersForHls', {
+        'headers': headers,
+      });
+
+  @override
+  Future<void> setHttpHeadersForDash(Map<String, String>? headers) =>
+      _channel.invokeMethod('setHttpHeadersForDash', {
+        'headers': headers,
+      });
 }

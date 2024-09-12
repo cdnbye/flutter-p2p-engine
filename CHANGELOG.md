@@ -30,3 +30,14 @@
 
 ## 1.2.4
 * Update android sdk to v3.8.7.
+
+* ## 1.2.5
+* Fixed bug that android compile failed
+
+* ## 1.2.6
+* Update android sdk to v3.8.8
+
+* ## 1.2.7
+* Update android sdk to v3.8.9
+* Update iOS sdk to v3.2.5.
+* Add new API ***setHttpHeaders***

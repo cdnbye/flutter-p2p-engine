@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_p2p_engine'
-  s.version          = '0.0.1'
+  s.version          = '3.2.5'
   s.summary          = 'SwarmCloud p2p engine for flutter'
   s.description      = <<-DESC
 SwarmCloud p2p engine for flutter
@@ -17,7 +17,7 @@ SwarmCloud p2p engine for flutter
   s.source_files     = 'Classes/**/*'
   s.ios.dependency 'Flutter'
   s.osx.dependency 'FlutterMacOS'
-  s.dependency 'SwarmCloudKit', '= 3.2.3'
+  s.dependency 'SwarmCloudKit', '= 3.2.5'
 
   s.ios.deployment_target = '13.0'
   s.osx.deployment_target = '10.15'

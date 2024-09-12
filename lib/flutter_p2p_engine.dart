@@ -1,7 +1,7 @@
 
 import 'flutter_p2p_engine_platform_interface.dart';
 
-const String version = "1.2.4";
+const String version = "1.2.7";
 
 class FlutterP2pEngine {
   static FlutterP2pEnginePlatform get _platform => FlutterP2pEnginePlatform.instance;
@@ -47,6 +47,12 @@ class FlutterP2pEngine {
   static Future<String> getSDKVersion() => _platform.getSDKVersion();
 
   static Future<void> notifyPlaybackStalled() => _platform.notifyPlaybackStalled();
+
+  static Future<void> setHttpHeadersForHls(Map<String, String>? headers) => _platform.setHttpHeadersForHls(headers);
+
+  static Future<void> setHttpHeadersForDash(Map<String, String>? headers) => _platform.setHttpHeadersForDash(headers);
+
+  static Future<void> shutdown() => _platform.shutdown();
 }
 
 /// Print log level.
@@ -63,6 +69,7 @@ enum TrackerZone {
   Europe,
   HongKong,
   USA,
+  China,
 }
 
 /// The configuration of p2p engine.
@@ -83,6 +90,7 @@ class P2pConfig {
   final bool useHttpRange;
   final bool wifiOnly;
   final bool prefetchOnly;
+  final bool downloadOnly;
   final Map<String, String>? httpHeadersForHls;
   final Map<String, String>? httpHeadersForDash;
   final bool isSetTopBox;
@@ -115,6 +123,7 @@ class P2pConfig {
     this.useHttpRange = true,
     this.wifiOnly = false,
     this.prefetchOnly = false,
+    this.downloadOnly = false,
     this.httpHeadersForHls,
     this.httpHeadersForDash,
     this.isSetTopBox = false,
@@ -152,6 +161,7 @@ class P2pConfig {
     'useHttpRange': useHttpRange,
     'wifiOnly': wifiOnly,
     'prefetchOnly': prefetchOnly,
+    'downloadOnly': downloadOnly,
     'httpHeadersForHls': httpHeadersForHls ?? {},
     'httpHeadersForDash': httpHeadersForDash ?? {},
     'isSetTopBox': isSetTopBox,

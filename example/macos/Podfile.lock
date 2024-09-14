@@ -1,15 +1,13 @@
 PODS:
-  - datachannel-iOS (1.0.211)
-  - flutter_p2p_engine (0.0.1):
+  - flutter_p2p_engine (3.2.5):
     - Flutter
     - FlutterMacOS
-    - P2pEngine-iOS (= 3.2.1)
+    - SwarmCloudKit (= 3.2.5)
   - FlutterMacOS (1.0.0)
-  - P2pEngine-iOS (3.2.1):
-    - datachannel-iOS (= 1.0.211)
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
+  - SwarmCloudKit (3.2.5)
   - video_player_avfoundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -22,8 +20,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - datachannel-iOS
-    - P2pEngine-iOS
+    - SwarmCloudKit
 
 EXTERNAL SOURCES:
   flutter_p2p_engine:
@@ -36,11 +33,10 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/video_player_avfoundation/darwin
 
 SPEC CHECKSUMS:
-  datachannel-iOS: a108f5442aae3bb9819505e107d9b1cbf4b2caa5
-  flutter_p2p_engine: fcd6c0025b50664d0ee47f154b61899304d8ee6d
+  flutter_p2p_engine: 1276c2ca91cc75c3b4cf9da6787498c43126ac59
   FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
-  P2pEngine-iOS: f8bbdc978746c5dfcf4fb9391c531204a325328c
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
+  SwarmCloudKit: e73eb9e0de2cd02ac464d9cacc681400ab1f3752
   video_player_avfoundation: 7c6c11d8470e1675df7397027218274b6d2360b3
 
 PODFILE CHECKSUM: 9ebaf0ce3d369aaa26a9ea0e159195ed94724cf3

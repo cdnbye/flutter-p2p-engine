@@ -23,7 +23,7 @@ See [documentation](https://docs.swarmcloud.net/flutter)
 See [here](https://docs.swarmcloud.net/guides/getting-started#for-mobile-app-integration)
 
 ## Console
-Register your AppId at https://oms.cdnbye.com, where you can view p2p-related information.
+Register your AppId at [dashboard](https://dash.swarmcloud.net), where you can view p2p-related information.
 
 ## Issue & Feature Request
 - If you found a bug, open an issue.

@@ -25,7 +25,7 @@
 参考[如何获取token](https://www.cdnbye.com/cn/bindings.html#%E7%BB%91%E5%AE%9A-app-id-%E5%B9%B6%E8%8E%B7%E5%8F%96token)
 
 ## 控制台
-登录 https://oms.cdnbye.com 并绑定 APPId, 即可查看P2P效果、在线人数等信息。
+登录 [dashboard](https://dash.swarmcloud.net) 并绑定 APPId, 即可查看P2P效果、在线人数等信息。
 
 ## 反馈及意见
 当你遇到任何问题时，可以通过在 GitHub 的 repo 提交 issues 来反馈问题，请尽可能的描述清楚遇到的问题，如果有错误信息也一同附带，并且在 Labels 中指明类型为 bug 或者其他。

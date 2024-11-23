@@ -171,9 +171,9 @@ class MethodHandler : MethodChannel.MethodCallHandler {
                 builder = builder.httpHeadersForDash(it as Map<String, String>)
             }
 
-            configMap["httpLoadTime"]?.let {
-                builder = builder.httpLoadTime((it as Long))
-            }
+//            configMap["httpLoadTime"]?.let {
+//                builder = builder.httpLoadTime((it as Long))
+//            }
 
             configMap["logPersistent"]?.let {
                 builder = builder.logPersistent((it as Boolean))
@@ -183,16 +183,8 @@ class MethodHandler : MethodChannel.MethodCallHandler {
                 builder = builder.sharePlaylist((it as Boolean))
             }
 
-            configMap["hlsMediaFiles"]?.let {
-                builder = builder.hlsMediaFiles((it as ArrayList<String>))
-            }
-
             configMap["dashMediaFiles"]?.let {
                 builder = builder.dashMediaFiles((it as ArrayList<String>))
-            }
-
-            configMap["mediaFileSeparator"]?.let {
-                builder = builder.mediaFileSeparator(it as String)
             }
 
             configMap["playlistTimeOffset"]?.let {
@@ -219,7 +211,7 @@ class MethodHandler : MethodChannel.MethodCallHandler {
             P2pEngine.init(activity!!.application.applicationContext, token, config)
 
             if (arguments["enableBufferedDurationGenerator"] as? Boolean == true) {
-                P2pEngine.getInstance()
+                P2pEngine.instance
                     ?.setPlayerInteractor(object : PlayerInteractor() {
                         override fun onBufferedDuration(): Long {
                             var bufferedDuration: Long = -1
@@ -261,7 +253,7 @@ class MethodHandler : MethodChannel.MethodCallHandler {
                     })
             }
 
-            P2pEngine.getInstance()!!.addP2pStatisticsListener(object : P2pStatisticsListener {
+            P2pEngine.instance!!.addP2pStatisticsListener(object : P2pStatisticsListener {
                 override fun onHttpDownloaded(value: Int) {
                     val info = HashMap<String, Int>()
                     info["httpDownloaded"] = value
@@ -308,45 +300,45 @@ class MethodHandler : MethodChannel.MethodCallHandler {
             }
             val videoId = arguments["videoId"] as? String?
             val parsedUrl = if (videoId == null) {
-                P2pEngine.getInstance()!!.parseStreamUrl(url)
+                P2pEngine.instance!!.parseStreamUrl(url)
             } else {
-                P2pEngine.getInstance()!!.parseStreamUrl(url, videoId)
+                P2pEngine.instance!!.parseStreamUrl(url, videoId)
             }
             result.success(parsedUrl)
         } else if (call.method == "notifyPlaybackStalled") {
-            P2pEngine.getInstance()?.notifyPlaybackStalled()
+            P2pEngine.instance?.notifyPlaybackStalled()
             result.success(1)
         } else if (call.method == "isConnected") {
-            result.success(P2pEngine.getInstance()!!.isConnected)
+            result.success(P2pEngine.instance?.isConnected ?: false)
         } else if (call.method == "restartP2p") {
-            P2pEngine.getInstance()?.restartP2p(null)
+            P2pEngine.instance?.restartP2p(null)
             result.success(1)
         } else if (call.method == "disableP2p") {
-            P2pEngine.getInstance()?.disableP2p()
+            P2pEngine.instance?.disableP2p()
             result.success(1)
         } else if (call.method == "stopP2p") {
-            P2pEngine.getInstance()?.stopP2p()
+            P2pEngine.instance?.stopP2p()
             result.success(1)
         } else if (call.method == "enableP2p") {
-            P2pEngine.getInstance()?.enableP2p()
+            P2pEngine.instance?.enableP2p()
             result.success(1)
         } else if (call.method == "shutdown") {
-            P2pEngine.getInstance()?.shutdown()
+            P2pEngine.instance?.shutdown()
             result.success(1)
         } else if (call.method == "getPeerId") {
-            result.success(P2pEngine.getInstance()?.peerId)
+            result.success(P2pEngine.instance?.peerId)
         } else if (call.method == "setHttpHeadersForHls") {
             val arguments = call.arguments as? Map<*, *>
             if (arguments != null) {
                 val headers = arguments["headers"] as? Map<String, String>
-                P2pEngine.getInstance()?.setHttpHeadersForHls(headers)
+                P2pEngine.instance?.setHttpHeadersForHls(headers)
             }
             result.success(1)
         } else if (call.method == "setHttpHeadersForDash") {
             val arguments = call.arguments as? Map<*, *>
             if (arguments != null) {
                 val headers = arguments["headers"] as? Map<String, String>
-                P2pEngine.getInstance()?.setHttpHeadersForDash(headers)
+                P2pEngine.instance?.setHttpHeadersForDash(headers)
             }
             result.success(1)
         } else {

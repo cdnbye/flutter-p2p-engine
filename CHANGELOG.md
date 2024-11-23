@@ -41,3 +41,7 @@
 * Update android sdk to v3.8.9
 * Update iOS sdk to v3.2.5.
 * Add new API ***setHttpHeaders***
+
+* ## 1.2.8
+* Update android sdk to v3.9.7
+* Remove config field ***httpLoadTime***

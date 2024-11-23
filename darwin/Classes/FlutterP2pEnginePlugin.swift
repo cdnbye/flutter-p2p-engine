@@ -119,9 +119,6 @@ public class FlutterP2pEnginePlugin: NSObject, FlutterPlugin {
         if let memoryCacheCountLimit = configMap["memoryCacheCountLimit"] as? UInt {
             config.memoryCacheCountLimit = memoryCacheCountLimit
         }
-        if let diskCacheLimit = configMap["diskCacheLimit"] as? UInt {
-            config.diskCacheLimit = diskCacheLimit
-        }
         if let signalConfig = configMap["signalConfig"] as? String {
             config.signalConfig = SignalConfig(mainAddr: signalConfig)
         }
@@ -134,20 +131,14 @@ public class FlutterP2pEnginePlugin: NSObject, FlutterPlugin {
         if let httpHeadersForHls = configMap["httpHeadersForHls"] as? Dictionary<String, String> {
             config.httpHeadersHls = httpHeadersForHls
         }
-        if let httpLoadTime = configMap["httpLoadTime"] as? TimeInterval {
-            config.httpLoadTime = httpLoadTime
-        }
+        // if let httpLoadTime = configMap["httpLoadTime"] as? TimeInterval {
+        //     config.httpLoadTime = httpLoadTime
+        // }
         if let logPersistent = configMap["logPersistent"] as? Bool {
             config.logPersistent = logPersistent
         }
         if let sharePlaylist = configMap["sharePlaylist"] as? Bool {
             config.sharePlaylist = sharePlaylist
-        }
-        if let hlsMediaFiles = configMap["hlsMediaFiles"] as? Array<String> {
-            config.hlsMediaFiles = hlsMediaFiles
-        }
-        if let mediaFileSeparator = configMap["mediaFileSeparator"] as? String {
-            config.mediaFileSeparator = mediaFileSeparator
         }
         if let maxMediaFilesInPlaylist = configMap["maxMediaFilesInPlaylist"] as? Int {
             config.maxMediaFilesInPlaylist = maxMediaFilesInPlaylist

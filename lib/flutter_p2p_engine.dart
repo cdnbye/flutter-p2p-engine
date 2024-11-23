@@ -1,7 +1,7 @@
 
 import 'flutter_p2p_engine_platform_interface.dart';
 
-const String version = "1.2.7";
+const String version = "1.2.8";
 
 class FlutterP2pEngine {
   static FlutterP2pEnginePlatform get _platform => FlutterP2pEnginePlatform.instance;
@@ -94,15 +94,12 @@ class P2pConfig {
   final Map<String, String>? httpHeadersForHls;
   final Map<String, String>? httpHeadersForDash;
   final bool isSetTopBox;
-  final int? httpLoadTime;
   final bool sharePlaylist;
   final bool logPersistent;
   final bool? fastStartup;
   final bool? geoIpPreflight;
   final bool? useStrictHlsSegmentId;
-  final List<String>? hlsMediaFiles;
   final List<String>? dashMediaFiles;
-  final String? mediaFileSeparator;
   final double? playlistTimeOffset;
   final int? maxMediaFilesInPlaylist;
   final TrackerZone? trackerZone;
@@ -128,12 +125,9 @@ class P2pConfig {
     this.httpHeadersForDash,
     this.isSetTopBox = false,
     this.logEnabled = false,
-    this.httpLoadTime,
     this.logPersistent = false,
     this.sharePlaylist = false,
-    this.hlsMediaFiles,
     this.dashMediaFiles,
-    this.mediaFileSeparator,
     this.trackerZone,
     this.playlistTimeOffset,
     this.maxMediaFilesInPlaylist,
@@ -165,13 +159,10 @@ class P2pConfig {
     'httpHeadersForHls': httpHeadersForHls ?? {},
     'httpHeadersForDash': httpHeadersForDash ?? {},
     'isSetTopBox': isSetTopBox,
-    'httpLoadTime': httpLoadTime,
     'sharePlaylist': sharePlaylist,
     'logPersistent': logPersistent,
-    'hlsMediaFiles': hlsMediaFiles,
     'dashMediaFiles': dashMediaFiles,
     'trackerZone': trackerZone?.index,
-    'mediaFileSeparator': mediaFileSeparator,
     'playlistTimeOffset': playlistTimeOffset,
     'maxMediaFilesInPlaylist': maxMediaFilesInPlaylist,
     'fastStartup': fastStartup,

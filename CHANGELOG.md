@@ -45,3 +45,7 @@
 * ## 1.2.8
 * Update android sdk to v3.9.7
 * Remove config field ***httpLoadTime***
+
+## 1.2.9
+* Update android sdk to v3.10.2.
+* Update iOS sdk to v3.3.2.

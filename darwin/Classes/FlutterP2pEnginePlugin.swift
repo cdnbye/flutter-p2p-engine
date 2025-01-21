@@ -119,6 +119,9 @@ public class FlutterP2pEnginePlugin: NSObject, FlutterPlugin {
         if let memoryCacheCountLimit = configMap["memoryCacheCountLimit"] as? UInt {
             config.memoryCacheCountLimit = memoryCacheCountLimit
         }
+        if let startFromSegmentOffset = configMap["startFromSegmentOffset"] as? UInt {
+            config.startFromSegmentOffset = startFromSegmentOffset
+        }
         if let signalConfig = configMap["signalConfig"] as? String {
             config.signalConfig = SignalConfig(mainAddr: signalConfig)
         }

@@ -17,7 +17,7 @@ SwarmCloud p2p engine for flutter
   s.source_files     = 'Classes/**/*'
   s.ios.dependency 'Flutter'
   s.osx.dependency 'FlutterMacOS'
-  s.dependency 'SwarmCloudKit', '~> 3.3'
+  s.dependency 'SwarmCloudKit', '~> 3.0'
 
   s.ios.deployment_target = '13.0'
   s.osx.deployment_target = '10.15'

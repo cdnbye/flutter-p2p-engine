@@ -151,6 +151,10 @@ class MethodHandler : MethodChannel.MethodCallHandler {
                 builder = builder.memoryCacheCountLimit(it as Int)
             }
 
+            configMap["startFromSegmentOffset"]?.let {
+                builder = builder.startFromSegmentOffset(it as Int)
+            }
+
             configMap["signalConfig"]?.let {
                 builder = builder.signalConfig(it as String, null)
             }

@@ -49,3 +49,7 @@
 ## 1.2.9
 * Update android sdk to v3.10.2.
 * Update iOS sdk to v3.3.2.
+
+## 1.3.0
+* Update android sdk to v3.12.1.
+* Update AGP.

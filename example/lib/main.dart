@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   // var url = 'https://test-streams.mux.dev/x36xhzz/url_0/193039199_mp4_h264_aac_hd_7.m3u8';
-  var url = 'https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/level_0.m3u8';
+  var url = 'https://stream.swarmcloud.net:2096/hls/sintel/playlist.m3u8';
 
   var totalHTTPDn = 0;
   var totalP2PDn = 0;

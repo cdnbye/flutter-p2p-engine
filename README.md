@@ -1,6 +1,6 @@
 **English | [简体中文](Readme_zh.md)**
 
-<h1 align="center"><a href="" target="_blank" rel="noopener noreferrer"><img width="250" src="https://www.cdnbye.com/img/logo.png" alt="logo"></a></h1>
+<h1 align="center"><a href="" target="_blank" rel="noopener noreferrer"><img width="250" src="https://www.swarmcloud.net/img/logo.png" alt="logo"></a></h1>
 <h4 align="center">Live/VOD P2P Engine for Flutter</h4>
 <p align="center">
 <a href="https://pub.dartlang.org/packages/flutter_p2p_engine"><img src="https://img.shields.io/pub/v/flutter_p2p_engine.svg" alt="pub"></a>

@@ -1,6 +1,6 @@
 **[English](README.md) | 简体中文**
 
-<h1 align="center"><a href="" target="_blank" rel="noopener noreferrer"><img width="250" src="https://www.cdnbye.com/logo.png" alt="logo"></a></h1>
+<h1 align="center"><a href="" target="_blank" rel="noopener noreferrer"><img width="250" src="https://www.swarmcloud.net/logo.png" alt="logo"></a></h1>
 <h4 align="center">Flutter视频/直播APP省流量&加速神器.</h4>
 <p align="center">
 <a href="https://pub.dartlang.org/packages/flutter_p2p_engine"><img src="https://img.shields.io/pub/v/flutter_p2p_engine.svg" alt="pub"></a>
@@ -19,10 +19,10 @@
 - Tracker服务器根据访问IP的ISP、地域等进行智能调度
 
 ## 使用方法
-参考 [文档](https://www.cdnbye.com/cn/flutter/usage.html)
+参考 [文档](https://www.cdnbye.com/flutter/usage.html)
 
 ## 获取Token
-参考[如何获取token](https://www.cdnbye.com/cn/bindings.html#%E7%BB%91%E5%AE%9A-app-id-%E5%B9%B6%E8%8E%B7%E5%8F%96token)
+参考[如何获取token](https://www.cdnbye.com/bindings.html#%E7%BB%91%E5%AE%9A-app-id-%E5%B9%B6%E8%8E%B7%E5%8F%96token)
 
 ## 控制台
 登录 [dashboard](https://dash.swarmcloud.net) 并绑定 APPId, 即可查看P2P效果、在线人数等信息。

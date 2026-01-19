@@ -17,13 +17,13 @@
 - Use IP database to group up peers by ISP and regions
 
 ## Usage
-See [documentation](https://www.swarmcloud.net/flutter)
+See [documentation](https://www.swarmcloud.net/flutter?utm_source=github)
 
 ## Request Token
-See [here](https://www.swarmcloud.net/guides/getting-started#for-mobile-app-integration)
+See [here](https://www.swarmcloud.net/guides/getting-started#for-mobile-app-integration?utm_source=github)
 
 ## Dashboard
-Register your AppId at [dashboard](https://dash.swarmcloud.net), where you can view p2p-related information.
+Register your AppId at [dashboard](https://dash.swarmcloud.net?source=github), where you can view p2p-related information.
 
 ## Issue & Feature Request
 - If you found a bug, open an issue.
@@ -36,7 +36,7 @@ Register your AppId at [dashboard](https://dash.swarmcloud.net), where you can v
 - [react-native-swarmcloud](https://github.com/swarm-cloud/react-native-swarmcloud) -  Official React Native bindings for SwarmCloud's P2P SDKs.
 
 ## FAQ
-We have collected some [frequently asked questions](https://www.swarmcloud.net/faq). Before reporting an issue, please search if the FAQ has the answer to your problem.
+We have collected some [frequently asked questions](https://www.swarmcloud.net/faq?utm_source=github). Before reporting an issue, please search if the FAQ has the answer to your problem.
 
 ## Contact Us
 Email：service@cdnbye.com
